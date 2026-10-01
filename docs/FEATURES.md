@@ -18,6 +18,7 @@ Priority key: **L** = needed for the 100-screen launch · **P** = pilot v2, befo
 | 1.8 | Reviewer mode: the staff-hour checklist (section 6) inline, with sign-off, reviewer name and date printed on the PDF | The staff hour is the differentiator; make it visible on the output | L |
 | 1.9 | Upgrade path on the last page: Roadmap at $2,500 with the $500 credited, and the three scale-test questions pre-answered by the model | Scale test from the pricing decision; Transect's mini-report ends the same way | L |
 | 1.10 | Project continuity: the 1A record becomes the Roadmap record becomes the Productive project; facts replace assumptions in place | The living-model decision; the thing an app cannot copy | P |
+| 1.11 | Client dashboard tie: from Step 1a the client's link on the Cox dashboard shows the current roadmap, budget with confidence, assumption register, change log and next step; at Step 2 it merges with the client statement (hours, invoiced, paid, percent complete) | Chris's direction 1 Oct; one page for the plan and the money | L |
 
 ## 2. Zoning and land-use fit
 
@@ -63,7 +64,7 @@ Priority key: **L** = needed for the 100-screen launch · **P** = pilot v2, befo
 
 Frame the market section as the third gate of the appraiser's highest-and-best-use test, which is exactly the Q7 process Chris described: **legally permissible** (sections 2 and 3) × **physically possible** (section 3) × **financially feasible** (market) → **maximally productive** (the ranked fit). The app runs the first two gates from the layers, feeds the third from ArcGIS Business Analyst and public data, and the planner's hour calls the fourth.
 
-**Phase 1A, automated (one GeoEnrichment call per site, reviewed in the staff hour).** Business Analyst's GeoEnrichment REST service returns the variables for a drive-time or ring trade area in one request, at a few credits per site, which is well under a dollar at published credit rates. Pull, for 5/10/15-minute drive times (or 1/3/5 miles rural):
+**Phase 1A, automated (one GeoEnrichment call per site, reviewed in the staff hour; included in the free launch screens).** Business Analyst's GeoEnrichment REST service returns the variables for a drive-time or ring trade area in one request, at a few credits per site, which is well under a dollar at published credit rates. Pull, for 5/10/15-minute drive times (or 1/3/5 miles rural):
 
 - Population, households, five-year growth, median and average household income, daytime population, median age, Tapestry top three segments.
 - Housing: units, tenure, vacancy, median home value, average rent, units built since 2010.
