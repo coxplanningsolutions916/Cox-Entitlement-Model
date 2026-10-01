@@ -15,7 +15,16 @@ Draft 1 October 2026. Pilot area: **Sacramento County and Placer County, includi
 6. Code sources: for each jurisdiction, where the current code lives (Municode, American Legal, Code Publishing, the jurisdiction's own PDF) and the official URL per title, so standards are captured by hand with a citation and never scraped from a publisher's site (see `LICENSING.md`).
 7. Use tables per district (permitted, conditional, prohibited) and development standards (density or FAR, height, setbacks, coverage, parking, open space) with effective dates. Where this lives in code text rather than GIS, flag what needs a planner to capture and estimate the hours; we may license Zoneomics or Gridics code text to shorten it.
 8. Housing element sites inventories, transit priority areas and AB 2097 or SB 79 distance brackets, density-bonus and SB 9 eligibility inputs.
-9. Fee schedules (impact fees, plan check, HCP fees) as a table with jurisdiction, fee, basis, effective date, source URL.
+9. **Fee layers**, as polygons with a fee table behind each (jurisdiction, fee name, basis such as per unit, per acre or per square foot, current amount, effective date, source URL), so the app can price a program by location:
+   - Drainage and flood control fee zones (Sacramento County drainage fee areas including Zone 11A, Zone 11B and the Zone 40 water fee areas; Placer County and city drainage fee districts)
+   - Quimby Act park land and park impact fee districts (county and city park districts, recreation and park district boundaries)
+   - Specific plan and finance plan fee areas (plan-area infrastructure fees, public facilities financing plans, and the plan boundaries they attach to)
+   - Transportation and roadway fee districts (Sacramento County Transportation Development Fee areas, South Placer Regional Transportation Authority, city traffic impact fee districts)
+   - Sewer and water connection fee areas (Regional San capacity fee, SASD, Placer SMD, each water purveyor's connection fee)
+   - School district Level I and Level II fee areas
+   - Habitat and ag mitigation fee zones (South Sacramento HCP, Natomas Basin HCP, Placer County Conservation Program fee zones, ag mitigation ordinance areas)
+   - Affordable housing and inclusionary or in-lieu fee zones; CFD and Mello-Roos districts with their special tax
+   - Jurisdiction-wide facility fees (fire, police, library, general government) and plan-check and processing fee schedules as a table
 10. Pending changes: general plan updates, code rewrites, specific plans in process, moratoria, as a list with links, per jurisdiction.
 
 ## C. Constraint layers (statewide sources, clipped to the pilot)
@@ -36,11 +45,12 @@ Draft 1 October 2026. Pilot area: **Sacramento County and Placer County, includi
 21. Drive-time trade areas (5, 10, 15 minutes) versus rings (1, 3, 5 miles): both available, and what the credit difference is.
 22. Can Business Analyst's Retail MarketPlace supply-demand gap be pulled by NAICS group for a trade area through the API?
 
-## E. Marketing and direct-mail questions
+## E. Marketing (direct mail deferred)
 
-23. Can we build the direct-mail list from the parcel layer: owners of vacant or underutilized parcels by zone, size and owner type (individual, trust, LLC, public), with mailing addresses, exported per campaign? Any county restrictions on using assessor owner data for mail? (Check each county's terms of use; see `LICENSING.md`.)
-24. Can Business Analyst or ArcGIS produce the "100 free screens" target list: parcels in zones where the housing element or recent rezones created new capacity?
-25. A map graphic per county showing the pilot coverage for the landing page and the LinkedIn campaign.
+Direct-mail lists are already produced from the parcel layers and Acres Enterprise is available, so no new work there now. Two items only:
+
+23. A target list for the 100 free screens: parcels in zones where the housing element or recent rezones created new capacity, in the pilot jurisdictions.
+24. A map graphic per county showing the pilot coverage for the landing page and the LinkedIn campaign.
 
 ## F. Delivery
 

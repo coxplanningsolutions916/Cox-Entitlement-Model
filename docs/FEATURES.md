@@ -55,6 +55,7 @@ Priority key: **L** = needed for the 100-screen launch · **P** = pilot v2, befo
 |---|---|---|---|
 | 4.1 | Approval schedule with predecessor chain, season windows, placement after NTP, slack | PermitPortal's predecessor chain; the engine's schedule module already does it | L |
 | 4.2 | Order-of-magnitude cost ranges: consulting (OM 14.3 build), agency fees from jurisdiction fee schedules, HCP fees, mitigation ratios and credit prices, impact fees; each with confidence | The engine's program module; competitors stop at the pro forma | L |
+| 4.2a | Fee districts as GIS layers: drainage and flood control zones, Quimby and park districts, specific plan and finance plan fee areas, transportation fee districts, sewer and water connection fee areas, school fee areas, habitat and ag mitigation fee zones, inclusionary and in-lieu zones, CFDs; the parcel's location prices the program's agency fees automatically | Chris's direction 1 Oct; no competitor prices local fees by parcel | L |
 | 4.3 | Unquantifiable lines carried as named exclusions, never zero | Program rule; board-grade honesty | L |
 | 4.4 | Historical approval timelines from Cox's own project history (Productive, the Barnett archive) and agency agendas, by jurisdiction and approval type | PermitPortal sells this; Cox has fourteen years of local history to mine | P |
 | 4.5 | Watch: nightly re-check of the layers and the jurisdiction's pending changes for every active site, with a change notice | PermitPortal's monitoring; the model's Phase 6 | P |
