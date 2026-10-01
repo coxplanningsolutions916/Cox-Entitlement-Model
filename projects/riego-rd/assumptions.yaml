@@ -1,0 +1,33 @@
+assumptions:
+  - id: assume.ceqa_pathway
+    statement: "The CEQA document is an EIR rather than an IS/MND."
+    owner: chris.cox
+    reason: "GPA and rezone ride on the same document, plus the vernal pool resource."
+    alternatives: [is_mnd, eir]
+    current: eir
+    resolved_by: deliverable.4.1
+    cost_impact: [line.ceqa_coord, line.eir, line.fee_eir_deposit]
+    schedule_impact: [node.ceqa_document]
+  - id: assume.wastewater_path
+    statement: "Wastewater is served by district connection rather than an on-site plant."
+    owner: chris.cox
+    reason: "District capacity exists on paper; the on-site plant is the fallback and a separate WDR permit."
+    alternatives: [district_connection, on_site_plant]
+    current: null
+    resolved_by: deliverable.1.2
+    cost_impact: [line.civil]
+    schedule_impact: [node.wdr_permit]
+  - id: assume.entitlement_vehicle
+    statement: "The entitlement vehicle is a General Plan amendment plus rezone with a planned development combining district."
+    owner: chris.cox
+    reason: "Confirmed four-step sequence of 2026-08-18."
+    alternatives: [gpa_rezone_pd, specific_plan, pd_overlay]
+    current: gpa_rezone_pd
+    resolved_by: deliverable.4.1
+    cost_impact: [line.county_apps]
+    schedule_impact: [node.county_entitlement]
+  - id: assume.feature_classification
+    statement: "The third-party draft delineation's contested feature classifications stand until the delineation of record."
+    owner: chris.cox
+    reason: "Draft of 10 March 2026 predates the farming operations; contested."
+    resolved_by: deliverable.1.3

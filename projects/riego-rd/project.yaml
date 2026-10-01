@@ -1,0 +1,23 @@
+key: riego-rd
+name: "Riego Road 160"
+client: "Sundance Development Corp"
+contact: "Ron Smith"
+jurisdiction: ["Sutter County"]
+regions: ["Central Valley", "USACE Sacramento District", "Sacramento Valley"]   # for benchmark applicability (R6)
+parcels: ["35-260-018", "35-260-019"]
+acres: 160.16
+program: "Residential, 58 to 62 lots (client concept, external_unverified)"
+status: "pre-approval"          # no Productive project, budget, registry entry, Slack channel or Harvest code (brief §11)
+task_order_1:
+  name: "Task Order 1 — assessment, design and pre-application"
+  prepared: "2026-09-21"
+  revision: "Revision of 21 September 2026, Principal review."
+  payment_milestones:
+    - {milestone: "Task Order execution", share: 0.20, trigger: "Execution. Funds the contract biologist and cultural team."}
+    - {milestone: "Assessment program delivered", share: 0.20, trigger: "Delivery of 1.1, 1.2 and 1.10."}
+    - {milestone: "Delineation delivered", share: 0.25, trigger: "Delivery of 1.3, the delineation of record."}
+    - {milestone: "Preferred site plan delivered", share: 0.20, trigger: "Delivery of 2.4."}
+    - {milestone: "Pre-application packages filed", share: 0.15, trigger: "Filing of 4.1 through 4.3 with the 2027 biological deliverables."}
+  optional_lines:
+    - {code: "O1", label: "Boundary resolution and aerial terrain model with DEM, fall 2026", low: 9200, high: 13800, confidence: quoted,
+       basis: "Informal estimate of $3,000 to $5,000 from the surveyor, at vendor cost plus 15 percent; the one non-fixed line in Task Order 1."}

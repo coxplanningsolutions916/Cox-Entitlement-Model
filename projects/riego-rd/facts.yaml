@@ -1,0 +1,51 @@
+facts:
+  - id: fact.sutter.gp_designation
+    kind: designation
+    statement: "Both parcels carry the AG-80 Agriculture, 80-acre minimum designation."
+    value: {designation: AG-80, min_parcel_acres: 80}
+    source: {document: "Sutter County General Plan land use diagram, SPSP Figure A1-12", author: "PBS&J", revised: "2014-08-07", location: "Drive: 12Sutter Pointe Specific Plan.pdf"}
+    established: "2026-08-18"
+    established_by: chris.cox
+    confidence: published
+    map_citation: {figure: "SPSP Figure A1-12", date: "2014-08-07"}
+    supersedes: [fact.isr.spsp_membership]
+  - id: fact.isr.spsp_membership
+    kind: membership
+    statement: "The parcels are within the Sutter Pointe Specific Plan."
+    source: {document: "Larane_Riego_ISR.docx", sections: ["3.3"], author: "third party", revised: "2026-05-09"}
+    established: "2026-05-09"
+    confidence: derived
+    quarantined_terms: ["Sutter Pointe Specific Plan membership", "SPSP tiering"]
+  - id: fact.isr.nbhcp_membership
+    kind: membership
+    statement: "The parcels are covered by the Natomas Basin HCP."
+    source: {document: "Larane_Riego_ISR.docx", sections: ["ES", "5.2"], author: "third party", revised: "2026-05-09"}
+    established: "2026-05-09"
+    confidence: derived
+    quarantined_terms: ["per acre fee", "the Conservancy", "Covered Activities", "22 species list"]
+  - id: fact.nbhcp.boundary
+    kind: membership
+    statement: "The parcels are outside the Natomas Basin HCP plan area."
+    source: {document: "NBHCP plan area boundary layer", author: "Natomas Basin Conservancy", revised: "2024-01-01", location: "GIS: nbhcp_boundary.shp"}
+    established: "2026-08-18"
+    established_by: chris.cox
+    confidence: published
+    map_citation: {layer: "nbhcp_boundary", date: "2024-01-01"}
+    supersedes: [fact.isr.nbhcp_membership]
+  - id: fact.fee.rwqcb_unit
+    kind: fee
+    statement: "Central Valley RWQCB project fee is $37,544 per impact acre less the application fee, FY 2025-26."
+    value: {per_acre: 37544}
+    source: {document: "23 CCR Section 2200(a)(4), FY 2025-26 schedule", revised: "2025-07-01"}
+    established: "2026-09-10"
+    established_by: chris.cox
+    confidence: published
+    ttl_days: 365
+  - id: fact.parking.local_rule
+    kind: local_rule
+    statement: "Sutter County retains minimum parking standards for residential subdivisions."
+    source: {document: "Sutter County Land Use and Development Code", revised: "2024-06-01"}
+    established: "2026-09-10"
+    established_by: chris.cox
+    confidence: published
+    ttl_days: 365

@@ -1,0 +1,14 @@
+conflicts:
+  - number: 8
+    title: "The ARI submittal vehicle"
+    status: closed
+    closed_on: "2026-08-18"
+    closed_by: chris.cox
+    resolution: >
+      Cox submits an aquatic resources verification request as part of the USACE application package.
+      Not a PJD request. Not an AJD request.
+    sources_in_conflict:
+      - {doc: "Larane_Riego_ISR.docx", sections: ["3.3", "ES", "5.2", "6.1"], position: "PJD"}
+      - {doc: "Larane_Riego_NextSteps.docx", section: "Step 4", position: "neither PJD nor AJD"}
+    consequences: ["supersede ISR PJD language", "verification rides with the application"]
+    reversal_policy: escalate

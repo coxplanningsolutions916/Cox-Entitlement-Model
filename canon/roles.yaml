@@ -1,0 +1,38 @@
+# Operations Manual 11.2 canonical roles. The strings are exact; the engine rejects any other spelling.
+# bill_rate = the rate card. cost_rate = internal loaded cost (used only for the margin check; never emitted).
+roles:
+  - key: principal_biologist_planner_engineer
+    name: "Principal Biologist/Planner/Engineer"
+    bill_rate: 250
+    cost_rate: 110
+  - key: senior_biologist
+    name: "Senior Biologist"
+    bill_rate: 175
+    cost_rate: 135          # contract biology, blended $135 escalated 5% for 2027 → billed at 175
+    note: "Contract biology (Stephen Stringer / Mason London)."
+  - key: senior_planner
+    name: "Senior Planner"
+    bill_rate: 175
+    cost_rate: 85
+  - key: planner
+    name: "Planner"
+    bill_rate: 150
+    cost_rate: 65
+  - key: gis_analyst_cad_designer
+    name: "GIS Analyst/CAD Designer"
+    bill_rate: 150
+    cost_rate: 70
+  - key: senior_archaeologist
+    name: "Senior Archaeologist (contract)"
+    bill_rate: 175
+    cost_rate: 150
+    note: "Contract (Brian Ludwig)."
+  - key: cultural_field_technician
+    name: "Cultural Field Technician (contract)"
+    bill_rate: 110
+    cost_rate: 95
+    note: "Contract (Mark Pense)."
+fee_rules:
+  coordination_share_of_labor: 0.10      # Operations Manual 14.3 step 4, on labor only
+  passthrough_markup: 0.15               # Standard Agreement Article 4.6, cost plus 15 percent
+  round_total_to: 1000                   # Operations Manual 14.3 step 5, rounded once, at the total

@@ -1,0 +1,15 @@
+# Lines that carry drivers and reference unit costs and NO number (R5). They appear in the program total as named exclusions.
+lines:
+  - id: unq.compensatory_mitigation
+    label: "Compensatory mitigation"
+    why_unquantifiable: >
+      Impact acreage does not exist until the delineation and the preferred plan exist. Species obligations
+      do not exist until the 2027 surveys. Part will be satisfied on site, which changes both the amount and its shape.
+    drivers:
+      - {name: "Impact acreage on aquatic features", resolved_by: [deliverable.1.3, deliverable.2.4]}
+      - {name: "Share satisfied on site", resolved_by: [deliverable.2.4]}
+      - {name: "Swainson's hawk nest distance", resolved_by: [deliverable.1.8]}
+      - {name: "Burrowing owl and western spadefoot presence", resolved_by: [deliverable.1.6, deliverable.1.7]}
+    reference_costs: [bench.vp_credit_ilf, bench.swha_land, bench.mgmt_endowment]
+    withdrawn_estimates:
+      - {value: "1.26 to 4.36 credits", withdrawn: "2026-09-20", reason: "Assumed an obligation exists and rested on an unconfirmed credit-to-acre conversion."}

@@ -1,0 +1,38 @@
+# Generic California field-work season windows (month-day, inclusive). Project files may override per site.
+# A window-constrained deliverable placed outside its window fails validation (rule R3).
+windows:
+  - id: window.fall_recon
+    name: "Fall reconnaissance, bare ground"
+    opens: "09-01"
+    closes: "11-30"
+    basis: "Post-harvest, pre-rain: soils, depressions, structures visible."
+  - id: window.delineation
+    name: "Wetland delineation, wet season"
+    opens: "02-15"
+    closes: "05-15"
+    basis: "1987 Manual / Arid West supplement; hydrology indicators present."
+  - id: window.branchiopod_wet
+    name: "Branchiopod wet-season protocol"
+    opens: "11-01"
+    closes: "05-31"
+    basis: "USFWS 2017 guidelines; after inundation."
+  - id: window.branchiopod_dry
+    name: "Branchiopod dry-season cyst sampling"
+    opens: "06-15"
+    closes: "10-31"
+    basis: "USFWS 2017 guidelines; after features dry."
+  - id: window.burrowing_owl_breeding
+    name: "Burrowing owl breeding-season surveys"
+    opens: "02-01"
+    closes: "08-31"
+    basis: "CDFW 2012 Staff Report."
+  - id: window.nesting_raptor
+    name: "Nesting raptor and special-status bird surveys"
+    opens: "02-01"
+    closes: "08-31"
+    basis: "Swainson's hawk TAC 2000; nesting season."
+  - id: window.rare_plant
+    name: "Special-status plant surveys, floristic passes"
+    opens: "03-01"
+    closes: "06-30"
+    basis: "CDFW 2018 protocols; blooming periods for the target species."

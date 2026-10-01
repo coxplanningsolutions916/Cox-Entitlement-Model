@@ -1,0 +1,155 @@
+# Task Order 1 deliverables with hours by canonical role, from the INTERNAL fee backup of 21 Sept 2026.
+# Role keys must match canon/roles.yaml exactly. Hours only; fees are computed, never typed.
+deliverables:
+  - id: deliverable.1.0
+    code: "1.0"
+    name: "Fall Reconnaissance and Survey Program Setup"
+    phase: "01 Assessment"
+    sequence_step: 1
+    window: window.fall_recon
+    field_work: true
+    hours: {principal_biologist_planner_engineer: 2, senior_biologist: 22, gis_analyst_cad_designer: 1}
+    what_it_produces: "One field day while the ground is bare. Soil profiles, depressions, structures and the survey program for 2027."
+    status: proposed
+  - id: deliverable.1.1
+    code: "1.1"
+    name: "Permit Analysis: Regulatory Framework and Entitlement Path"
+    phase: "01 Assessment"
+    sequence_step: 1
+    hours: {principal_biologist_planner_engineer: 6, senior_planner: 20, planner: 24, gis_analyst_cad_designer: 12}
+    what_it_produces: "Approvals required and the standards governing them."
+    resolves: [assume.entitlement_vehicle]
+  - id: deliverable.1.2
+    code: "1.2"
+    name: "Permit Analysis: Services, Infrastructure and Financing"
+    phase: "01 Assessment"
+    sequence_step: 1
+    hours: {principal_biologist_planner_engineer: 4, senior_planner: 8, planner: 20, gis_analyst_cad_designer: 4}
+    what_it_produces: "Water, wastewater and drainage service path."
+    resolves: [assume.wastewater_path]
+  - id: deliverable.1.3
+    code: "1.3"
+    name: "Wetland Delineation, Including Aerial Photography Flights"
+    phase: "01 Assessment"
+    sequence_step: 2
+    window: window.delineation
+    field_work: true
+    hours: {principal_biologist_planner_engineer: 8, senior_biologist: 226, planner: 27, gis_analyst_cad_designer: 56}
+    gates: [deliverable.2.1, deliverable.2.2, deliverable.2.3]
+    resolves: [lever.impact_acreage, assume.feature_classification]
+    what_it_produces: "Delineation of record, March 2027, under the 1987 Manual and the Arid West supplement."
+  - id: deliverable.1.6
+    code: "1.6"
+    name: "Biological Resources Assessment"
+    phase: "01 Assessment"
+    sequence_step: 2
+    field_work: true
+    window: window.rare_plant
+    hours: {principal_biologist_planner_engineer: 11, senior_biologist: 84, gis_analyst_cad_designer: 20}
+    what_it_produces: "CNDDB and IPaC searches, reconnaissance survey, species accounts, the CEQA baseline."
+  - id: deliverable.1.7
+    code: "1.7"
+    name: "Burrowing Owl Habitat Assessment and Reconnaissance Survey"
+    phase: "01 Assessment"
+    sequence_step: 2
+    window: window.burrowing_owl_breeding
+    field_work: true
+    hours: {principal_biologist_planner_engineer: 3, senior_biologist: 44, gis_analyst_cad_designer: 6}
+    what_it_produces: "Habitat assessment and the full CDFW 2012 breeding-season survey."
+  - id: deliverable.1.8
+    code: "1.8"
+    name: "Nesting Raptor and Special-Status Bird Reconnaissance Survey"
+    phase: "01 Assessment"
+    sequence_step: 2
+    window: window.nesting_raptor
+    field_work: true
+    hours: {principal_biologist_planner_engineer: 3, senior_biologist: 56, gis_analyst_cad_designer: 10}
+    what_it_produces: "CEQA baseline and the Swainson's hawk nest-distance band that sets the CDFW mitigation ratio."
+    resolves: [lever.swha_nest_distance]
+  - id: deliverable.1.9
+    code: "1.9"
+    name: "Special-Status Plant Surveys"
+    phase: "01 Assessment"
+    sequence_step: 2
+    window: window.rare_plant
+    field_work: true
+    hours: {principal_biologist_planner_engineer: 2, senior_biologist: 38, gis_analyst_cad_designer: 6}
+    what_it_produces: "Floristic survey to CDFW and CNPS protocols; two passes riding on the delineation and burrowing owl mobilizations (fee halved on that reasoning, R4)."
+  - id: deliverable.1.10
+    code: "1.10"
+    name: "Cultural and Tribal Cultural Resources Assessment"
+    phase: "01 Assessment"
+    sequence_step: 1
+    field_work: true
+    hours: {principal_biologist_planner_engineer: 4, senior_planner: 8, senior_archaeologist: 64, cultural_field_technician: 48}
+    passthroughs:
+      - {label: "North Central Information Center records search", cost: 1500}
+    what_it_produces: "Records search, pedestrian survey, tribal consultation support, the assessment report."
+  - id: deliverable.2.1
+    code: "2.1"
+    name: "Constraints and Base Maps"
+    phase: "02 Design"
+    sequence_step: 3
+    hours: {principal_biologist_planner_engineer: 2, planner: 8, gis_analyst_cad_designer: 32}
+    what_it_produces: "Parcel boundaries, topography, recorded easements, the delineation and the biological constraints on one base."
+  - id: deliverable.2.2
+    code: "2.2"
+    name: "Conceptual Site Plan Alternatives"
+    phase: "02 Design"
+    sequence_step: 3
+    hours: {principal_biologist_planner_engineer: 12, senior_planner: 24, planner: 24, gis_analyst_cad_designer: 76}
+    what_it_produces: "Two to three alternatives drawn against the delineation; lot size and clustering are the levers (R9)."
+    resolves: [lever.lot_size_clustering]
+  - id: deliverable.2.3
+    code: "2.3"
+    name: "Impacts Maps and Impacts Analysis"
+    phase: "02 Design"
+    sequence_step: 3
+    hours: {principal_biologist_planner_engineer: 4, planner: 12, gis_analyst_cad_designer: 40}
+    what_it_produces: "Quantified comparison of aquatic resource impact by alternative (R8: impact acreage is an output of the layout)."
+    resolves: [lever.impact_acreage]
+  - id: deliverable.2.4
+    code: "2.4"
+    name: "Schematic Site Plan: Preferred Plan"
+    phase: "02 Design"
+    sequence_step: 3
+    hours: {principal_biologist_planner_engineer: 8, senior_planner: 24, planner: 28, gis_analyst_cad_designer: 46}
+    gates: [deliverable.3.1, deliverable.3.2]
+    resolves: [lever.impact_acreage, lever.share_on_site]
+    what_it_produces: "Preferred plan with developable area net of dedications and avoidance."
+  - id: deliverable.3.1
+    code: "3.1"
+    name: "Development Project Description"
+    phase: "03 Planning"
+    sequence_step: 4
+    hours: {principal_biologist_planner_engineer: 12, senior_planner: 28, planner: 40, gis_analyst_cad_designer: 8}
+    what_it_produces: "One description serving all three pre-applications and the CEQA notice."
+  - id: deliverable.3.2
+    code: "3.2"
+    name: "CEQA Notice of Preparation"
+    phase: "03 Planning"
+    sequence_step: 4
+    hours: {principal_biologist_planner_engineer: 6, senior_planner: 16, planner: 24, gis_analyst_cad_designer: 8}
+    what_it_produces: "Draft notice for Sutter County to issue under the CEQA Guidelines."
+  - id: deliverable.4.1
+    code: "4.1"
+    name: "Sutter County Pre-Application"
+    phase: "04 Permits"
+    sequence_step: 4
+    hours: {principal_biologist_planner_engineer: 10, senior_planner: 20, planner: 24}
+    resolves: [assume.ceqa_pathway, assume.entitlement_vehicle]
+    what_it_produces: "Process meeting on the application set, the planned development vehicle and the CEQA pathway."
+  - id: deliverable.4.2
+    code: "4.2"
+    name: "USACE Section 404 Pre-Application"
+    phase: "04 Permits"
+    sequence_step: 4
+    hours: {principal_biologist_planner_engineer: 10, senior_planner: 16, planner: 20}
+    what_it_produces: "Early coordination letter under District intake practice; the aquatic resources verification request rides with the application, never a PJD or AJD request (conflict 8)."
+  - id: deliverable.4.3
+    code: "4.3"
+    name: "Central Valley RWQCB Section 401 / WDR Pre-Application"
+    phase: "04 Permits"
+    sequence_step: 4
+    hours: {principal_biologist_planner_engineer: 6, senior_planner: 12, planner: 16}
+    what_it_produces: "Early coordination and the pre-application package."

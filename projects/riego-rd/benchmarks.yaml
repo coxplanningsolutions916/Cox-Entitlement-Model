@@ -1,0 +1,26 @@
+benchmarks:
+  - id: bench.swha_land
+    label: "Swainson's hawk foraging land"
+    value: 17840
+    unit: per_acre
+    source: "City of Elk Grove in-lieu fee, effective 2026-07-01"
+    applicability: {jurisdiction: ["City of Elk Grove"], max_project_acres: 40, program_type: in_lieu_fee}
+    status: rejected
+    rejected_on: "2026-09-21"
+    rejected_because: >
+      Sacramento County city fee set by resolution against that city's land market. Elk Grove caps the fee option
+      at projects under 40 acres, so it was never built to price a 160-acre land obligation in Sutter County.
+  - id: bench.mgmt_endowment
+    label: "Management endowment on preserved land"
+    value: 400
+    unit: per_acre
+    source: "CDFW 1994 Central Valley staff report"
+    applicability: {jurisdiction: ["Central Valley"], program_type: endowment}
+    status: candidate
+  - id: bench.vp_credit_ilf
+    label: "Vernal pool credit, USACE Sacramento District in-lieu fee program"
+    value: 0
+    unit: per_credit
+    source: "National Fish and Wildlife Foundation ILF schedule — [FACT NEEDED: current credit price]"
+    applicability: {jurisdiction: ["USACE Sacramento District"], program_type: in_lieu_fee}
+    status: candidate

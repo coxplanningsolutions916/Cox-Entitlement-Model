@@ -1,0 +1,10 @@
+# Confidence classes in decreasing strength. Every cost line carries exactly one.
+classes:
+  - {key: firm,        label: "Firm",        means: "Fixed fee against a written scope. Moves only by change order."}
+  - {key: quoted,      label: "Quoted",      means: "A figure from the party who will do the work. Not yet a written proposal."}
+  - {key: published,   label: "Published",   means: "An adopted agency fee schedule, cited. Moves when the agency adopts a new one."}
+  - {key: benchmarked, label: "Benchmarked", means: "A published unit rate or comparable applied to this site. The rate is sound; its application here is an assumption."}
+  - {key: derived,     label: "Derived",     means: "Built inside Cox from scope assumptions. No external reference."}
+  - {key: placeholder, label: "Placeholder", means: "A bracket holding a line open. Expect it to move materially."}
+  - {key: pending,     label: "Pending",     means: "No figure carried. A quote or determination is outstanding and named."}
+strong: [firm, quoted, published]

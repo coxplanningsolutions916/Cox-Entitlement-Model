@@ -1,0 +1,55 @@
+# Entitlement roadmap program budget, 21 Sept 2026. Sections: cox_services, client_consultants, agency_fees.
+# Compensatory mitigation is NOT here: it lives in unquantifiable.yaml (R5). Cox fees are firm only for Task Order 1.
+lines:
+  - {id: line.to1, section: cox_services, label: "Task Order 1 — assessment, design and pre-application", low: 273000, high: 273000, confidence: firm,
+     basis: "Firm fixed fee. Detailed on the Task Order 1 tab; computed by the fee build.", payer: cox, lands: "Months 1 to 12 from notice to proceed, five milestones."}
+  - {id: line.bio_program, section: cox_services, label: "Biological program: branchiopod protocol both seasons, biological assessment, protocol surveys", low: 112000, high: 142000, confidence: quoted,
+     basis: "Set from the 24 August 2026 call with the contract biologist, which supersedes the written markup.", payer: cox, lands: "Months 4 to 18; two wet seasons, so it straddles Task Orders 1 and 2.", driven_by: [lever.branchiopod_presence, lever.rain_year]}
+  - {id: line.alt_analysis, section: cox_services, label: "Section 404(b)(1) alternatives analysis and the mitigation and monitoring plan", low: 70000, high: 95000, confidence: derived,
+     basis: "The federal alternatives test is harder than the CEQA one and requires the preferred plan and the impact acreage.", payer: cox, lands: "Months 14 to 22.", driven_by: [lever.impact_acreage]}
+  - {id: line.county_apps, section: cox_services, label: "County entitlement applications: amendment, rezone, planned development, map", low: 110000, high: 150000, confidence: derived,
+     basis: "Range turns on how many hearing and revision cycles the County takes.", payer: cox, lands: "Months 15 to 30.", driven_by: [lever.entitlement_vehicle]}
+  - {id: line.permit_apps, section: cox_services, label: "Federal and state permit applications and response cycles: Section 404, 401, 1602, 2081", low: 95000, high: 130000, confidence: derived,
+     basis: "Range turns on the number of requests for additional information from each agency.", payer: cox, lands: "Months 20 to 36."}
+  - {id: line.ceqa_coord, section: cox_services, label: "CEQA coordination, Notice of Preparation follow-through, EIR peer review", low: 55000, high: 80000, confidence: derived,
+     basis: "Cox does not author the EIR; this is coordination, review and consultation support.", payer: cox, lands: "Months 15 to 34.", driven_by: [assume.ceqa_pathway]}
+  - {id: line.eir, section: client_consultants, label: "Environmental impact report, third-party preparer", low: 350000, high: 550000, confidence: benchmarked,
+     basis: "Benchmarked from a comparable county EIR with a General Plan amendment; not quoted.", payer: client_direct, lands: "Months 14 to 32."}
+  - {id: line.aq_traffic_noise, section: client_consultants, label: "Air quality and greenhouse gas, traffic, and noise", low: 60000, high: 110000, confidence: benchmarked,
+     basis: "Already under separate Sundance retention; confirm scope and status.", payer: client_direct, lands: "Already under way; refresh once the project description is final."}
+  - {id: line.civil, section: client_consultants, label: "Civil engineering through entitlement: grading and drainage concept, utilities, tentative map", low: 120000, high: 220000, confidence: derived,
+     basis: "Range turns on the wastewater answer; a private treatment plant is a materially larger civil scope.", payer: client_direct, lands: "Months 12 to 26.", driven_by: [assume.wastewater_path]}
+  - {id: line.survey_fall, section: client_consultants, label: "Boundary resolution and aerial terrain model with DEM, fall 2026", low: 9200, high: 13800, confidence: quoted,
+     basis: "Cox can carry this under Task Order 1 as O1 at vendor cost plus 15 percent.", payer: passthrough, lands: "Fall 2026, before the first winter flight."}
+  - {id: line.survey_design, section: client_consultants, label: "Design-level boundary and topographic survey, post-entitlement", low: 15000, high: 35000, confidence: benchmarked,
+     basis: "Separate from the fall work and later.", payer: client_direct, lands: "After entitlement."}
+  - {id: line.geotech, section: client_consultants, label: "Geotechnical investigation", low: 15000, high: 30000, confidence: benchmarked,
+     basis: "Post-entitlement unless the County asks earlier.", payer: client_direct, lands: "After entitlement."}
+  - {id: line.legal, section: client_consultants, label: "Legal: title, contracting entity, development agreement negotiation", low: 40000, high: 100000, confidence: placeholder,
+     basis: "Client counsel; the development agreement is the larger share.", payer: client_direct, lands: "Continuous."}
+  - {id: line.fee_gpa, section: agency_fees, label: "Sutter County General Plan amendment", low: 9911, high: 9911, confidence: published,
+     basis: "Sutter County Planning Fees, Resolution 23-056, effective August 1 2023.", payer: client_direct, lands: "At application filing, roughly month 15."}
+  - {id: line.fee_rezone, section: agency_fees, label: "Sutter County rezone", low: 9911, high: 9911, confidence: published,
+     basis: "Same schedule; the planned development combining district is processed with it.", payer: client_direct, lands: "At application filing."}
+  - {id: line.fee_vtm, section: agency_fees, label: "Sutter County vesting tentative subdivision map", low: 11781, high: 11781, confidence: published,
+     basis: "Same schedule, 5 or more lots.", payer: client_direct, lands: "At application filing."}
+  - {id: line.fee_eir_deposit, section: agency_fees, label: "Sutter County EIR review deposit", low: 20000, high: 40000, confidence: published,
+     basis: "At cost with a $20,000 deposit.", payer: client_direct, lands: "Deposit at Notice of Preparation; draws across the EIR."}
+  - {id: line.fee_cdfw_ceqa, section: agency_fees, label: "CDFW CEQA document filing fee (EIR)", low: 4228, high: 4228, confidence: published,
+     basis: "$4,227.50 effective January 1 2026, plus county clerk administrative fee.", payer: client_direct, lands: "At Notice of Determination."}
+  - {id: line.fee_404, section: agency_fees, label: "USACE Section 404 Individual Permit application", low: 100, high: 100, confidence: published,
+     basis: "33 CFR 325.1(f), commercial purpose.", payer: client_direct, lands: "At Section 404 application submittal."}
+  - {id: line.fee_401_app, section: agency_fees, label: "Central Valley RWQCB application fee, fill and excavation", low: 4212, high: 4212, confidence: published,
+     basis: "23 CCR Section 2200(a)(4), FY 2025-26 schedule.", payer: client_direct, lands: "At Section 401 application submittal."}
+  - {id: line.rwqcb_project_fee, section: agency_fees, label: "Central Valley RWQCB project fee on impact area", low: 75000, high: 365465, confidence: published,
+     basis: "Impact area in acres multiplied by $37,544, less the application fee, against a cap. The delineation sets it.", payer: client_direct, lands: "At Section 401 application submittal.", driven_by: [lever.impact_acreage]}
+  - {id: line.fee_401_annual, section: agency_fees, label: "Central Valley RWQCB annual fee, first five years", low: 17700, high: 17700, confidence: published,
+     basis: "$3,540 per year for five fiscal years.", payer: client_direct, lands: "Annually from the first fiscal year after the order issues."}
+  - {id: line.fee_1602, section: agency_fees, label: "CDFW Section 1602 notification", low: 6867, high: 24720, confidence: published,
+     basis: "Fee schedule effective January 1 2026; low is the standard notification, high the long-form.", payer: client_direct, lands: "At notification, roughly month 22."}
+  - {id: line.fee_2081, section: agency_fees, label: "CDFW Section 2081 incidental take permit or Section 2080.1 consistency determination", low: 10329, high: 47354, confidence: published,
+     basis: "Low is a Section 2080.1 consistency determination, high a full 2081.", payer: client_direct, lands: "At application, roughly month 24."}
+  - {id: line.helm_lab, section: agency_fees, label: "Helm Biological Laboratory branchiopod cyst analysis (pass-through, Task Order 2)", confidence: pending,
+     basis: "Not bracketed. Quote outstanding from the laboratory; per sampling event across both wet seasons.", payer: passthrough, lands: "Per sampling event."}
+  - {id: line.travel, section: agency_fees, label: "Field travel and mileage, biological and cultural mobilizations (reimbursable)", low: 2000, high: 5000, confidence: placeholder,
+     basis: "Placeholder agreed on the 24 August call and not previously carried.", payer: passthrough, lands: "Continuous through the field seasons."}
