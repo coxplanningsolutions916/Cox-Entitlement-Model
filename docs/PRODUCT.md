@@ -4,8 +4,8 @@ Prepared 1 October 2026 from Chris's direction: start from what the client wants
 
 | Depth | Price | Who does the work | What changes |
 |---|---|---|---|
-| **Phase 1A — AI-level screening** | $500 (free for a limited launch campaign) | The model, from the GIS database and public sources; no staff review | The baseline: every section populated to the level an agency or a board would accept as a sourced, dated, assumption-labeled screen |
-| **Roadmap — planner review and direction** | $2,500 | Senior planner reviews the 1A output, corrects it, sets the strategy and the verification plan; 2-hour session | Assumptions get owners and priorities; the recommendation becomes Cox's, not the model's; the Step 1b scope and price are firm |
+| **Phase 1A — Screening** | $500 (100 free in the launch campaign) | The model, from the GIS database and public sources, then **one hour of Cox staff review** before it goes out | The baseline: every section populated to the level an agency or a board would accept as a sourced, dated, assumption-labeled screen, with a planner's eyes on it |
+| **Roadmap — planner review and direction** | $2,500 | **Four hours of staff time**: senior planner reviews the 1A output, corrects it, sets the strategy and the verification plan, and holds the working session | Assumptions get owners and priorities; the recommendation becomes Cox's, not the model's; the Step 1b scope and price are firm |
 | **Step 1b ISR and downstream (Steps 2–5)** | Task orders | Field screening, agency pre-consultation, studies, design, applications | Facts replace assumptions; confidence classes move from derived to published, quoted and firm; the schedule and budget tighten |
 
 The upsell is structural, not a sales pitch: the 1A output shows every assumption it rests on, what it would take to verify each one, and what verifying it costs. The client buys verification in the order that matters to their decision.
@@ -77,7 +77,19 @@ The brief's order was core, graph, generation, scenario, acquisition, watch. The
 
 Lemon Hill and Riego remain the two seeds; Grant Line (the Swing Lab) is the operator test case; a current Sacramento-area acquisition deal should be the investor test case.
 
-## Decisions this needs from Chris
+## Decisions made (Chris, 1 October 2026)
+
+1. **Persona priority:** developer first, then investor; owner and operator read the same model.
+2. **The ten sections** stand as the 1A product.
+3. **Delivery:** web report from the screening app plus a generated PDF.
+4. **Data:** CNDDB is already licensed; Google Earth imagery licensing will be obtained as needed; market-data source still open.
+5. **Pilot jurisdictions:** Sacramento County and Placer County including every city in each, then the whole state.
+6. **1A is a staff product, not a fully automated app:** $500 includes one hour of staff review of the model-generated report; the $2,500 Roadmap includes four staff hours. The expert planning staff is the differentiator against automated real-estate analysis apps.
+7. **Launch campaign:** 100 free 1A screens, targeted at developers and investors on LinkedIn and Google, plus direct mail to property owners.
+
+Still open: the market-data source; the staff hour's checklist for 1A (what the hour verifies, so it is consistent across planners); the competitive review (below, in progress).
+
+## Decisions this needed from Chris (answered above)
 
 1. Persona priority for the first release: developer first, then investor, then owner and operator? (Recommended.)
 2. The ten sections above as the 1A product: confirm, add, or cut.
