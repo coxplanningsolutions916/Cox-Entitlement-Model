@@ -145,9 +145,14 @@ def mitigation_gates(p: Project, ntp: datetime.date) -> List[dict]:
                                              "confidence": dm[d.code]["confidence"], "drivers": []})
                 g["drivers"].append(drv["name"])
         ordered = sorted(gates.values(), key=lambda g: g["month"])
-        states = ["range, benchmarked", "quoted", "firm"]
+        last_month = ordered[-1]["month"] if ordered else None
         for i, g in enumerate(ordered):
-            g["state_after"] = states[min(i, len(states) - 1)] if i < len(ordered) - 1 else "firm"
+            if g["month"] == last_month:
+                g["state_after"] = "firm"
+            elif i == 0:
+                g["state_after"] = "range, benchmarked"
+            else:
+                g["state_after"] = "quoted"
         refs = []
         for rid in u.reference_costs:
             b = p.benchmarks.get(rid)
