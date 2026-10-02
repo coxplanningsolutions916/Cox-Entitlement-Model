@@ -11,6 +11,7 @@ def profile(p: Project) -> dict:
             "schedule_months": t.schedule_months, "uses": p.meta.get("uses", []), "signals": t.signals,
             "primary_issues": [{"id": i["id"], "label": i["label"]} for i in t.primary_issues],
             "default_levers": t.default_levers, "typical_approvals": t.typical_approvals, "register_seed": t.register_seed,
+            "fee_families": t.fee_families,
             "report_emphasis": t.report_emphasis}
 
 
