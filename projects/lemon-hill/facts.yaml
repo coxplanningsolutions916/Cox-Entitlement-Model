@@ -1,0 +1,71 @@
+facts:
+  - id: fact.lh.zoning
+    kind: designation
+    statement: "Both parcels are zoned R-2B-R."
+    value: {zone: "R-2B-R"}
+    source: {document: "City of Sacramento zoning map, as carried in the Lemon Hill Entitlement Roadmap", author: "Cox Planning Solutions", revised: "2026-09-15"}
+    established: "2026-09-15"
+    established_by: chris.cox
+    confidence: published
+  - id: fact.lh.general_plan
+    kind: designation
+    statement: "General Plan designation is Traditional Neighborhood Medium Density; the 2040 General Plan is in effect."
+    value: {designation: "Traditional Neighborhood Medium Density"}
+    source: {document: "City of Sacramento 2040 General Plan land use map, as carried in the Lemon Hill Entitlement Roadmap", revised: "2026-09-15"}
+    established: "2026-09-15"
+    established_by: chris.cox
+    confidence: published
+  - id: fact.lh.parking_rule
+    kind: local_rule
+    statement: "The City of Sacramento requires no minimum parking citywide (2040 General Plan Policy LUP-4.14)."
+    source: {document: "City of Sacramento 2040 General Plan Policy LUP-4.14", revised: "2024-02-27"}
+    established: "2026-09-15"
+    established_by: chris.cox
+    confidence: published
+    ttl_days: 365
+  - id: fact.lh.sshcp
+    kind: membership
+    statement: "The parcels are outside the South Sacramento Habitat Conservation Plan."
+    source: {document: "Lemon Hill Entitlement Roadmap, Table 1", author: "Cox Planning Solutions", revised: "2026-09-15"}
+    established: "2026-09-15"
+    established_by: chris.cox
+    confidence: derived
+    # map_citation deliberately absent: the Roadmap states the membership without citing the plan-area layer and
+    # its date. R1 holds this open until the SSHCP boundary layer is cited.
+  - id: fact.lh.wetland_mapping
+    kind: screen
+    statement: "NWI and CARI mapping show no aquatic features on the parcels; nine aerials from 2007 to 2026 show no ponding, including the wet-season frames of February 2022 and November 2023."
+    source: {document: "USFWS National Wetlands Inventory and CARI/EcoAtlas exports; historic aerial set 2007 to 2026 (Google Earth)", location: "Drive: Mina Rezaei/#Lemon-Hill-Rd/Maps & Figures", revised: "2026-09-15"}
+    established: "2026-09-15"
+    established_by: chris.cox
+    confidence: published
+  - id: fact.lh.site_history
+    kind: screen
+    statement: "Both parcels read as vacant, routinely mowed and disked land across the aerial record; a house and outbuildings once on the 6430 frontage were cleared; the 63rd Street parcel has never been built on; a cluster of mature trees persists along the south edge."
+    source: {document: "Historic aerial analysis, Lemon Hill Entitlement Roadmap section 4", revised: "2026-09-15"}
+    established: "2026-09-15"
+    established_by: chris.cox
+    confidence: derived
+  - id: fact.lh.meir
+    kind: ceqa
+    statement: "The City's 2040 General Plan Master EIR is SCH 2019012048; a mitigated negative declaration may tier from it."
+    source: {document: "2040 General Plan Master EIR, SCH 2019012048", revised: "2024-02-27"}
+    established: "2026-09-15"
+    established_by: chris.cox
+    confidence: published
+  - id: fact.lh.rents
+    kind: market
+    statement: "ZIP 95824 asking rents run about $1,400 to $1,650 per unit, 15 to 25 percent below the Sacramento metro; median household income is $56,477 against the metro's $97,188."
+    value: {rent_low: 1400, rent_high: 1650}
+    source: {document: "Best-Fit Market Analysis Screening (RentCafe, Apartments.com, Census ACS 2020-2024, Kidder Mathews Q4 2025, Yardi Matrix Dec 2025)", author: "Cox Planning Solutions", revised: "2026-09-15"}
+    established: "2026-09-15"
+    established_by: chris.cox
+    confidence: benchmarked
+    ttl_days: 365
+  - id: fact.lh.fema_corridor
+    kind: screen
+    statement: "Portions of the Morrison Creek corridor south of the site are mapped FEMA Zone AE; a parcel-specific floodplain determination has not been made."
+    source: {document: "Best-Fit Market Analysis Screening, site and location context (FEMA NFHL)", revised: "2026-09-15"}
+    established: "2026-09-15"
+    established_by: chris.cox
+    confidence: derived

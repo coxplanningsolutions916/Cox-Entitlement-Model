@@ -1,0 +1,17 @@
+conflicts:
+  - number: 1
+    title: "The biological and wetlands screening fee"
+    status: open
+    sources_in_conflict:
+      - {doc: "Lemon Hill Entitlement Roadmap, section 8", position: "$3,000"}
+      - {doc: "Lemon Hill fee backup INTERNAL, 2.1.1", position: "$6,000 (6,087.50 of labor at the rate card)"}
+    consequences: ["the Roadmap understates the first task order unless the scope was cut to a desktop-only screen", "the engine prices 2.1.1 at the workbook's hours"]
+    reversal_policy: escalate
+  - number: 2
+    title: "Transit proximity"
+    status: open
+    sources_in_conflict:
+      - {doc: "Lemon Hill Entitlement Roadmap, Table 1", position: "Bus service only; no light rail nearby"}
+      - {doc: "Best-Fit Market Analysis Screening, site and location context", position: "SacRT Blue Line Morrison Creek station in the vicinity; 2040 GP FAR 2.0 within half a mile of frequent transit"}
+    consequences: ["AB 2097 applicability and the FAR 2.0 entitlement argument turn on the measured distance to the station"]
+    reversal_policy: escalate

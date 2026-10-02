@@ -1,0 +1,82 @@
+# Screening-layer content for the Step 1a report. Sources: the Lemon Hill Entitlement Roadmap (Cox, 15 Sept 2026),
+# the Best-Fit Market Analysis Screening (Cox, 15 Sept 2026), and the fee backup of 15 April 2026.
+address: "6430 Lemon Hill Ave and 6131 63rd St, Sacramento 95824"
+report_source: {document: "Lemon Hill Entitlement Roadmap", author: "Cox Planning Solutions", revised: "2026-09-15"}
+
+decision:
+  what_to_build:
+    text: "Market-rate garden apartments, two to three stories, surface parking, a family-oriented mix weighted to two- and three-bedroom units; entitled for roughly 175 to 210 units, designed to the 130 to 170 the market supports."
+    source: {document: "Lemon Hill Entitlement Roadmap, section 2; Best-Fit Market Analysis Screening", revised: "2026-09-15"}
+    confidence: derived
+  how_approved:
+    text: "Rezone R-2B-R to R-3 at City Council; a state density bonus with a 5 to 10 percent set-aside for the waivers and design flexibility; Site Plan and Design Review at the Planning and Design Commission; CEQA by Class 32 infill exemption, with an MND tiering off the 2040 Master EIR as the fallback. Rental, so no subdivision map; no streambed permit."
+    assumptions: [assume.ceqa_pathway, assume.set_aside]
+    confidence: derived
+  carried_by: assume.site_clean
+
+go_no_go:
+  read: "Go. A clean, disturbed infill site next to the client's own apartments with a clear four-approval path; the decision that matters is density: entitle the R-3 ceiling and design to what the rents carry."
+  confidence: derived
+  source: {document: "Lemon Hill Entitlement Roadmap, sections 2 and 5", revised: "2026-09-15"}
+
+questions:
+  - {q: "Is the site clear of wetlands and sensitive habitat, and do the south-edge trees hold nesting birds?", resolved_by: [deliverable.2.1.1]}
+  - {q: "Does the City's early review confirm the rezone, the density bonus and the Class 32 path, so the Step 4 fee can be firm?", resolved_by: [deliverable.3.4.1, deliverable.3.3.2]}
+  - {q: "What density and parking ratio do the market and the lenders actually support on this site?", resolved_by: [deliverable.2.2.1, deliverable.3.3.3]}
+
+property:
+  rows:
+    - {item: "Assessor parcels", value: "038-0101-008 (1.38 acres) and 038-0101-014 (4.61 acres), about 6.0 acres", source: {document: "Lemon Hill Entitlement Roadmap, Table 1", revised: "2026-09-15"}, confidence: published}
+    - {item: "Owner of record", value: "Two 24 LLC (the client), adjacent to the apartments it operates", source: {document: "Lemon Hill Entitlement Roadmap, section 1", revised: "2026-09-15"}, confidence: derived, verify: "Preliminary title report"}
+    - {item: "Zoning district", fact: fact.lh.zoning}
+    - {item: "General Plan designation", fact: fact.lh.general_plan}
+    - {item: "Parking rule in force", fact: fact.lh.parking_rule}
+    - {item: "Transit", value: "In conflict: the Roadmap says bus only; the market screen places the Morrison Creek light-rail station in the vicinity (conflict 2)", source: {document: "Conflict 2, open"}, confidence: derived, verify: "Measured distance to the Morrison Creek station and to frequent bus"}
+    - {item: "Nearby water", value: "Morrison Creek runs south of the site; the project does not affect it; no streams or drainages on site", source: {document: "Lemon Hill Entitlement Roadmap, Table 1 and section 6", revised: "2026-09-15"}, confidence: derived}
+    - {item: "Habitat plan coverage", fact: fact.lh.sshcp}
+    - {item: "FEMA flood zone", fact: fact.lh.fema_corridor, verify: "Parcel-specific FEMA NFHL determination; finished-floor elevation if any part is Zone AE"}
+    - {item: "Easements of record", verify: "Preliminary title report"}
+
+rules:
+  standards:
+    - {standard: "Current zone", fact: fact.lh.zoning}
+    - {standard: "Proposed zone and density", value: "R-3; about 29 to 35 dwellings per acre, roughly 175 to 210 units on 6 acres", source: {document: "Lemon Hill Entitlement Roadmap, section 5", revised: "2026-09-15"}, confidence: derived}
+    - {standard: "Density bonus on paper", value: "20 to 50 percent, up to roughly 260 to 315 units; the market, not the bonus, sets the ceiling", source: {document: "Lemon Hill Entitlement Roadmap, section 5; Gov. Code 65915 as amended by AB 1287", revised: "2026-09-15"}, confidence: derived}
+    - {standard: "Parking", fact: fact.lh.parking_rule}
+    - {standard: "Height, setbacks, lot coverage (R-3)", verify: "Sacramento Planning and Development Code, R-3 standards"}
+  levers:
+    - {lever: "State density bonus (Gov. Code 65915; AB 1287)", test: "Five or more units; 5 to 10 percent set-aside", result: "Applies on the rezoned site; taken for the waivers and site-design flexibility, not the units", confidence: derived, source: {document: "Lemon Hill Entitlement Roadmap, section 6"}}
+    - {lever: "AB 2097 parking (Gov. Code 65863.2)", test: "Within one half mile of a major transit stop", result: "Moot: the City already requires no parking (LUP-4.14); the transit distance still matters for FAR 2.0 (conflict 2)", confidence: derived, source: {document: "2040 General Plan Policy LUP-4.14"}, verify: "Measured distance to the Morrison Creek station"}
+    - {lever: "CEQA Class 32 infill exemption (Guidelines 15332)", test: "Under five acres per project site, inside city limits, consistent with the General Plan and zoning, no habitat value, served by utilities", result: "Likely path per the Roadmap; the six-acre assemblage against the five-acre test is for the checklist to resolve", confidence: derived, source: {document: "CEQA Guidelines section 15332"}, verify: "3.3.2 CEQA checklist against the exemption's criteria"}
+    - {lever: "SB 35 / SB 423 ministerial path (Gov. Code 65913.4)", test: "Residential or mixed-use zoning; jurisdiction behind on its housing allocation; affordability threshold", result: "Not tested in the Roadmap; the rezone comes first", verify: "Applicability test once the zone is R-3"}
+    - {lever: "SB 9 (single-family zones)", test: "Single-family residential zone", result: "Not applicable: R-2B-R is a multifamily zone", confidence: derived, source: {document: "Government Code sections 65852.21 and 66411.7"}}
+
+fit:
+  client_program: {text: "Roughly 175 to 210 garden apartments with surface parking at about 1 to 1.5 spaces per unit", source: {document: "Lemon Hill Entitlement Roadmap, sections 2 and 5", revised: "2026-09-15"}, confidence: derived}
+  by_right: {text: "R-2B-R multifamily at its current density; the R-3 program needs the rezone", derived_from: fact.lh.zoning, confidence: derived, verify: "R-2B-R density standard from the Planning and Development Code"}
+  market: {text: "Rents of $1,400 to $1,650 do not support structured parking; surface or tuck-under garden product at 22 to 28 dwellings per acre, about 130 to 170 units, is the form that pencils; the deepest buyer pool for an entitled site is affordable and workforce developers", source: {document: "Best-Fit Market Analysis Screening", author: "Cox Planning Solutions", revised: "2026-09-15"}, confidence: benchmarked}
+  gap: "Entitle the R-3 ceiling to protect land value and optionality; design the conceptual plan around 25 dwellings per acre. The zoning allows more than the market will build, and the register carries that as the program-density assumption."
+
+constraints:
+  rows:
+    - {issue: compatibility, layer: "Neighbors and compatibility", finding: "Apartments to the west, the expressway and commercial to the east, single family to the southwest; stable surroundings that support infill multifamily", status: mapped, implication: "Height and massing toward the single-family edge are the design-review questions", source: {document: "Lemon Hill Entitlement Roadmap, section 4", revised: "2026-09-15"}, confidence: derived}
+    - {issue: density_parking, layer: "Density and parking", finding: "No parking minimum; lenders and renters expect 1 to 1.5 spaces per unit at grade; structured parking does not pencil at these rents", status: mapped, implication: "Surface and tuck-under parking caps buildable density near 22 to 28 dwellings per acre", assumption: assume.parking_ratio}
+    - {issue: trees, layer: "Trees and nesting birds", fact: fact.lh.site_history, status: mapped, implication: "Mature trees along the south edge to be checked for nesting birds; City tree ordinance applies to removals"}
+    - {issue: flood, layer: "Flood: Morrison Creek corridor", fact: fact.lh.fema_corridor, status: mapped, implication: "If any part of the parcels is Zone AE, finished-floor elevation, insurance and cost change; front-load the determination"}
+    - {issue: site_history, layer: "Site history and contamination", fact: fact.lh.site_history, status: mapped, implication: "Prior house and outbuildings on the 6430 frontage; the Phase I ESA (2.1.2) closes the question"}
+    - {issue: utilities, layer: "Utility capacity", verify: "Serviceability analysis (2.1.3): water, sewer and dry utilities at the frontage", status: none}
+    - {issue: ceqa, layer: "Wetlands and aquatic features", fact: fact.lh.wetland_mapping, status: mapped, implication: "No features mapped and none visible across the aerial record; no streambed permit; supports the Class 32 path"}
+    - {issue: traffic, layer: "Traffic, VMT screening and transit", verify: "City VMT screening map; transit priority area status; distance to the Morrison Creek station (conflict 2)", status: none}
+
+aerial:
+  text: "Nine aerials from 2007 to 2026: vacant land, routinely mowed and disked, swirl patterns of weed and fire abatement rather than crops or buildings; the 6430 house and outbuildings cleared over the years; the 63rd Street parcel never built on; no ponding in the wet-season frames of February 2022 and November 2023; a cluster of mature trees along the south edge throughout."
+  source: {document: "Historic aerial analysis, Lemon Hill Entitlement Roadmap section 4 and Figure 1 (Google Earth, Airbus, Maxar, USGS)", revised: "2026-09-15"}
+  confidence: derived
+
+approvals:
+  - {approval: "Rezone, R-2B-R to R-3", body: "Sacramento City Council, after the Planning and Design Commission", typical: "the four approvals move together, 16 to 24 months to entitlement", source: {document: "Lemon Hill Entitlement Roadmap, section 6", revised: "2026-09-15"}, confidence: derived}
+  - {approval: "State density bonus with waivers and concessions", body: "Planning and Design Commission", typical: "with the rezone", assumption: assume.set_aside}
+  - {approval: "Site Plan and Design Review", body: "Planning and Design Commission", typical: "with the rezone", source: {document: "Lemon Hill Entitlement Roadmap, section 6", revised: "2026-09-15"}, confidence: derived}
+  - {approval: "CEQA: Class 32 infill exemption (MND tiering off the 2040 Master EIR as the fallback)", body: "City of Sacramento, lead agency", typical: "with the applications", assumption: assume.ceqa_pathway}
+
+review: {}

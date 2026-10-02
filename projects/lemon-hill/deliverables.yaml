@@ -1,0 +1,68 @@
+# Readiness studies and early City review, hours by canonical role from the INTERNAL fee backup of 15 April 2026
+# (Est Hrs column). Project-management hours in that workbook (3.0, "included") are not a deliverable here: OM 14.3
+# carries coordination at 10% of labor instead. The Phase I ESA vendor is a pass-through at cost plus 15%.
+deliverables:
+  - id: deliverable.2.1.1
+    code: "2.1.1"
+    name: "Biological Resources Screening and Site Reconnaissance"
+    phase: "01 Assessment"
+    sequence_step: 1
+    field_work: true
+    hours: {principal_biologist_planner_engineer: 3.5, planner: 17.25, gis_analyst_cad_designer: 8.5, biologist: 9}
+    what_it_produces: "Desktop research (CNDDB, IPaC, CNPS, NWI, FEMA, soils, SSHCP zones), one field day, a screening memo with maps. Not a protocol survey."
+    resolves: [assume.site_clean]
+  - id: deliverable.2.1.2
+    code: "2.1.2"
+    name: "Phase I Environmental Site Assessment (subconsultant)"
+    phase: "01 Assessment"
+    sequence_step: 1
+    hours: {principal_biologist_planner_engineer: 1, planner: 2.75}
+    passthroughs: [{label: "Phase I ESA report, ASTM E1527 (vendor quote, mid-estimate)", cost: 1900}]
+    what_it_produces: "ASTM Phase I by a subconsultant; Cox retains, reviews and summarises the findings."
+    resolves: [assume.site_history]
+  - id: deliverable.2.1.3
+    code: "2.1.3"
+    name: "Utility and Serviceability Analysis"
+    phase: "01 Assessment"
+    sequence_step: 1
+    hours: {principal_biologist_planner_engineer: 0.75, planner: 9.5}
+    what_it_produces: "Service area maps, informal water, sewer and dry-utility contacts, a serviceability summary with cost flags."
+    resolves: [assume.utility_capacity]
+  - id: deliverable.2.2.1
+    code: "2.2.1"
+    name: "Conceptual Site Plan (two to three alternatives)"
+    phase: "02 Design"
+    sequence_step: 2
+    hours: {principal_biologist_planner_engineer: 1.5, senior_planner: 0.5, planner: 0.25, gis_analyst_cad_designer: 20}
+    what_it_produces: "Illustrative alternatives A, B and C on the survey base; one client revision round; PDF and KMZ exhibit set. Not engineered."
+    resolves: [assume.program_density, assume.parking_ratio]
+  - id: deliverable.3.3.3
+    code: "3.3.3"
+    name: "Scenario Economics and Policy Matrix"
+    phase: "03 Planning"
+    sequence_step: 3
+    hours: {principal_biologist_planner_engineer: 2, senior_planner: 9, planner: 11.25}
+    what_it_produces: "Development standards and General Plan consistency, density bonus eligibility, zone change process, ROM financial models for scenarios A and B, policy matrix."
+    resolves: [assume.set_aside]
+  - id: deliverable.3.3.1
+    code: "3.3.1"
+    name: "Preliminary Project Description"
+    phase: "03 Planning"
+    sequence_step: 3
+    hours: {principal_biologist_planner_engineer: 2, planner: 8}
+    what_it_produces: "City-ready narrative drawing on the Phase 1 findings."
+  - id: deliverable.3.3.2
+    code: "3.3.2"
+    name: "CEQA Environmental Issues Checklist"
+    phase: "03 Planning"
+    sequence_step: 3
+    hours: {principal_biologist_planner_engineer: 1, planner: 7}
+    what_it_produces: "Class 32 infill exemption evaluation and the pathway recommendation."
+    resolves: [assume.ceqa_pathway]
+  - id: deliverable.3.4.1
+    code: "3.4.1"
+    name: "Pre-Application Readiness Review"
+    phase: "04 Permits"
+    sequence_step: 4
+    hours: {principal_biologist_planner_engineer: 1, planner: 5.75}
+    what_it_produces: "Assembly of the full package, City pre-application submission, and the City's written feedback delivered to the client."

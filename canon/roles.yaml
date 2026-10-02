@@ -23,6 +23,11 @@ roles:
     name: "GIS Analyst/CAD Designer"
     bill_rate: 150
     cost_rate: 50.00        # Productive: Suzanne Wade (person 1341577)
+  - key: biologist
+    name: "Biologist"
+    bill_rate: 150
+    cost_rate: 75           # placeholder: field biologist on the rate card (fee backup Billable Rates tab); confirm cost and whether OM 11.2 lists the role
+    note: "On the Billable Rates tab of the fee backups (Lemon Hill, April 2026). Field surveys and biological reports."
   - key: senior_archaeologist
     name: "Senior Archaeologist (contract)"
     bill_rate: 175

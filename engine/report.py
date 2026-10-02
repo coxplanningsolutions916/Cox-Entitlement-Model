@@ -19,7 +19,7 @@ from typing import List, Optional
 
 import jinja2
 
-from . import fee as fee_mod, program as program_mod, rules, schedule as schedule_mod
+from . import fee as fee_mod, program as program_mod, rules, schedule as schedule_mod, types as types_mod
 from .model import Project, _yaml, CONFIDENCE
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -222,7 +222,10 @@ def build(p: Project, rung: str = "screening", today: Optional[datetime.date] = 
     for x in prog["exclusions"]:
         wit += f" Excluded and not yet quantifiable: {x['label'].lower()}."
     lines.append({"label": "WHAT IT TAKES", "cell": _cell(wit, S.ref({"document": "Cox program budget, computed by the model from the cost lines on file"}, "model"), "derived", extra="composition of the cost lines")})
-    sections.append({"n": 1, "title": "The decision in three lines", "blocks": [{"type": "lines", "items": lines}]})
+    tp = types_mod.profile(p)
+    sections.append({"n": 1, "title": "The decision in three lines", "blocks": [
+        {"type": "lines", "items": lines},
+        {"type": "para", "text": f"This is a {tp['name'].lower()} site ({tp['means'].rstrip('.').lower()}). {tp['drives']} CEQA expectation for the type: {tp['ceqa_expectation']}"}]})
 
     # 2. Property record
     rows = []
@@ -236,7 +239,7 @@ def build(p: Project, rung: str = "screening", today: Optional[datetime.date] = 
     std = [[_cell(r["standard"]), _row_cell(p, S, r)] for r in sc.get("rules", {}).get("standards", [])] or \
           [[_cell("Development standards"), _needed("the zoning district's use table and standards")]]
     lev = [[_cell(r["lever"]), _cell(r.get("test", "")), _row_cell(p, S, r)] for r in sc.get("rules", {}).get("levers", [])] or \
-          [[_cell("Regulatory levers"), _cell(""), _needed("density bonus, SB 9, ADU, AB 2097, ministerial-path tests")]]
+          [[_cell(l), _cell(""), _needed("applicability test for this site")] for l in tp["default_levers"]]
     sections.append({"n": 3, "title": "What the rules allow", "blocks": [
         {"type": "table", "columns": ["Standard", "Value"], "rows": std, "caption": "Development standards for the designation and zone"},
         {"type": "table", "columns": ["Lever", "Applicability test", "Result"], "rows": lev, "caption": "Regulatory levers that could change the envelope"}]})
@@ -254,9 +257,12 @@ def build(p: Project, rung: str = "screening", today: Optional[datetime.date] = 
 
     # 5. Constraints screen
     crows = []
-    for r in sc.get("constraints", {}).get("rows", []):
+    for r in types_mod.ordered_constraint_rows(p, sc.get("constraints", {}).get("rows", [])):
         status = {"mapped": "Mapped", "field": "Field-confirmed", "none": "Not yet pulled"}.get(r.get("status", "none"), r.get("status", ""))
         crows.append([_cell(r["layer"]), _row_cell(p, S, r), _cell(status), _cell(r.get("implication", ""))])
+    cov = types_mod.coverage(p, sc)
+    for issue in cov["missing"]:
+        crows.append([_cell(issue["label"]), _needed(issue["verify"]), _cell("Not yet pulled"), _cell(f"a primary issue for every {tp['name'].lower()} site")])
     if not crows:
         crows = [[_cell("Constraints"), _needed("the constraint layers"), _cell("Not yet pulled"), _cell("")]]
     sections.append({"n": 5, "title": "Constraints screen", "blocks": [
@@ -392,6 +398,7 @@ def build(p: Project, rung: str = "screening", today: Optional[datetime.date] = 
         "name": p.meta.get("name"), "client": p.meta.get("client"), "contact": p.meta.get("contact"),
         "address": sc.get("address", p.meta.get("name")), "apns": ", ".join(p.meta.get("parcels", [])), "acres": p.meta.get("acres"),
         "jurisdiction": ", ".join(p.meta.get("jurisdiction", [])), "date": today.isoformat(), "ntp": ntp.isoformat(),
+        "development_type": tp["name"], "development_type_id": tp["id"], "uses": ", ".join(tp["uses"]),
         "stamp": stamp, "reviewed": reviewed, "reviewer": rv.get("reviewer", ""), "review_date": rv.get("date", ""),
         "standing_header": STANDING_HEADER, "terms": TERMS,
         "model_version": "cox-entitlement-model 0.1.0",

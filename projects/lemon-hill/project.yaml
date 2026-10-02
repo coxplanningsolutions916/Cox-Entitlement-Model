@@ -1,0 +1,24 @@
+key: lemon-hill
+name: "Lemon Hill Ave and 63rd St"
+client: "Two 24 LLC"
+contact: "Mina Rezaei"
+development_type: infill         # inside the city, surrounded by development; neighbors, density and parking dominate
+uses: [residential]
+jurisdiction: ["City of Sacramento"]
+regions: ["Sacramento County", "USACE Sacramento District", "Sacramento Valley"]
+parcels: ["038-0101-008", "038-0101-014"]
+acres: 6.0
+program: "Market-rate garden apartments, two to three stories, surface parking, roughly 175 to 210 units (Roadmap of 15 Sept 2026, derived from the R-3 ceiling)"
+status: "pre-approval"
+task_order_1:
+  name: "Steps 2 and 3 — readiness studies and early City review"
+  prepared: "2026-04-15"
+  revision: "Fee backup of 15 April 2026 (INTERNAL workbook); hours carried into the model 2 Oct 2026."
+  proposal_of_record:
+    fee: 23200
+    date: "2026-04-15"
+    method: "Per-deliverable rounding with project management embedded; predates Operations Manual 14.3. The engine prices the same hours at 24,000 (coordination at 10% of labor, rounded once at the total)."
+  payment_milestones:
+    - {milestone: "Primary signature", share: 0.40, trigger: "Execution of the task order."}
+    - {milestone: "Site plan and scenario economics delivered", share: 0.40, trigger: "Delivery of 2.2.1 and 3.3.3."}
+    - {milestone: "Pre-application readiness review submitted", share: 0.20, trigger: "Submittal of 3.4.1 to the City."}

@@ -1,0 +1,10 @@
+# Program to entitlement. The Roadmap of 15 Sept 2026 carries one figure, about $160,000 for a clean site over
+# 16 to 24 months, including the entitlement design team the client retains. Its Figure 2 breakdown is not yet in
+# the model, so the balance beyond the priced task order is one derived line until the split is captured.
+lines:
+  - {id: line.to1, section: cox_services, label: "Steps 2 and 3 — readiness studies and early City review", low: 24000, high: 24000, confidence: firm,
+     basis: "Hours from the fee backup of 15 April 2026 priced by the fee build (OM 14.3). The proposal of record was 23,200 under the earlier per-deliverable method.", payer: cox, lands: "Months 1 to 4 from notice to proceed, three payments."}
+  - {id: line.balance, section: cox_services, label: "Entitlement applications and hearings (Cox) and the entitlement design team (architecture, civil, landscape): the Roadmap's balance", low: 136000, high: 136000, confidence: derived,
+     basis: "The Roadmap total of about $160,000 for a clean site, less the task order now priced by the engine. The split among Cox applications, the design team and agency fees is in the Roadmap's Figure 2 and is not yet captured line by line.", payer: cox, lands: "Months 4 to 24.", driven_by: [assume.ceqa_pathway, assume.site_clean]}
+  - {id: line.survey, section: client_consultants, label: "Boundary and topographic survey by a licensed land surveyor, before civil engineering begins", confidence: pending,
+     basis: "Named in the Roadmap (section 8); no quote yet.", payer: client_direct, lands: "Before the entitlement design starts."}

@@ -47,3 +47,8 @@ R1 membership needs a map citation (hard) · R5 unquantifiable lines carry no nu
 - Money is held to the cent; the only rounding is once, at the task-order total (`fee_rules.round_total_to`).
 - Margin is computed from `cost_rate` and printed only by `fee.internal_table`; it has no client-facing path.
 - Nothing here writes to Productive. Export on approval is Phase 3+.
+
+
+## Development types
+
+Every project names a `development_type` (greenfield, infill, redevelopment, rural_resource, public_infrastructure) from `canon/development_types.yaml`; the type sets what the screen must cover (rule R19), the default levers, the fee families and what the report leads with. See `docs/DEVELOPMENT-TYPES.md`. Fixtures: `riego-rd` (greenfield) and `lemon-hill` (infill).

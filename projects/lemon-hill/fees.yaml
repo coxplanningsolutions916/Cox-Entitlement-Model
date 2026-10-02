@@ -1,0 +1,8 @@
+point: null
+uses: [residential]
+quantities:
+  acres: {value: 6.0, source: {document: "Lemon Hill Entitlement Roadmap, Table 1", revised: "2026-09-15"}, confidence: published}
+  units: {low: 175, high: 210, source: {document: "Lemon Hill Entitlement Roadmap, section 5 (R-3 ceiling)", revised: "2026-09-15"}, confidence: derived}
+memberships: []
+reconcile: {}
+keep_manual: {}

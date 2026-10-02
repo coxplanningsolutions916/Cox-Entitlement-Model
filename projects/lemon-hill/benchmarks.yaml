@@ -1,0 +1,23 @@
+# Unit costs from the Best-Fit Market Analysis Screening of 15 Sept 2026 (published and secondary sources; not local bids).
+benchmarks:
+  - id: bench.surface_stall
+    label: "Surface parking, per stall"
+    value: 5500
+    unit: per_stall
+    source: "Best-Fit Market Analysis Screening, Cox, 2026-09-15 (range 3,000 to 8,000; industry cost guides)"
+    applicability: {jurisdiction: ["Sacramento County"], program_type: garden_multifamily}
+    status: candidate
+  - id: bench.structured_stall
+    label: "Above-grade structured parking, per stall"
+    value: 26500
+    unit: per_stall
+    source: "Best-Fit Market Analysis Screening, Cox, 2026-09-15 (range 18,000 to 35,000)"
+    applicability: {jurisdiction: ["Sacramento County"], program_type: podium_multifamily}
+    status: candidate
+  - id: bench.garden_hard_cost
+    label: "Garden walk-up hard cost, per square foot"
+    value: 160
+    unit: per_sqft
+    source: "Best-Fit Market Analysis Screening, Cox, 2026-09-15 (range 130 to 190)"
+    applicability: {jurisdiction: ["Sacramento County"], program_type: garden_multifamily}
+    status: candidate

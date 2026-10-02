@@ -1,0 +1,32 @@
+# City of Sacramento. Amounts not yet captured from the adopted schedules (DATA-NEEDS item 9); every line prices
+# as pending with what verifies it until the fee tables arrive.
+schedules:
+  - id: fee.sac_city.processing
+    name: "City of Sacramento planning application fees"
+    owner: "City of Sacramento"
+    kind: processing
+    scope: {jurisdiction: "City of Sacramento"}
+    source: {document: "City of Sacramento Community Development Department fee schedule", revised: null}
+    effective: null
+    review_by: null
+    lines:
+      - {id: rezone, label: "Rezone application", basis: flat, amount: null, verify: "Community Development fee schedule, planning entitlements", when: {approval: "Rezone"}, lands: "At application."}
+      - {id: spdr, label: "Site Plan and Design Review, Planning and Design Commission level", basis: flat, amount: null, verify: "Community Development fee schedule, design review", when: {approval: "Design Review"}, lands: "At application."}
+      - {id: density_bonus, label: "Density bonus application", basis: flat, amount: null, verify: "Community Development fee schedule", when: {approval: "density bonus"}, lands: "At application."}
+      - {id: preapp, label: "Pre-application review", basis: flat, amount: null, verify: "Community Development fee schedule, pre-application", lands: "At pre-application submittal."}
+      - {id: ceqa_exempt, label: "CEQA notice of exemption filing (County Clerk)", basis: flat, amount: null, verify: "Sacramento County Clerk-Recorder CEQA filing fees", when: {approval: "CEQA"}, lands: "At the notice of exemption."}
+  - id: fee.sac_city.impact
+    name: "City of Sacramento development impact fees"
+    owner: "City of Sacramento"
+    kind: facility
+    scope: {jurisdiction: "City of Sacramento"}
+    source: {document: "City of Sacramento development impact fee schedule", revised: null}
+    effective: null
+    review_by: null
+    lines:
+      - {id: park, label: "Park development impact fee", basis: per_unit, amount: null, applies_to: [residential], verify: "City park development impact fee resolution, multifamily rate", lands: "At building permit."}
+      - {id: transportation, label: "Transportation development impact fee", basis: per_unit, amount: null, applies_to: [residential], verify: "City transportation development impact fee, multifamily rate and district", lands: "At building permit."}
+      - {id: school, label: "School facilities fee (Sacramento City Unified, Level I or II)", basis: per_sqft, amount: null, applies_to: [residential], verify: "District fee resolution", lands: "At building permit."}
+      - {id: sewer, label: "Sewer connection and capacity fees (City collection system; Regional San capacity)", basis: per_edu, amount: null, verify: "City Utilities and Regional San fee schedules", lands: "At building permit."}
+      - {id: water, label: "Water connection and development fee", basis: per_edu, amount: null, verify: "City Utilities fee schedule", lands: "At building permit."}
+      - {id: housing, label: "Housing impact or inclusionary in-lieu, if applicable to the project", basis: per_unit, amount: null, applies_to: [residential], verify: "City Housing Trust Fund and mixed-income ordinance applicability", lands: "At building permit."}

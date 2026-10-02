@@ -2,6 +2,8 @@ key: riego-rd
 name: "Riego Road 160"
 client: "Sundance Development Corp"
 contact: "Ron Smith"
+development_type: greenfield     # agricultural land to an urban use (Chris, 2 Oct 2026)
+uses: [residential]
 jurisdiction: ["Sutter County"]
 regions: ["Central Valley", "USACE Sacramento District", "Sacramento Valley"]   # for benchmark applicability (R6)
 parcels: ["35-260-018", "35-260-019"]

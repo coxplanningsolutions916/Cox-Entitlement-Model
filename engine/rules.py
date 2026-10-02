@@ -111,6 +111,22 @@ def r18_local_rule_confirmed(p: Project) -> List[Violation]:
     return out
 
 
+def r19_type_coverage(p: Project) -> List[Violation]:
+    """The screen must address every primary issue of the project's development type, or carry it as a fact
+    needed. A greenfield screen with no aquatic row, or an infill screen with no neighbor row, is incomplete."""
+    import os
+    from .model import PROJECTS, _yaml
+    from . import types as types_mod
+    path = os.path.join(PROJECTS, p.key, "screen.yaml")
+    screen = (_yaml(path) or {}) if os.path.exists(path) else {}
+    out = []
+    if not screen:
+        return out
+    for issue in types_mod.coverage(p, screen)["missing"]:
+        out.append(Violation("R19", f"{p.key}:{issue['id']}", f"{p.development_type.name} screen does not address '{issue['label']}' (carried as a fact needed; verify: {issue['verify']})", False))
+    return out
+
+
 def check(p: Project, fee_build=None, draft_text: str = "") -> List[Violation]:
     v = []
     v += r1_membership_needs_map(p)
@@ -123,4 +139,5 @@ def check(p: Project, fee_build=None, draft_text: str = "") -> List[Violation]:
     if draft_text:
         v += r13_quarantine(p, draft_text)
     v += r18_local_rule_confirmed(p)
+    v += r19_type_coverage(p)
     return v

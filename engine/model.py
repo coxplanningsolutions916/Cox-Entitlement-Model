@@ -45,12 +45,26 @@ class Role:
     note: str = ""
 
 
+class DevelopmentType:
+    """A land-context type from canon/development_types.yaml (greenfield, infill, ...)."""
+    def __init__(self, d: dict):
+        self.id = d["id"]; self.name = d["name"]; self.means = d.get("means", ""); self.drives = d.get("drives", "")
+        self.signals = d.get("signals", []); self.ceqa_expectation = d.get("ceqa_expectation", "")
+        self.schedule_months = d.get("schedule_months", []); self.primary_issues = d.get("primary_issues", [])
+        self.default_levers = d.get("default_levers", []); self.typical_approvals = d.get("typical_approvals", [])
+        self.fee_families = d.get("fee_families", []); self.register_seed = d.get("register_seed", [])
+        self.report_emphasis = d.get("report_emphasis", "")
+
+
 @dataclass
 class Canon:
     roles: Dict[str, Role]
     fee_rules: dict
     windows: Dict[str, dict]
     confidence: dict
+
+    types: Dict[str, "DevelopmentType"] = field(default_factory=dict)
+    uses: List[str] = field(default_factory=list)
 
     @classmethod
     def load(cls, root=CANON):
@@ -59,8 +73,11 @@ class Canon:
                  for x in r.get("roles", [])}
         w = _yaml(os.path.join(root, "windows.yaml"))
         windows = {x["id"]: x for x in w.get("windows", [])}
+        tpath = os.path.join(root, "development_types.yaml")
+        t = _yaml(tpath) if os.path.exists(tpath) else {}
+        types = {x["id"]: DevelopmentType(x) for x in t.get("types", [])}
         return cls(roles=roles, fee_rules=r.get("fee_rules", {}), windows=windows,
-                   confidence=_yaml(os.path.join(root, "confidence.yaml")))
+                   confidence=_yaml(os.path.join(root, "confidence.yaml")), types=types, uses=t.get("uses", []))
 
 
 # ---------------------------------------------------------------- records
@@ -204,6 +221,14 @@ class Project:
         if not os.path.isdir(d):
             raise ModelError(f"project '{key}' not found under {root}")
         meta = _yaml(os.path.join(d, "project.yaml"))
+        dt = meta.get("development_type")
+        if not dt:
+            raise ModelError(f"project '{key}': project.yaml needs development_type (one of {sorted(canon.types)}); the type sets what the screen must cover")
+        if dt not in canon.types:
+            raise ModelError(f"project '{key}': unknown development_type '{dt}' (one of {sorted(canon.types)})")
+        for u in meta.get("uses", []) or []:
+            if canon.uses and u not in canon.uses:
+                raise ModelError(f"project '{key}': unknown use '{u}' (one of {canon.uses})")
         facts = {}
         for f in _yaml(os.path.join(d, "facts.yaml")).get("facts", []):
             for req in ("id", "statement", "source", "established", "confidence"):
@@ -274,6 +299,10 @@ class Project:
                    cost_lines=cost_lines, unquantifiable=unq, benchmarks=benchmarks, conflicts=conflicts, canon=canon)
 
     # ------------------------------------------------------------ helpers
+    @property
+    def development_type(self):
+        return self.canon.types[self.meta["development_type"]]
+
     def deliverable(self, code):
         for dlv in self.deliverables:
             if dlv.code == str(code) or dlv.id == code:

@@ -1,0 +1,13 @@
+# Carried without a number (R5): the Roadmap prices a clean site and names what changes if it is not.
+lines:
+  - id: unq.resources_found
+    label: "Resource evaluation, permits and mitigation if the screening finds features"
+    why_unquantifiable: >
+      The Roadmap's figures assume no wetlands or sensitive habitat that need further evaluation and no mitigation.
+      Whether any feature exists, and its quality, is unknown until the biological and wetlands screening; the
+      aerial record and the wetland mapping show none, and the only item flagged is the mature trees on the south
+      edge for nesting birds. If features are found, CEQA moves to a mitigated negative declaration, not an EIR.
+    drivers:
+      - {name: "Wetland or sensitive-habitat features on the parcels", resolved_by: [deliverable.2.1.1]}
+      - {name: "Nesting birds in the south-edge trees", resolved_by: [deliverable.2.1.1]}
+    reference_costs: []

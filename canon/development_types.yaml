@@ -1,0 +1,116 @@
+# Development types: the land context a project starts from. The type sets what the screen must cover, which
+# levers to test, what approval set and CEQA pathway to expect, which fee families apply, and what the report
+# leads with. A project names exactly one type (project.yaml development_type) and one or more uses.
+# Chris, 2 Oct 2026: Riego Rd is greenfield (agricultural land to urban use; aquatic and biological resources
+# dominate); Lemon Hill is infill (inside the city, surrounded by development; neighbors, density, parking dominate).
+uses: [residential, commercial, industrial, mixed_use, institutional, infrastructure, agricultural]
+
+types:
+  - id: greenfield
+    name: "Greenfield"
+    means: "Undeveloped agricultural or rural land converted to an urban use, usually at the edge of a city or in the county."
+    signals: ["agricultural or rural zoning", "outside city limits or at the edge", "no urban services at the frontage", "General Plan amendment, rezone or specific plan needed"]
+    drives: "Aquatic resources, listed species and the federal nexus set the schedule; agricultural conversion, annexation and the cost of extending services set the budget; compensatory mitigation stays unknown until the delineation and the surveys."
+    ceqa_expectation: "EIR likely, often with a General Plan amendment riding on the same document."
+    schedule_months: [24, 48]
+    primary_issues:
+      - {id: aquatic, label: "Aquatic resources and wetlands", keywords: [aquatic, wetland, vernal, delineation, waters], verify: "Delineation of record (field), NWI and CARI, USACE verification"}
+      - {id: species, label: "Listed species and habitat", keywords: [species, habitat, cnddb, hawk, owl, spadefoot, branchiopod], verify: "CNDDB and IPaC query, protocol surveys in season"}
+      - {id: hcp, label: "Habitat conservation plan coverage and fees", keywords: [hcp, nccp, conservation plan, natomas, pccp], verify: "Plan area boundary layer with date; fee zone"}
+      - {id: ag, label: "Agricultural conversion", keywords: [williamson, farmland, fmmp, agricultur], verify: "Williamson Act contract map; FMMP class; ag mitigation ordinance"}
+      - {id: flood, label: "Flood and drainage", keywords: [flood, fema, floodplain, ulop, drainage, levee], verify: "FEMA NFHL panel; 200-year floodplain and ULOP map; drainage master plan"}
+      - {id: services, label: "Services, annexation and infrastructure extension", keywords: [wastewater, sewer, water service, annexation, lafco, sphere, infrastructure, utility], verify: "Service area and capacity letters; LAFCo sphere and annexation path"}
+      - {id: vehicle, label: "Entitlement vehicle and CEQA pathway", keywords: [general plan amendment, rezone, specific plan, planned development, tentative map, eir, ceqa], verify: "Jurisdiction pre-application; CEQA pathway confirmed with the lead agency"}
+      - {id: nexus, label: "Federal nexus and resource permits", keywords: ["404", "401", "1602", "2081", "section 7", nexus, usace], verify: "USACE jurisdictional determination; agency pre-consultation"}
+      - {id: cultural, label: "Cultural resources", keywords: [cultural, chris, tribal, "ab 52", archaeolog], verify: "CHRIS records search; NAHC Sacred Lands File; AB 52 consultation"}
+      - {id: mitigation, label: "Compensatory mitigation", keywords: [mitigation, credit, endowment], verify: "Impact acreage from the delineation and preferred plan; credit availability and price"}
+    default_levers: ["State density bonus (after rezone to a residential zone)", "Specific plan or planned development combining district"]
+    typical_approvals: ["General Plan amendment", "Rezone or planned development", "Specific plan or amendment", "Tentative subdivision map", "Annexation (LAFCo)", "CEQA EIR", "Section 404, 401, 1602, 2081; ESA Section 7"]
+    fee_families: [drainage, transportation, park, school, sewer, water, habitat, ag_mitigation, specific_plan, cfd, facility, processing, agency]
+    register_seed: ["Entitlement vehicle", "CEQA pathway", "Wastewater and water service path", "Impact acreage on aquatic features", "Listed species presence", "Annexation or sphere change"]
+    report_emphasis: "constraints before fit; the nexus sentence in the approval set; mitigation as a named exclusion"
+
+  - id: infill
+    name: "Infill"
+    means: "A site inside the urbanized area, surrounded by development and served by existing streets and utilities; vacant or underused."
+    signals: ["inside city limits", "urban zoning", "services at the frontage", "developed parcels on most sides"]
+    drives: "Neighbors, density, parking and design review set the path; the zoning fit and the state housing levers set what is possible; existing utility capacity, site history and urban trees are the usual surprises; CEQA is an exemption or a negative declaration tiered off a master EIR, not an EIR."
+    ceqa_expectation: "Class 32 infill exemption, or a mitigated negative declaration tiering off the jurisdiction's master EIR."
+    schedule_months: [12, 24]
+    primary_issues:
+      - {id: compatibility, label: "Neighborhood compatibility and design review", keywords: [neighbor, compatib, design review, massing, height, privacy, outreach], verify: "Design review standards; adjacent uses and heights; neighborhood meeting"}
+      - {id: density_parking, label: "Density, parking and circulation", keywords: [density, parking, circulation, access, du/ac, units per acre], verify: "Zone standards; parking rule in force; access and frontage; lender parking expectation"}
+      - {id: levers, label: "Zoning fit and the state housing levers", keywords: [density bonus, "sb 35", "sb 423", "ab 2011", "ab 2097", "class 32", "sb 9", by right, ministerial, housing element], verify: "Applicability tests on the zone, the transit distance and the housing element"}
+      - {id: utilities, label: "Existing utility capacity and connections", keywords: [utility, sewer, water, capacity, dry utilities, serviceab], verify: "Serviceability analysis; will-serve letters; connection fees"}
+      - {id: site_history, label: "Site history and contamination", keywords: [phase i, esa, contamination, prior use, demolition, asbestos, lead], verify: "Phase I environmental site assessment; aerial record; permit history"}
+      - {id: trees, label: "Trees, urban habitat and nesting birds", keywords: [tree, nesting, heritage, urban habitat], verify: "Tree inventory under the city ordinance; nesting-season survey"}
+      - {id: flood, label: "Flood pockets and urban creeks", keywords: [flood, fema, zone ae, creek, floodplain], verify: "Parcel-specific FEMA determination; finished-floor requirement"}
+      - {id: noise_air, label: "Noise and air from adjacent roads and rail", keywords: [noise, air quality, expressway, rail, freeway], verify: "Noise contours; screening-level air assessment"}
+      - {id: historic, label: "Historic and cultural resources", keywords: [historic, cultural, chris, tribal, "ab 52"], verify: "Historic resources inventory; CHRIS records search; AB 52"}
+      - {id: traffic, label: "Traffic, VMT screening and transit", keywords: [vmt, traffic, transit, light rail, bus, "transit priority"], verify: "VMT screening map; transit stop distance; access study if required"}
+      - {id: ceqa, label: "CEQA pathway: exemption or tiered document", keywords: [ceqa, exemption, negative declaration, master eir, tiering], verify: "Exemption checklist against the master EIR; lead agency confirmation"}
+    default_levers: ["State density bonus (Gov. Code 65915)", "AB 2097 parking (Gov. Code 65863.2)", "SB 35 / SB 423 ministerial path (Gov. Code 65913.4)", "AB 2011 commercial-corridor housing", "CEQA Class 32 infill exemption (Guidelines 15332)", "SB 9 lot split and two-unit (single-family zones)"]
+    typical_approvals: ["Rezone where the zone does not fit", "Density bonus with waivers and concessions", "Site plan and design review", "Conditional use permit where the use needs one", "CEQA exemption or MND tiering off the master EIR"]
+    fee_families: [park, transportation, school, sewer, water, inclusionary, facility, processing, agency]
+    register_seed: ["CEQA pathway: exemption or MND", "Site clear of sensitive resources", "Density the market supports against the zoning ceiling", "Parking ratio lenders and renters expect", "Utility capacity at the frontage", "Neighborhood position on height and massing"]
+    report_emphasis: "fit and levers before constraints; the design-review path in the approval set; the market read carries the density decision"
+
+  - id: redevelopment
+    name: "Redevelopment and adaptive reuse"
+    means: "An occupied or formerly developed site where existing structures are replaced, converted or reused."
+    signals: ["existing buildings or uses", "demolition or conversion", "older neighborhood or corridor"]
+    drives: "Everything infill carries, plus the building itself: historic status under CEQA, hazardous materials, tenant relocation, nonconforming parking and setbacks, and the reuse paths the state opened on commercial corridors."
+    ceqa_expectation: "Exemption or MND unless the structure is a historical resource, which forces an EIR or a documented finding."
+    schedule_months: [12, 30]
+    primary_issues:
+      - {id: historic, label: "Historic status of existing structures", keywords: [historic, historical resource, inventory, eligible], verify: "Historic resources inventory; DPR evaluation if over 45 years"}
+      - {id: hazmat, label: "Hazardous materials and demolition", keywords: [asbestos, lead, hazmat, demolition, phase i, phase ii], verify: "Phase I and II ESA; asbestos and lead surveys"}
+      - {id: relocation, label: "Tenants, relocation and existing entitlements", keywords: [tenant, relocation, existing use, nonconform], verify: "Lease and tenancy review; nonconforming rights"}
+      - {id: compatibility, label: "Neighborhood compatibility and design review", keywords: [neighbor, design review, massing, height], verify: "Design review standards; adjacent uses"}
+      - {id: levers, label: "Reuse and corridor levers", keywords: ["ab 2011", "sb 6", adaptive reuse, density bonus, "ab 2097"], verify: "Corridor eligibility; reuse ordinance; applicability tests"}
+      - {id: utilities, label: "Utility capacity and connections", keywords: [utility, sewer, water, capacity], verify: "Serviceability analysis; will-serve letters"}
+      - {id: ceqa, label: "CEQA pathway", keywords: [ceqa, exemption, negative declaration, eir], verify: "Exemption checklist; historical-resource determination"}
+    default_levers: ["AB 2011 commercial-corridor housing", "SB 6 Middle Class Housing Act", "Adaptive reuse ordinance", "State density bonus", "AB 2097 parking"]
+    typical_approvals: ["Demolition permit with historic review", "Rezone or use permit", "Site plan and design review", "Density bonus", "CEQA exemption, MND or EIR for a historical resource"]
+    fee_families: [park, transportation, school, sewer, water, inclusionary, facility, processing, agency]
+    register_seed: ["Historic status of the structures", "Hazardous materials", "Tenant and relocation obligations", "CEQA pathway"]
+    report_emphasis: "the building first: historic and hazmat before fit"
+
+  - id: rural_resource
+    name: "Rural and resource land use"
+    means: "Agricultural, timber, mining, energy or recreation uses on land that stays rural."
+    signals: ["agricultural or resource zoning", "use permit rather than rezone", "wells and septic", "county jurisdiction"]
+    drives: "Compatibility with the agricultural designation and any Williamson Act contract, water and septic, wildfire and access standards, and the biological and cultural screen that any ground disturbance triggers."
+    ceqa_expectation: "MND is typical; an EIR where water, traffic or habitat impacts are significant."
+    schedule_months: [9, 24]
+    primary_issues:
+      - {id: ag_compat, label: "Agricultural compatibility and Williamson Act", keywords: [williamson, compatible use, agricultur, farmland], verify: "Contract status; county compatible-use list"}
+      - {id: water_septic, label: "Water supply and wastewater", keywords: [well, septic, groundwater, water supply], verify: "Well yield; septic feasibility; groundwater sustainability agency rules"}
+      - {id: wildfire, label: "Wildfire hazard and access", keywords: [fire, fhsz, wildfire, access road, evacuation], verify: "CAL FIRE FHSZ; county road standards; fire agency review"}
+      - {id: species, label: "Biological resources", keywords: [species, habitat, cnddb, oak, wetland], verify: "CNDDB query; reconnaissance survey"}
+      - {id: cultural, label: "Cultural resources", keywords: [cultural, chris, tribal], verify: "CHRIS records search; AB 52"}
+      - {id: traffic, label: "Traffic and road standards", keywords: [traffic, road, encroachment, trip], verify: "County road standards; encroachment permit; trip generation"}
+    default_levers: ["Agricultural use permit", "Williamson Act compatible-use finding", "Ag tourism or processing provisions"]
+    typical_approvals: ["Use permit", "Williamson Act compatibility", "Grading and well permits", "Encroachment permit", "CEQA MND"]
+    fee_families: [transportation, facility, processing, agency]
+    register_seed: ["Williamson Act compatibility", "Water and septic feasibility", "Fire agency conditions"]
+    report_emphasis: "compatibility and water first"
+
+  - id: public_infrastructure
+    name: "Public and infrastructure projects"
+    means: "Facilities, utilities, roads, parks, flood control and mitigation projects by or for a public agency."
+    signals: ["public agency applicant or owner", "linear or right-of-way footprint", "grant funding or NEPA nexus"]
+    drives: "The lead agency's own CEQA and NEPA path, right-of-way and easements, Section 404 and 106 on linear footprints, and the grant and compliance calendar."
+    ceqa_expectation: "Set by the lead agency; NEPA alongside where federal funds or permits are involved."
+    schedule_months: [12, 36]
+    primary_issues:
+      - {id: nepa, label: "NEPA and federal funding", keywords: [nepa, federal fund, grant, "section 106"], verify: "Funding source and federal agency; NEPA class of action"}
+      - {id: row, label: "Right-of-way and easements", keywords: [right-of-way, easement, acquisition], verify: "Title and easement review; acquisition plan"}
+      - {id: aquatic, label: "Aquatic resources on the footprint", keywords: [aquatic, wetland, waters, "404"], verify: "Delineation along the footprint"}
+      - {id: species, label: "Listed species", keywords: [species, habitat, cnddb], verify: "CNDDB and IPaC; surveys in season"}
+      - {id: cultural, label: "Cultural resources and Section 106", keywords: [cultural, "section 106", tribal], verify: "Records search; consultation"}
+    default_levers: ["Statutory and categorical exemptions available to public agencies", "Programmatic permits and agreements"]
+    typical_approvals: ["Lead agency CEQA", "NEPA document", "Section 404, 401, 1602", "Section 106", "Encroachment and right-of-way agreements"]
+    fee_families: [agency, processing]
+    register_seed: ["Federal nexus and NEPA class", "Right-of-way needs", "Aquatic features on the footprint"]
+    report_emphasis: "the agency's calendar first"

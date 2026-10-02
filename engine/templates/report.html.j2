@@ -53,7 +53,7 @@
 <header class="cover">
   <div class="brand">COX PLANNING SOLUTIONS</div>
   <h1>{{ r.meta.rung_title }}</h1>
-  <div class="sub">{{ r.meta.address }} · APN {{ r.meta.apns }} · approximately {{ r.meta.acres }} acres · {{ r.meta.jurisdiction }}</div>
+  <div class="sub">{{ r.meta.address }} · APN {{ r.meta.apns }} · approximately {{ r.meta.acres }} acres · {{ r.meta.jurisdiction }} · {{ r.meta.development_type }}{% if r.meta.uses %}, {{ r.meta.uses }}{% endif %}</div>
   <div class="sub">Prepared for {{ r.meta.client }}{% if r.meta.contact %} ({{ r.meta.contact }}){% endif %} · {{ r.meta.date }}</div>
   <div class="stamp{% if not r.meta.reviewed %} unreviewed{% endif %}">{{ r.meta.stamp }}{% if r.meta.reviewed %} Reviewed by {{ r.meta.reviewer }} on {{ r.meta.review_date }}.{% endif %}</div>
   <p class="standing">{{ r.meta.standing_header }}</p>

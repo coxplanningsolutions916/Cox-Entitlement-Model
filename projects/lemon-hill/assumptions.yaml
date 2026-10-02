@@ -1,0 +1,55 @@
+assumptions:
+  - id: assume.ceqa_pathway
+    statement: "CEQA is cleared with the Class 32 infill exemption; a mitigated negative declaration tiering off the 2040 Master EIR is the fallback if a minor feature turns up."
+    owner: chris.cox
+    reason: "Clean, disturbed infill site inside the urbanized area; an EIR is unlikely for this housing in this neighborhood."
+    alternatives: [class32_exemption, mnd_tiered, eir]
+    current: class32_exemption
+    resolved_by: deliverable.3.3.2
+    cost_impact: [line.balance]
+    schedule_impact: [node.ceqa]
+  - id: assume.site_clean
+    statement: "The site is clear of wetlands and sensitive habitat that would need further evaluation or mitigation."
+    owner: chris.cox
+    reason: "No mapped features; no ponding across twenty years of imagery; the only flag is nesting birds in the south-edge trees."
+    alternatives: [clean, minor_feature, significant_feature]
+    current: clean
+    resolved_by: deliverable.2.1.1
+    cost_impact: [line.balance]
+    schedule_impact: [node.ceqa]
+  - id: assume.program_density
+    statement: "The entitlement is written to the R-3 ceiling of roughly 175 to 210 units, while the market read supports building about 130 to 170 units at 22 to 28 dwellings per acre with surface and tuck-under parking."
+    owner: chris.cox
+    reason: "Rents 15 to 25 percent below the metro do not amortise structured parking; entitle the ceiling, design to the market."
+    alternatives: [ceiling_175_210, market_130_170, bonus_260_315]
+    current: ceiling_175_210
+    resolved_by: deliverable.2.2.1
+    cost_impact: [line.balance]
+  - id: assume.set_aside
+    statement: "A 5 to 10 percent affordable set-aside under Government Code 65915 earns the development-standard waivers and site-design flexibility; no tax-credit financing."
+    owner: chris.cox
+    reason: "Market-rate rents here are already close to affordable, so the set-aside is inexpensive; the 55-year covenant carries no property tax break."
+    alternatives: [set_aside_5_10, no_bonus]
+    current: set_aside_5_10
+    resolved_by: deliverable.3.3.3
+  - id: assume.parking_ratio
+    statement: "Parking is built to about 1 to 1.5 spaces per unit at grade, to what lenders and renters expect, although the City requires none."
+    owner: chris.cox
+    reason: "2040 General Plan Policy LUP-4.14 removed minimums; the market, not the code, sets the ratio."
+    alternatives: [ratio_1_to_1_5, lower]
+    current: ratio_1_to_1_5
+    resolved_by: deliverable.2.2.1
+  - id: assume.utility_capacity
+    statement: "Water, sewer and dry utilities at the frontage can serve the project without off-site capacity work."
+    owner: chris.cox
+    reason: "Urban infill next to the client's existing apartments; unconfirmed."
+    alternatives: [capacity_available, capacity_work_needed]
+    current: null
+    resolved_by: deliverable.2.1.3
+  - id: assume.site_history
+    statement: "The prior residential use on the 6430 frontage left no recognised environmental condition."
+    owner: chris.cox
+    reason: "A house and outbuildings were cleared years ago; no record review yet."
+    alternatives: [no_rec, rec_found]
+    current: null
+    resolved_by: deliverable.2.1.2
