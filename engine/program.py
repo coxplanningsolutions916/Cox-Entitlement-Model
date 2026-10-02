@@ -4,22 +4,33 @@ from typing import Dict
 
 from .confidence import composition
 from .model import Project
+from . import fees as fees_mod
 
 SECTIONS = [("cox_services", "A. Cox Planning Solutions professional services"),
             ("client_consultants", "B. Consultants retained separately by the client"),
             ("agency_fees", "C. Agency application and processing fees")]
 
 
-def build(p: Project) -> dict:
+def build(p: Project, with_fees: bool = True) -> dict:
+    """The program budget. With fees, the fee engine's generated agency lines replace the typed lines they
+    reconcile to and add pending lines for every fee family the schedules name but cannot yet price."""
+    fr = fees_mod.build(p) if with_fees else None
+    all_lines = fees_mod.merged_cost_lines(p, fr) if fr else list(p.cost_lines)
     out: Dict[str, dict] = {}
     for key, label in SECTIONS:
-        lines = [l for l in p.cost_lines if l.section == key]
+        lines = [l for l in all_lines if l.section == key]
         out[key] = {"label": label, "lines": lines, "composition": composition(lines)}
-    all_lines = p.cost_lines
     total = composition(all_lines)
     exclusions = [{"id": u.id, "label": u.label, "why": u.why_unquantifiable.strip(),
                    "drivers": [d["name"] for d in u.drivers]} for u in p.unquantifiable]
-    return {"sections": out, "total": total, "exclusions": exclusions}
+    fee_block = None
+    if fr:
+        fee_block = {"applicable": [{"id": a.schedule.id, "name": a.schedule.name, "owner": a.schedule.owner, "kind": a.schedule.kind,
+                                     "why": a.why, "map": a.map_citation, "source": a.schedule.source, "effective": a.schedule.effective}
+                                    for a in fr.applicable],
+                     "replaced": fr.replaced, "suppressed": fr.suppressed, "notes": fr.notes,
+                     "pending": [l.label for l in fr.lines if l.confidence == "pending"]}
+    return {"sections": out, "total": total, "exclusions": exclusions, "fees": fee_block}
 
 
 def render_text(p: Project, prog: dict) -> str:

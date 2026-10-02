@@ -126,7 +126,7 @@
 <section>
   <h2><span class="n">§</span>Sources</h2>
   <ol class="sources">{% for s in r.sources %}<li>{{ s.label }}</li>{% endfor %}</ol>
-  <p class="note">Facts not on file: {{ r.facts_needed }}. Each one is listed in the assumption register with what verifies it.</p>
+  <p class="note">Facts not on file: {{ r.facts_needed }}. Fee amounts not on file: {{ r.fees_needed }}. Each one is listed in the assumption register with what verifies it.</p>
   <table class="legend"><caption>Confidence classes</caption>
   <tbody>{% for l in r.legend %}<tr><td>{{ l.label }}</td><td>{{ l.means }}</td></tr>{% endfor %}</tbody></table>
 </section>

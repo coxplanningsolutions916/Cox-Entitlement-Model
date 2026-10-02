@@ -292,6 +292,17 @@ def build(p: Project, rung: str = "screening", today: Optional[datetime.date] = 
     blocks.append({"type": "table", "columns": ["Block", "Range", "Confidence"], "rows": comp_rows, "caption": "Cost ranges by block, with the confidence composition behind each"})
     for x in prog["exclusions"]:
         blocks.append({"type": "para", "text": f"Excluded, not yet quantifiable: {x['label']}. Drivers: {', '.join(x['drivers'])}. {x['why']}"})
+    fees = prog.get("fees")
+    if fees and fees["applicable"]:
+        frows = []
+        for a in fees["applicable"]:
+            ref = S.ref(a["source"], "fee schedule") if a.get("source", {}).get("document") else None
+            why = a["why"] + (f"; map: {a['map'].get('layer', '')} {a['map'].get('feature', '') or ''} {a['map'].get('date', '') or ''}".rstrip() if a.get("map") else "")
+            frows.append([_cell(a["name"]), _cell(a["kind"]), _cell(why, ref, "published" if a.get("effective") else "pending", needed=False)])
+        blocks.append({"type": "table", "columns": ["Fee schedule applying to this site", "Kind", "Why it applies"], "rows": frows,
+                       "caption": "Fee schedules the parcel's location and approval set bring in (fees are priced by district, not estimated)"})
+        if fees["pending"]:
+            blocks.append({"type": "note", "text": "Fee lines with no adopted amount on file yet: " + "; ".join(fees["pending"]) + ". Each is in the register with what verifies it."})
     if rung in ("roadmap", "plus"):
         prow = []
         for key, sec in prog["sections"].items():
@@ -339,8 +350,12 @@ def build(p: Project, rung: str = "screening", today: Optional[datetime.date] = 
                 if c.get("needed"):
                     needed.append({"assumption": f"Fact needed: {it['label']}", "current": "not on file", "why": "",
                                    "verified_by": c.get("verify") or "", "cost": "", "moves": f"section {s_['n']}"})
+    fee_needed = []
+    for l in [x for sec in prog["sections"].values() for x in sec["lines"] if x.confidence == "pending" and x.id.startswith("fee.")]:
+        fee_needed.append({"assumption": f"Fee amount needed: {l.label}", "current": "pending", "why": "",
+                           "verified_by": l.basis.split("verify: ")[-1] if "verify: " in l.basis else l.basis.split(". ")[-1], "cost": "", "moves": "section 8"})
     sections.append({"n": 9, "title": "The assumption register", "blocks": [
-        {"type": "register", "rows": reg + needed, "columns": ["Assumption", "Carried as", "Why", "Verified by", "Cox fee to verify", "What it moves"]},
+        {"type": "register", "rows": reg + needed + fee_needed, "columns": ["Assumption", "Carried as", "Why", "Verified by", "Cox fee to verify", "What it moves"]},
         {"type": "note", "text": "The fee to verify is the Cox fee for the named deliverable at the rate card, before coordination. It is the diligence list and the next proposal in one table."}]})
 
     # 10. Go or no-go and the three questions
@@ -387,7 +402,7 @@ def build(p: Project, rung: str = "screening", today: Optional[datetime.date] = 
         internal_block = {"violations": [str(v) for v in violations], "hours": fb.hours, "margin_pct": fb.margin_pct,
                           "strong_share": t["strong_share"], "sources_count": len(S.items), "facts_needed": len(needed)}
     return {"meta": meta, "sections": sections, "next_steps": nxt, "checklist": checklist, "sources": S.items,
-            "legend": legend, "internal": internal_block, "facts_needed": len(needed)}
+            "legend": legend, "internal": internal_block, "facts_needed": len(needed), "fees_needed": len(fee_needed)}
 
 
 # ---------------------------------------------------------------- render

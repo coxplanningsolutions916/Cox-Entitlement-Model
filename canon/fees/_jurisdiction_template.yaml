@@ -1,0 +1,25 @@
+# Copy for each pilot jurisdiction (Sacramento County, Placer County, each city). Fill amounts from the adopted
+# schedule with the effective date, or leave amount: null with a verify: note. District-scoped schedules
+# (drainage zones, park districts, specific plan areas, CFDs, HCP fee zones) take a layer and feature name;
+# the polygon can be pasted for point-in-polygon tests until the hosted layer exists.
+schedules:
+  - id: fee.<jurisdiction>.processing
+    name: "<Jurisdiction> planning processing fees"
+    owner: "<Jurisdiction>"
+    kind: processing
+    scope: {jurisdiction: "<Jurisdiction>"}
+    source: {document: "<adopted fee schedule>", revised: null}
+    effective: null
+    review_by: null
+    lines:
+      - {id: gpa, label: "General Plan amendment", basis: flat, amount: null, verify: "adopted fee schedule", when: {approval: "General Plan amendment"}}
+  - id: fee.<jurisdiction>.drainage_zone_x
+    name: "<Drainage fee zone X>"
+    owner: "<Jurisdiction>"
+    kind: drainage
+    scope: {district: {layer: "<layer name>", feature: "<zone name>", polygon: null}}
+    source: {document: "<ordinance or resolution>", revised: null}
+    effective: null
+    review_by: null
+    lines:
+      - {id: drainage, label: "Drainage fee", basis: per_acre, amount: null, verify: "fee resolution for the zone"}

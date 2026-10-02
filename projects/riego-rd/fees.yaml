@@ -1,0 +1,26 @@
+# Quantities the fee engine prices against, each a fact or an assumption. Memberships in district-scoped
+# schedules are declared here with a map citation (R1). `reconcile` maps generated lines onto lines already
+# typed in program.yaml: the generated line replaces the typed one and the engine flags any difference.
+point: null                      # [lon, lat] once the parcel centroid is on file; used for point-in-polygon tests
+uses: [residential]
+quantities:
+  acres: {value: 160.16, source: {document: "Task Order 1, project record", revised: "2026-09-21"}, confidence: published}
+  units: {low: 58, high: 62, source: {document: "Sundance Development Corp concept as stated to Cox", revised: "2026-08-18"}, confidence: derived}
+  impact_acres: null             # pending: the delineation of record (1.3) and the preferred plan (2.4) set it
+  years: {value: 5, source: {document: "23 CCR Section 2200(a)(4)"}, confidence: published}
+memberships: []                  # district-scoped schedules this site sits in, each {schedule: id, map: {layer, date}}
+reconcile:
+  fee.sutter.processing.gpa: line.fee_gpa
+  fee.sutter.processing.rezone: line.fee_rezone
+  fee.sutter.processing.vtm: line.fee_vtm
+  fee.sutter.processing.eir_deposit: line.fee_eir_deposit
+  fee.cdfw.ceqa_filing.eir: line.fee_cdfw_ceqa
+  fee.usace.section_404.application: line.fee_404
+  fee.rwqcb_cv.section_401.application: line.fee_401_app
+  fee.rwqcb_cv.section_401.annual: line.fee_401_annual
+  fee.cdfw.section_1602.notification: line.fee_1602
+  fee.cdfw.section_2081.permit: line.fee_2081
+keep_manual:
+  # The typed bracket stands and the generated line is suppressed: the 21 Sept program carried a judgment
+  # bracket for the impact-area fee that the engine cannot reproduce without an impact acreage on file.
+  fee.rwqcb_cv.section_401.project_fee: line.rwqcb_project_fee

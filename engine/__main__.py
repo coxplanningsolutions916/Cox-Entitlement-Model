@@ -1,17 +1,17 @@
-"""CLI.  python -m engine fee riego-rd | program riego-rd | schedule riego-rd --ntp 2026-10-15 | check riego-rd [--draft file]
+"""CLI.  python -m engine fee riego-rd | fees riego-rd | program riego-rd | schedule riego-rd --ntp 2026-10-15 | check riego-rd [--draft file]
         python -m engine report riego-rd [--rung screening|roadmap|plus] [--out out] [--pdf] [--internal] [--ntp DATE]"""
 import argparse
 import datetime
 import sys
 
-from . import fee as fee_mod, program as program_mod, report as report_mod, rules, schedule
+from . import fee as fee_mod, fees as fees_mod, program as program_mod, report as report_mod, rules, schedule
 from .model import Project
 
 
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="engine")
     sub = ap.add_subparsers(dest="cmd", required=True)
-    for c in ("fee", "program", "schedule", "check", "report"):
+    for c in ("fee", "fees", "program", "schedule", "check", "report"):
         s = sub.add_parser(c); s.add_argument("project")
         if c == "report":
             s.add_argument("--rung", default="screening", choices=sorted(report_mod.RUNGS)); s.add_argument("--out", default="out")
@@ -30,6 +30,8 @@ def main(argv=None):
         if ms:
             print("\nPayment schedule (on the rounded total):")
             for m in fee_mod.payment_schedule(fb.total, ms): print(f"  {m['milestone']:38} {m['share']:>5.0%}  {m['amount']:>10,.0f}  {m['trigger']}")
+    elif a.cmd == "fees":
+        print(fees_mod.render_text(p, fees_mod.build(p)))
     elif a.cmd == "program":
         print(program_mod.render_text(p, program_mod.build(p)))
     elif a.cmd == "schedule":

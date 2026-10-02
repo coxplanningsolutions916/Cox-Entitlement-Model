@@ -100,3 +100,8 @@ Ten items, one per section, on the reviewer screen; each ticks or raises a note 
 ## 7. Not now
 
 3D massing and site-plan generation (TestFit, Deepblocks); national or statewide coverage before the pilot proves depth; a political read in the automated product; a subscription seat model; a pro forma. Zoneomics or Gridics code text may be worth licensing to shorten section 2 capture, and Regrid parcels when expansion beyond the two counties begins.
+
+## Built so far (status, 1 October 2026)
+
+- 1.3 to 1.6, 1.8, 1.9, 4.1 to 4.3, 4.7 and section 6: shipped in `engine/report.py` (ten sections, numbered sources, register priced from the fee build, reviewer sign-off, web plus PDF).
+- 4.2a: shipped in `engine/fees.py` with the registry in `canon/fees/` (jurisdiction, district-polygon and agency scopes; the published/benchmarked/pending confidence rule; reconciliation against typed program lines). Sutter County and the state agencies are seeded from the Riego program; Sacramento and Placer schedules wait on the fee tables in DATA-NEEDS item 9.

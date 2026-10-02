@@ -1,0 +1,54 @@
+# Federal and state agency fees. Scope = agency: the schedule applies when the approval set names the approval.
+schedules:
+  - id: fee.usace.section_404
+    name: "USACE Section 404 individual permit application fee"
+    owner: "US Army Corps of Engineers"
+    kind: agency
+    scope: {agency: "Section 404"}
+    source: {document: "33 CFR 325.1(f)", revised: "2024-01-01"}
+    effective: "2024-01-01"
+    review_by: "2027-12-31"
+    lines:
+      - {id: application, label: "Section 404 individual permit application, commercial purpose", basis: flat, amount: 100, lands: "At Section 404 application submittal."}
+  - id: fee.rwqcb_cv.section_401
+    name: "Central Valley RWQCB dredge and fill (Section 401) fees"
+    owner: "Central Valley Regional Water Quality Control Board"
+    kind: agency
+    scope: {agency: "Section 401"}
+    source: {document: "23 CCR Section 2200(a)(4), FY 2025-26 schedule", revised: "2025-07-01"}
+    effective: "2025-07-01"
+    review_by: "2026-07-01"
+    lines:
+      - {id: application, label: "Application fee, fill and excavation", basis: flat, amount: 4212, lands: "At Section 401 application submittal."}
+      - {id: project_fee, label: "Project fee on impact area", basis: per_impact_acre, amount: 37544, less: 4212, cap: 365465, lands: "At Section 401 application submittal.", note: "Impact acres times the unit fee, less the application fee, against the schedule cap. The delineation sets the acreage."}
+      - {id: annual, label: "Annual fee, first five years", basis: per_year, amount: 3540, quantity: {years: 5}, lands: "Annually from the first fiscal year after the order issues."}
+  - id: fee.cdfw.ceqa_filing
+    name: "CDFW CEQA document filing fee"
+    owner: "California Department of Fish and Wildlife"
+    kind: agency
+    scope: {agency: "CEQA"}
+    source: {document: "Fish and Game Code 711.4, fee schedule effective January 1 2026", revised: "2026-01-01"}
+    effective: "2026-01-01"
+    review_by: "2027-01-01"
+    lines:
+      - {id: eir, label: "CEQA document filing fee, EIR", basis: flat, amount: 4228, lands: "At Notice of Determination.", when: {assumption: assume.ceqa_pathway, current: eir}}
+  - id: fee.cdfw.section_1602
+    name: "CDFW Section 1602 notification fee"
+    owner: "California Department of Fish and Wildlife"
+    kind: agency
+    scope: {agency: "1602"}
+    source: {document: "CDFW Lake and Streambed Alteration fee schedule effective January 1 2026", revised: "2026-01-01"}
+    effective: "2026-01-01"
+    review_by: "2027-01-01"
+    lines:
+      - {id: notification, label: "Section 1602 notification", basis: range, low: 6867, high: 24720, lands: "At notification.", note: "Low is the standard notification, high the long-form."}
+  - id: fee.cdfw.section_2081
+    name: "CDFW incidental take permit fees"
+    owner: "California Department of Fish and Wildlife"
+    kind: agency
+    scope: {agency: "2081"}
+    source: {document: "CDFW CESA permit fee schedule effective January 1 2026", revised: "2026-01-01"}
+    effective: "2026-01-01"
+    review_by: "2027-01-01"
+    lines:
+      - {id: permit, label: "Section 2081 incidental take permit or Section 2080.1 consistency determination", basis: range, low: 10329, high: 47354, lands: "At application.", note: "Low is a Section 2080.1 consistency determination, high a full 2081."}
