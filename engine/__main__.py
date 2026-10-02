@@ -1,18 +1,21 @@
 """CLI.  python -m engine fee riego-rd | fees riego-rd | program riego-rd | schedule riego-rd --ntp 2026-10-15 | check riego-rd [--draft file]
-        python -m engine report riego-rd [--rung screening|roadmap|plus] [--out out] [--pdf] [--internal] [--ntp DATE]"""
+        python -m engine report riego-rd [--rung screening|roadmap|plus] [--out out] [--pdf] [--internal] [--ntp DATE]
+        python -m engine publish riego-rd [--rung ...] [--dash ~/code/cox-dashboard]   -> roadmaps/<key>.json for the client dashboard"""
 import argparse
 import datetime
 import sys
 
-from . import fee as fee_mod, fees as fees_mod, program as program_mod, report as report_mod, rules, schedule
+from . import fee as fee_mod, fees as fees_mod, program as program_mod, publish as publish_mod, report as report_mod, rules, schedule
 from .model import Project
 
 
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="engine")
     sub = ap.add_subparsers(dest="cmd", required=True)
-    for c in ("fee", "fees", "program", "schedule", "check", "report"):
+    for c in ("fee", "fees", "program", "schedule", "check", "report", "publish"):
         s = sub.add_parser(c); s.add_argument("project")
+        if c == "publish":
+            s.add_argument("--rung", default="screening", choices=sorted(report_mod.RUNGS)); s.add_argument("--dash", default=""); s.add_argument("--ntp", default="")
         if c == "report":
             s.add_argument("--rung", default="screening", choices=sorted(report_mod.RUNGS)); s.add_argument("--out", default="out")
             s.add_argument("--pdf", action="store_true"); s.add_argument("--internal", action="store_true"); s.add_argument("--ntp", default="")
@@ -49,6 +52,9 @@ def main(argv=None):
         res = report_mod.write(p, a.rung, a.out, a.pdf, a.internal, ntp)
         print(f"{res['html']}  ({res['sources']} sources cited, {res['facts_needed']} facts needed)")
         if a.pdf: print(res["pdf"] or "PDF not produced: Chrome not found (set CHROME=/path/to/chrome)")
+    elif a.cmd == "publish":
+        ntp = datetime.date.fromisoformat(a.ntp) if a.ntp else None
+        print(publish_mod.write(p, a.rung, a.dash or None, ntp=ntp))
     elif a.cmd == "check":
         draft = open(a.draft).read() if a.draft else ""
         v = rules.check(p, fee_mod.build(p), draft)
