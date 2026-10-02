@@ -59,6 +59,7 @@ Priority key: **L** = needed for the 100-screen launch · **P** = pilot v2, befo
 | 4.3 | Unquantifiable lines carried as named exclusions, never zero | Program rule; board-grade honesty | L |
 | 4.4 | Historical approval timelines from Cox's own project history (Productive, the Barnett archive) and agency agendas, by jurisdiction and approval type | PermitPortal sells this; Cox has fourteen years of local history to mine | P |
 | 4.5 | Watch: nightly re-check of the layers and the jurisdiction's pending changes for every active site, with a change notice | PermitPortal's monitoring; the model's Phase 6 | P |
+| 4.7 | The "what happens next" page of every Screening and Roadmap leads with Step 1b (site surveys and data collection) and then Step 2, conceptual design and alternatives with engineering front and center; permit preparation and processing appears as Step 4, in its place. The model's scenarios are presented as the alternatives Step 2 will design | Chris's direction 1 Oct: clients do not connect the dots when the conversation starts at permits | L |
 | 4.6 | Political read: commission and council composition, recent approvals and denials, opposition signals | PermitPortal does it; useful but a planner's judgment, so Roadmap-only | R |
 
 ## 5. Market analysis: recommendation

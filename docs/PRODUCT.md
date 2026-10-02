@@ -46,6 +46,8 @@ A senior planner's corrections and judgment on sections 1, 4, 7 and 9; the strat
 
 ## What Step 1b and downstream add
 
+Step 1b, the Initial Site Review, is site surveys and data collection and is the step most Roadmaps are expected to convert to. Step 2 is conceptual design and alternatives, with engineering front and center: the scenarios the model carried become designed alternatives, compared on the approvals, cost and schedule each triggers, before anyone talks about permit preparation and processing (Step 4). Steps map to the Productive phases 01 Assessment, 02 Design, 03 Planning, 04 Permits, 05 Compliance.
+
 Field screening and the aquatic-resource and species determinations; agency pre-consultation that converts the approval set from likely to confirmed; the defensible lever analysis; figure-quality exhibits; then design, CEQA, applications, and compliance. Each delivery writes facts into the project file and retires assumptions; the model re-prices and re-dates; the client sees the confidence composition move.
 
 ## The data the 1A product needs (and what Cox has today)
