@@ -10,7 +10,7 @@ import json
 import os
 from typing import Optional
 
-from . import program as program_mod, report as report_mod, schedule as schedule_mod
+from . import charts, fee as fee_mod, program as program_mod, report as report_mod, schedule as schedule_mod
 from .model import Project
 
 DEFAULT_DASH = os.path.expanduser(os.environ.get("COX_DASHBOARD", "~/code/cox-dashboard"))
@@ -62,6 +62,16 @@ def export(p: Project, rung: str = "screening", today: Optional[datetime.date] =
             change_log.append({"date": str(c.closed_on), "what": f"Conflict {c.number} closed: {c.title}. {c.resolution.strip()}", "kind": "conflict", "confidence": "", "supersedes": [], "superseded": False})
     change_log.sort(key=lambda x: x["date"], reverse=True)
     questions = sections[10]["blocks"][1]["items"]
+    ntp_d = ntp or today
+    fb = fee_mod.build(p)
+    spans = charts.line_spans(prog)
+    bu = charts.burnup(spans)
+    chart = {"ntp": ntp_d.isoformat(), "spans": spans, "burnup": bu, "period_bars": charts.period_bars(spans, bu["horizon"]),
+             "milestones": charts.milestones(p, ntp_d, fb.total), "mitigation": charts.mitigation_gates(p, ntp_d),
+             "months_to_entitlement": bu["horizon"],
+             "register_counts": {"verified": 0, "open": 0, "pending": 0}}
+    for r_ in register:
+        chart["register_counts"][ "pending" if r_["status"] == "pending" else "open"] += 1
     m = rep["meta"]
     return {
         "key": p.key, "name": m["name"], "client": m["client"], "contact": m["contact"], "address": m["address"], "apns": m["apns"],
@@ -70,7 +80,8 @@ def export(p: Project, rung: str = "screening", today: Optional[datetime.date] =
         "statement_key": p.meta.get("dashboard_key"), "status": p.meta.get("status", ""),
         "decision": decision, "go_no_go": _text(sections[10]["blocks"][0]["items"][0]["cell"]), "questions": questions,
         "approvals": approvals, "windows": windows, "budget": budget, "register": register, "change_log": change_log,
-        "next_steps": rep["next_steps"], "facts_needed": rep["facts_needed"], "fees_needed": rep["fees_needed"],
+        "next_steps": rep["next_steps"], "facts_needed": rep["facts_needed"], "fees_needed": rep["fees_needed"], "chart": chart,
+        "next_fee": {"label": (p.meta.get("task_order_1") or {}).get("name"), "amount": fb.total, "confidence": "firm"} if p.meta.get("task_order_1") else None,
         "sources": len(rep["sources"]), "model_version": m["model_version"], "standing_header": m["standing_header"], "terms": m["terms"],
     }
 
