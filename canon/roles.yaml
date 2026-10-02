@@ -26,8 +26,8 @@ roles:
   - key: biologist
     name: "Biologist"
     bill_rate: 150
-    cost_rate: 75           # placeholder: field biologist on the rate card (fee backup Billable Rates tab); confirm cost and whether OM 11.2 lists the role
-    note: "On the Billable Rates tab of the fee backups (Lemon Hill, April 2026). Field surveys and biological reports."
+    cost_rate: 75           # placeholder cost; Chris confirmed 2026-10-02 that OM 11.2 lists Biologist at 150 and Senior Biologist at 175
+    note: "OM 11.2 role (confirmed 2026-10-02). Field surveys and biological reports."
   - key: senior_archaeologist
     name: "Senior Archaeologist (contract)"
     bill_rate: 175
