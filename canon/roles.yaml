@@ -1,10 +1,11 @@
 # Operations Manual 11.2 canonical roles. The strings are exact; the engine rejects any other spelling.
 # bill_rate = the rate card. cost_rate = internal loaded cost (used only for the margin check; never emitted).
+# cost_rate source: Productive salaries endpoint (cost per hour), pulled 2026-10-01; contract roles are the bench's blended rates.
 roles:
   - key: principal_biologist_planner_engineer
     name: "Principal Biologist/Planner/Engineer"
     bill_rate: 250
-    cost_rate: 110
+    cost_rate: 43.26        # Productive: Chris Cox (person 1218809)
   - key: senior_biologist
     name: "Senior Biologist"
     bill_rate: 175
@@ -13,15 +14,15 @@ roles:
   - key: senior_planner
     name: "Senior Planner"
     bill_rate: 175
-    cost_rate: 85
+    cost_rate: 28.84        # Productive: Kristin Steinert (person 1339861)
   - key: planner
     name: "Planner"
     bill_rate: 150
-    cost_rate: 65
+    cost_rate: 65           # no planner on payroll on 2026-10-01; placeholder until the Senior Planner/PM hire (Productive: Megan Fields 25.00 is marketing, not planning)
   - key: gis_analyst_cad_designer
     name: "GIS Analyst/CAD Designer"
     bill_rate: 150
-    cost_rate: 70
+    cost_rate: 50.00        # Productive: Suzanne Wade (person 1341577)
   - key: senior_archaeologist
     name: "Senior Archaeologist (contract)"
     bill_rate: 175

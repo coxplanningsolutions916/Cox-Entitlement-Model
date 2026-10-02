@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ r.meta.rung_title }} — {{ r.meta.address }}</title>
+<style>
+  :root { --navy:#1B2A6B; --gold:#F5A623; --ink:#1f2328; --muted:#5b6470; --line:#d9dde3; --needed:#b3261e; --needed-bg:#fdecea; --soft:#f4f6f9; }
+  * { box-sizing: border-box; }
+  body { font-family: Arial, Helvetica, sans-serif; color: var(--ink); margin: 0; background: #fff; font-size: 11pt; line-height: 1.45; }
+  .page { max-width: 8.5in; margin: 0 auto; padding: 0.6in 0.7in; }
+  header.cover { border-bottom: 4px solid var(--gold); padding-bottom: 12px; margin-bottom: 16px; }
+  .brand { color: var(--navy); font-weight: bold; letter-spacing: .04em; font-size: 10pt; }
+  h1 { color: var(--navy); font-size: 20pt; margin: 6px 0 2px; }
+  .sub { color: var(--muted); font-size: 10pt; }
+  .stamp { margin: 12px 0; padding: 8px 12px; border-left: 5px solid var(--gold); background: var(--soft); font-weight: bold; font-size: 10pt; }
+  .stamp.unreviewed { border-left-color: var(--needed); background: var(--needed-bg); color: var(--needed); }
+  .standing { font-size: 9pt; color: var(--muted); font-style: italic; margin: 8px 0 0; }
+  h2 { color: var(--navy); font-size: 13.5pt; margin: 22px 0 8px; border-bottom: 1px solid var(--line); padding-bottom: 3px; }
+  h2 .n { color: var(--gold); margin-right: 8px; }
+  table { width: 100%; border-collapse: collapse; margin: 6px 0 10px; font-size: 9.5pt; page-break-inside: auto; }
+  th { text-align: left; background: var(--navy); color: #fff; padding: 5px 7px; font-weight: bold; }
+  td { padding: 5px 7px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr { page-break-inside: avoid; }
+  caption { caption-side: top; text-align: left; color: var(--muted); font-size: 9pt; padding: 2px 0 4px; }
+  .lines .item { display: grid; grid-template-columns: 170px 1fr; gap: 10px; padding: 6px 0; border-bottom: 1px dotted var(--line); }
+  .lines .label { color: var(--navy); font-weight: bold; font-size: 10pt; }
+  .ref { color: var(--navy); font-size: 8pt; vertical-align: super; margin-left: 2px; white-space: nowrap; }
+  .conf { display: inline-block; font-size: 8pt; color: var(--muted); border: 1px solid var(--line); border-radius: 3px; padding: 0 4px; margin-left: 5px; vertical-align: middle; }
+  .conf.firm, .conf.quoted, .conf.published { border-color: var(--navy); color: var(--navy); }
+  .needed { color: var(--needed); font-weight: bold; }
+  .verify { color: var(--muted); font-size: 9pt; }
+  .extra { color: var(--muted); font-size: 8.5pt; }
+  .note { font-size: 9pt; color: var(--muted); font-style: italic; margin: 2px 0 8px; }
+  ol.q li { margin-bottom: 6px; }
+  .next li { margin-bottom: 6px; }
+  .check { list-style: none; padding: 0; }
+  .check li { display: grid; grid-template-columns: 22px 1fr 150px; gap: 8px; padding: 5px 0; border-bottom: 1px dotted var(--line); font-size: 9.5pt; }
+  .box { width: 14px; height: 14px; border: 1.5px solid var(--navy); display: inline-block; margin-top: 2px; }
+  .box.ok { background: var(--navy); }
+  .sign { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 14px; font-size: 10pt; }
+  .sign div { border-top: 1px solid var(--ink); padding-top: 4px; }
+  .sources li { font-size: 9pt; margin-bottom: 3px; }
+  .legend td:first-child { font-weight: bold; color: var(--navy); width: 110px; }
+  .internal { border: 2px dashed var(--needed); padding: 10px 14px; margin-top: 20px; font-size: 9.5pt; }
+  footer { margin-top: 28px; border-top: 1px solid var(--line); padding-top: 8px; font-size: 8.5pt; color: var(--muted); }
+  @media print { .page { padding: 0; max-width: none; } h2 { page-break-after: avoid; } .pb { page-break-before: always; } @page { size: letter; margin: 0.7in 0.65in; } }
+  @media (max-width: 600px) { .lines .item { grid-template-columns: 1fr; } .check li { grid-template-columns: 22px 1fr; } .sign { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="page">
+<header class="cover">
+  <div class="brand">COX PLANNING SOLUTIONS</div>
+  <h1>{{ r.meta.rung_title }}</h1>
+  <div class="sub">{{ r.meta.address }} · APN {{ r.meta.apns }} · approximately {{ r.meta.acres }} acres · {{ r.meta.jurisdiction }}</div>
+  <div class="sub">Prepared for {{ r.meta.client }}{% if r.meta.contact %} ({{ r.meta.contact }}){% endif %} · {{ r.meta.date }}</div>
+  <div class="stamp{% if not r.meta.reviewed %} unreviewed{% endif %}">{{ r.meta.stamp }}{% if r.meta.reviewed %} Reviewed by {{ r.meta.reviewer }} on {{ r.meta.review_date }}.{% endif %}</div>
+  <p class="standing">{{ r.meta.standing_header }}</p>
+</header>
+
+{% macro cell(c) -%}
+  {% if c.needed %}<span class="needed">{{ c.text }}</span>{% if c.verify %} <span class="verify">verified by: {{ c.verify }}</span>{% endif %}
+  {% else %}{{ c.text }}{% if c.ref %}<span class="ref">[{{ c.ref }}]</span>{% endif %}{% if c.confidence %}<span class="conf {{ c.confidence }}">{{ c.confidence }}</span>{% endif %}{% if c.extra %} <span class="extra">({{ c.extra }})</span>{% endif %}{% if c.verify %} <span class="verify">to confirm: {{ c.verify }}</span>{% endif %}
+  {% endif %}
+{%- endmacro %}
+
+{% for s in r.sections %}
+<section>
+  <h2><span class="n">{{ s.n }}</span>{{ s.title }}</h2>
+  {% for b in s.blocks %}
+    {% if b.type == "lines" %}
+      <div class="lines">
+      {% for it in b["items"] %}
+        <div class="item"><div class="label">{{ it.label }}</div><div>{{ cell(it.cell) }}</div></div>
+      {% endfor %}
+      </div>
+    {% elif b.type == "table" %}
+      <table>
+        {% if b.caption %}<caption>{{ b.caption }}</caption>{% endif %}
+        <thead><tr>{% for col in b.columns %}<th>{{ col }}</th>{% endfor %}</tr></thead>
+        <tbody>
+        {% for row in b.rows %}
+          <tr>{% for c in row %}<td>{{ cell(c) }}</td>{% endfor %}</tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    {% elif b.type == "register" %}
+      <table>
+        <thead><tr>{% for col in b.columns %}<th>{{ col }}</th>{% endfor %}</tr></thead>
+        <tbody>
+        {% for x in b.rows %}
+          <tr><td>{{ x.assumption }}</td><td>{{ x.current }}</td><td>{{ x.why }}</td><td>{{ x.verified_by }}</td><td>{{ x.cost }}</td><td>{{ x.moves }}</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    {% elif b.type == "questions" %}
+      <ol class="q">
+      {% for q in b["items"] %}<li>{{ q.q }}{% if q.by %} <span class="verify">answered by: {{ q.by }}</span>{% endif %}</li>{% endfor %}
+      </ol>
+    {% elif b.type == "para" %}
+      <p>{{ b.text }}</p>
+    {% elif b.type == "note" %}
+      <p class="note">{{ b.text }}</p>
+    {% endif %}
+  {% endfor %}
+</section>
+{% endfor %}
+
+<section>
+  <h2><span class="n">→</span>What happens next</h2>
+  <ol class="next">{% for n in r.next_steps %}<li>{{ n }}</li>{% endfor %}</ol>
+</section>
+
+<section class="pb">
+  <h2><span class="n">✓</span>Staff review and sign-off</h2>
+  <p class="note">This report carries {{ r.meta.staff_hours }}. Each item is checked or carries a note that prints here.</p>
+  <ul class="check">
+  {% for c in r.checklist %}
+    <li><span class="box{% if c.state == 'ok' %} ok{% endif %}"></span><span>{{ c.n }}. {{ c.text }}</span><span class="verify">{% if c.state and c.state != 'ok' %}{{ c.state }}{% endif %}</span></li>
+  {% endfor %}
+  </ul>
+  <div class="sign"><div>Reviewed by{% if r.meta.reviewer %}: {{ r.meta.reviewer }}{% endif %}</div><div>Date{% if r.meta.review_date %}: {{ r.meta.review_date }}{% endif %}</div></div>
+</section>
+
+<section>
+  <h2><span class="n">§</span>Sources</h2>
+  <ol class="sources">{% for s in r.sources %}<li>{{ s.label }}</li>{% endfor %}</ol>
+  <p class="note">Facts not on file: {{ r.facts_needed }}. Each one is listed in the assumption register with what verifies it.</p>
+  <table class="legend"><caption>Confidence classes</caption>
+  <tbody>{% for l in r.legend %}<tr><td>{{ l.label }}</td><td>{{ l.means }}</td></tr>{% endfor %}</tbody></table>
+</section>
+
+<section>
+  <h2><span class="n">¶</span>Terms</h2>
+  <p class="note">{{ r.meta.terms }} Prepared for {{ r.meta.client }} for this property and this project.</p>
+</section>
+
+{% if r.internal %}
+<section class="internal">
+  <strong>INTERNAL QA (not for the client)</strong><br>
+  Rules check: {% if r.internal.violations %}{% for v in r.internal.violations %}<br>· {{ v }}{% endfor %}{% else %}all rules hold{% endif %}<br>
+  Hours in the fee build: {{ r.internal.hours }} · Margin at cost rates: {% if r.internal.margin_pct is not none %}{{ "%.0f"|format(r.internal.margin_pct * 100) }}%{% else %}n/a{% endif %}
+  · Strong-confidence share of the program: {{ "%.0f"|format(r.internal.strong_share * 100) }}% · Sources cited: {{ r.internal.sources_count }} · Facts needed: {{ r.internal.facts_needed }}
+</section>
+{% endif %}
+
+<footer>Cox Planning Solutions · {{ r.meta.rung_title }} · {{ r.meta.address }} · {{ r.meta.date }} · {{ r.meta.model_version }} · Imagery and data attributions as cited; CNDDB data under license to Cox Planning Solutions, derived results only.</footer>
+</div>
+</body>
+</html>

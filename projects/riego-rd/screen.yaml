@@ -1,0 +1,84 @@
+# Screening-layer content for the Step 1a report (sections 1 to 7 and 10). Every row names a fact id, a source,
+# or reads as a fact needed with what verifies it. Nothing here is typed from memory: the sources are the
+# facts.yaml records, the assumptions.yaml records, and the Riego Rd Roadmap memo of 21 September 2026.
+address: "Riego Road, Sutter County"
+report_source: {document: "Riego Rd Entitlement Roadmap memo", author: "Cox Planning Solutions", revised: "2026-09-21"}
+
+decision:
+  what_to_build:
+    text: "Residential subdivision, 58 to 62 lots on 160 acres. This is the client's concept; the market read in section 4 is not yet in hand."
+    source: {document: "Sundance Development Corp concept as stated to Cox", revised: "2026-08-18"}
+    confidence: derived
+  how_approved:
+    text: "General Plan amendment and rezone with a planned development combining district, a tentative map, and an EIR at the County; Section 404, 401, 1602 and 2081 permits because aquatic features are mapped on the site."
+    assumptions: [assume.entitlement_vehicle, assume.ceqa_pathway]
+    confidence: derived
+  # what_it_takes is computed from the program budget and the cost lines' timing.
+  carried_by: assume.ceqa_pathway
+
+go_no_go:
+  read: "Go, conditioned. The site can carry the program if the delineation of record and the 2027 protocol surveys come back near the third-party draft; the compensatory mitigation obligation is the one number nobody can put on the table yet."
+  confidence: derived
+  source: {document: "Riego Rd Entitlement Roadmap memo", revised: "2026-09-21"}
+
+questions:
+  - {q: "What is the impact acreage on aquatic features under the preferred plan?", resolved_by: [deliverable.1.3, deliverable.2.4]}
+  - {q: "Is wastewater served by district connection, or does the project need an on-site plant and a WDR permit?", resolved_by: [deliverable.1.2]}
+  - {q: "Which listed species are present: vernal pool branchiopods, burrowing owl, western spadefoot, nesting Swainson's hawk?", resolved_by: [deliverable.1.6, deliverable.1.7, deliverable.1.8]}
+
+property:
+  rows:
+    - {item: "Assessor parcels", value: "35-260-018 and 35-260-019, 160.16 acres", source: {document: "Task Order 1, project record", revised: "2026-09-21"}, confidence: published}
+    - {item: "Owner of record", verify: "Preliminary title report"}
+    - {item: "Zoning district", verify: "Sutter County zoning map lookup for both parcels"}
+    - {item: "General Plan designation", fact: fact.sutter.gp_designation}
+    - {item: "Specific plan membership", value: "Not within the Sutter Pointe Specific Plan. The third-party ISR's membership claim is superseded by the General Plan land use diagram.", fact: fact.sutter.gp_designation}
+    - {item: "Habitat plan coverage", fact: fact.nbhcp.boundary}
+    - {item: "Parking rule in force", fact: fact.parking.local_rule}
+    - {item: "Williamson Act contract", verify: "County assessor Williamson Act contract map"}
+    - {item: "FEMA flood zone", verify: "FEMA NFHL panel lookup; Sutter County 200-year floodplain map"}
+    - {item: "Easements of record", verify: "Preliminary title report"}
+
+rules:
+  standards:
+    - {standard: "Minimum parcel size", value: "80 acres", fact: fact.sutter.gp_designation}
+    - {standard: "Residential density by right", value: "One dwelling per 80 acres: two lots on 160.16 acres", derived_from: fact.sutter.gp_designation, confidence: derived}
+    - {standard: "Height, setbacks, lot coverage", verify: "Sutter County Land Use and Development Code, AG district standards"}
+    - {standard: "Parking", fact: fact.parking.local_rule}
+  levers:
+    - {lever: "State density bonus (Gov. Code 65915)", test: "Five or more units on land zoned for residential use", result: "Not available on AG-80 land; available on the rezoned site", confidence: derived, source: {document: "Government Code section 65915"}}
+    - {lever: "SB 9 lot split and two-unit (Gov. Code 65852.21, 66411.7)", test: "Single-family residential zone inside an urbanized area or urban cluster", result: "Not applicable: agricultural designation", confidence: derived, source: {document: "Government Code sections 65852.21 and 66411.7"}}
+    - {lever: "AB 2097 parking (Gov. Code 65863.2)", test: "Within one half mile of a major transit stop", result: "Distance to a major transit stop not yet established; the County retains minimum parking standards", verify: "Transit stop distance from the GIS layer", source: {document: "Government Code section 65863.2"}}
+    - {lever: "Ministerial path (SB 35 / SB 423)", test: "Site zoned for residential or mixed use, jurisdiction behind on its housing allocation", result: "Not available on agricultural land", confidence: derived, source: {document: "Government Code section 65913.4"}}
+
+fit:
+  client_program: {text: "58 to 62 single-family lots", source: {document: "Sundance Development Corp concept as stated to Cox", revised: "2026-08-18"}, confidence: derived}
+  by_right: {text: "Two parcels of 80 acres each", derived_from: fact.sutter.gp_designation, confidence: derived}
+  market: {verify: "ArcGIS Business Analyst trade-area pull and the planner's absorption read in the Roadmap"}
+  gap: "The client's program depends entirely on the General Plan amendment and rezone. Nothing close to it exists by right, and the market read that would rank the program against alternatives is not in hand."
+
+constraints:
+  rows:
+    - {layer: "Aquatic features and vernal pools", finding: "A third-party draft delineation of 10 March 2026 maps aquatic features; its feature classifications are contested and predate the farming operations", status: mapped, implication: "Section 404, 401 and 1602 permits, a 404(b)(1) alternatives analysis, compensatory mitigation; the delineation of record decides the acreage", assumption: assume.feature_classification}
+    - {layer: "Listed species habitat", finding: "Vernal pool branchiopods, burrowing owl, western spadefoot and Swainson's hawk are plausible on this ground", status: mapped, implication: "Protocol surveys in both seasons of 2027, a biological assessment, and Section 7 consultation or a 2081 permit", source: {document: "Riego Rd Entitlement Roadmap memo", revised: "2026-09-21"}, confidence: derived}
+    - {layer: "Habitat conservation plan", fact: fact.nbhcp.boundary, status: mapped, implication: "No Natomas Basin HCP fee; individual permits instead of plan coverage"}
+    - {layer: "Wastewater and water service", finding: "District capacity exists on paper; an on-site plant is the fallback", status: mapped, implication: "A WDR permit and a materially larger civil scope if the plant is needed", assumption: assume.wastewater_path}
+    - {layer: "FEMA flood and 200-year floodplain", verify: "FEMA NFHL panel; Sutter County ULOP map", status: none}
+    - {layer: "CNDDB occurrences within 1 and 5 miles", verify: "CNDDB query under the Cox license", status: none}
+    - {layer: "Cultural resources", verify: "CHRIS records search and NAHC Sacred Lands File request; AB 52 consultation under CEQA", status: none}
+    - {layer: "Williamson Act", verify: "County assessor contract map", status: none}
+
+aerial: {verify: "Multi-year imagery review in the Roadmap"}
+
+approvals:
+  - {approval: "General Plan amendment", body: "Sutter County Board of Supervisors", typical: "12 to 18 months, with the rezone", assumption: assume.entitlement_vehicle}
+  - {approval: "Rezone with a planned development combining district", body: "Planning Commission, then Board of Supervisors", typical: "with the amendment", assumption: assume.entitlement_vehicle}
+  - {approval: "Tentative subdivision map", body: "Planning Commission", typical: "with the rezone", assumption: assume.entitlement_vehicle}
+  - {approval: "CEQA: environmental impact report (an IS/MND is the alternative)", body: "Sutter County, lead agency", typical: "14 to 32 months from notice of preparation", assumption: assume.ceqa_pathway}
+  - {approval: "Clean Water Act Section 404", body: "USACE Sacramento District", typical: "20 to 36 months with the response cycles", federal_nexus: true, source: {document: "Riego Rd Entitlement Roadmap memo", revised: "2026-09-21"}, confidence: derived}
+  - {approval: "Section 401 water quality certification", body: "Central Valley Regional Water Quality Control Board", typical: "with the 404", fact: fact.fee.rwqcb_unit}
+  - {approval: "Fish and Game Code 1602 agreement", body: "CDFW", typical: "with the 404", source: {document: "Riego Rd Entitlement Roadmap memo", revised: "2026-09-21"}, confidence: derived}
+  - {approval: "CESA 2081 incidental take permit", body: "CDFW", typical: "after the 2027 surveys", source: {document: "Riego Rd Entitlement Roadmap memo", revised: "2026-09-21"}, confidence: derived}
+  - {approval: "ESA Section 7 consultation through the 404 nexus", body: "USFWS", typical: "inside the 404 clock", federal_nexus: true, source: {document: "Riego Rd Entitlement Roadmap memo", revised: "2026-09-21"}, confidence: derived}
+
+review: {}     # reviewer, date, items: {1: ok, 2: "note"} once the staff hour is done
