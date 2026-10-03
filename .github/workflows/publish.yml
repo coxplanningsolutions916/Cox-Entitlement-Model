@@ -34,5 +34,5 @@ jobs:
         working-directory: dash
         run: |
           git config user.name "cox-entitlement-model"; git config user.email "automation@coxplanningsolutions.com"
-          git add roadmaps/
+          git add roadmaps/ casebook/
           git diff --cached --quiet && echo "nothing to publish" || (git commit -m "roadmaps: published from the model ($GITHUB_SHA)" && git push)

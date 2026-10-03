@@ -55,3 +55,15 @@ made the call.
 ## First pass
 
 Twelve cases to prove the schema, chosen for range: Riego Rd and Lemon Hill (already in the model), Grant Line Rd (the sold CUP roadmap), 474 Joaquin and Kausen Drive (long multi-permit federal programs), Las Colinas (compliance and mitigation monitoring), Napa 55 (a Barnett-era program carried into Cox), Rancho Oso and Ponderosa (storm-damage emergency permitting), 21st Street (the restroom redesign and the change order), Monte Vista Memorial Gardens and Panattoni (the two largest accounts). About two hours per case including the interview, so a month at the current pace, and the model learns something from every one.
+
+
+## As built (3 October 2026)
+
+`engine/casebook.py` loads and validates `casebook/<key>.yaml`: required identity fields; every timeline entry,
+challenge and decision carries a source; decisions carry who and when; resolutions point at a challenge id; people
+carry a role and a name only with recorded consent; lessons are typed (rule with an R-number or a proposed one,
+benchmark, playbook, process, or judgment with the reason it cannot be a rule); quotables are uncleared until someone
+clears them; benchmarks carry metric, value and source. `python -m engine case <key>` prints a case; `publish-all`
+writes `casebook/index.json` (cases with consent-filtered names, the benchmark table, the playbook by type) into the
+dashboard, where `/casebook` and `/casebook/<key>` are team-only pages. First case: Grant Line Rd (The Swing Lab),
+drafted from Productive, Automator, Drive, Gmail and Granola, with eight interview questions open for Chris.

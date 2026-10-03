@@ -1,0 +1,189 @@
+key: grant-line-rd
+name: "10463 Grant Line Rd, Suite 105, Elk Grove: CUP Permit Roadmap for The Swing Lab"
+client: "The Swing Lab Inc"
+jurisdiction: ["City of Elk Grove"]
+development_type: redevelopment      # an existing suite in an existing industrial building, converted to a customer-facing recreation use
+uses: [commercial]
+status: "delivered; follow-on open"
+drafted: "2026-10-03"
+drafted_by: "model, from the record; interview with Chris pending"
+summary: >
+  An operator case. Two partners leased a 1,400-square-foot suite in a Heavy Industrial building in August 2026 to run a
+  two-bay indoor golf simulator studio, ordered the simulators, then learned at the business-license counter that the use
+  needs planning review. City staff said "CUP in the HI" but also mentioned a minor use permit, and quoted $10,370 in fees
+  and about six months. Cox sold a $500 preliminary permit analysis the day after the inquiry, confirmed from the City's own
+  use table that every fitting classification needs a full CUP in HI (the MUP only exists in the neighbors' MP zone), found
+  that the classification the City picks changes required parking from 2 stalls to 7, sized the analysis to 7, told the client
+  not to operate before approval, and delivered a nine-page roadmap three business days after signature with a priced path
+  to a CUP decision. The follow-on application engagement is the open opportunity.
+links:
+  productive_project: "1056743"
+  productive_deal: "4323298"
+  productive_task: "20521751"
+  automator_opportunity: "rFnC4YkL7EgBWbzjcbbq"
+  drive_folder: "S#-Sales/Proposals/The Swing Lab/#10463-Grant-Line-Rd (1pNE2GBcrK2Y06BwYnnpnuHIObZEFAjIB)"
+  deliverable: "SwingLab_CUP_Permit_Roadmap_FINAL_2026-10-02.pdf (Gmail thread 'Re: 10463 Grant Line Rd')"
+
+identity:
+  parcel: {apn: "134-0510-033-0000", acres: 2.04, owner: "Jackson Grantline LLC (landlord)", zoning: "HI, Heavy Industrial", suite_sf: 1400}
+  program: "Two (up to three) indoor golf simulator bays; practice, instruction, leagues; up to about 25 people including staff; no food or alcohol"
+  persona: "operator"
+  level_sold: "Step 1a Screening-grade: a $500 preliminary permit analysis and findings letter (pre-dates the Screen/Map/Scenarios naming)"
+
+path:
+  planned: ["Confirm the entitlement (CUP or MUP) and approval body", "Screen parking, accessibility, occupancy and change of occupancy", "Summarize the application path, timeline and the Permit Assistance Program"]
+  actual: ["Conditional Use Permit, Planning Commission, public hearing, 10-day appeal", "Change-of-occupancy building permit with fire review; stamped plans expected", "CEQA Class 1 existing-facilities exemption (City's call)", "Permit Assistance Program grant up to $10,000, applied within 90 days of the application"]
+  next: ["CUP application and processing ($6,000 to $7,500 estimate)", "Conceptual architectural plan ($1,500 to $2,500)", "Improvement-level stamped plans ($3,500 to $6,000)", "Optional: accessibility inspection, shared parking study, grant application"]
+
+timeline:
+  - {date: "2026-08", event: "Client signs the lease on Suite 105 (per the client at the 25 Sept meeting and the City thread)", source: "Granola, The Swing Lab, 2026-09-25; Gmail thread 'Fwd: 10463 Grant Line Rd. Ste. 105'"}
+  - {date: "2026-09-22", event: "Client emails the City's Office of Economic Development: two bays, freestanding enclosures, maximum 8 people", source: "Gmail, Philip Manganti to Melissa Lasher, 2026-09-22 (forwarded 2026-09-25)"}
+  - {date: "2026-09-23", event: "City Senior Planner: zoned HI; indoor amusement/entertainment needs a CUP, Planning Commission decides; fees $10,370; standard time about six months; no expedited process; denial possible; Table 23.27-1 'would say MUP for a minor use permit'", source: "Gmail, Kyra Killingsworth to Philip Manganti, 2026-09-23 (three messages)"}
+  - {date: "2026-09-24", event: "Inbound inquiry to info@: find the classification, confirm the entitlement, change of occupancy, help with the application", source: "Gmail, theswinglabinc@gmail.com to info@, 2026-09-24 16:22"}
+  - {date: "2026-09-25", event: "Walk-in consult; $500 preliminary permit analysis agreed verbally; letter targeted Monday or Tuesday; Chris advises against operating before approval", source: "Granola, The Swing Lab, 2026-09-25 11:06; Deal Registry log"}
+  - {date: "2026-09-25", event: "Acres property report pulled; scope, fee backup (Principal 2.0 h at $250), Productive deal and Automator value set; handoff memo to Megan", source: "TheSwingLab_HandoffMemo_GrantLinePPA; 00_Deal_Registry"}
+  - {date: "2026-09-28", event: "Chris out of town; no proposal sent", source: "Gmail, Chris to Philip, 2026-09-29 ('We were out of town yesterday')"}
+  - {date: "2026-09-29", event: "Client follows up at 10:51; proposal link and invoice 3439 sent at 11:43; proposal signed the same day", source: "Gmail thread '10463 Grant Line Rd'; Gmail '[Cox Planning Solutions] CUP Permit Roadmap signed' 2026-09-29; Automator note 2026-09-29"}
+  - {date: "2026-10-01", event: "Code review and draft letter complete; v2 to v5 the same evening with Chris's direction (parking ratio, restroom finding, occupancy, bays, accessibility, licensed-professional finding, Cox fee estimate raised)", source: "Productive task 20521751 comments, 2026-10-01 to 2026-10-02"}
+  - {date: "2026-10-02", event: "v6 to v9: delivery restructured, classification risk added, shared-parking fallback added, style cleanup; final sent 13:59 PDT with the cover line 'a CUP, not a MUP'", source: "Productive task 20521751 comments; Gmail, Chris to Philip, 2026-10-02 13:59"}
+  - {date: "2026-10-02", event: "Time logged: 2.0 hours, Chris, 'Permit analysis'; budget $500 invoiced $500; worked cost $128.31", source: "Productive time entries and budget summary, project 1056743"}
+
+money:
+  fee: {proposed: 500, basis: "fixed fee, Principal 2.0 h at $250, break-even at MSRP; below the $1,000 Step 1 floor by Chris's call", invoiced: 500, invoice: "3439 (2026-09-29)", paid: null}
+  hours: {logged: 2.0, by: "Chris Cox", note: "drafting iterations with Claude were not logged; the record shows nine drafts over two days"}
+  agency_fees_estimated: {cup_major: 8800, ceqa_deposit_tier2: 1000, noe_filing: 50, staff_quote: 10370, range: [9850, 10400], source: "City of Elk Grove 2026 Development Related Fees booklet pp. 37 to 41; staff email 2026-09-23"}
+  follow_on_estimates: {cup_application: [6000, 7500], concept_plan: [1500, 2500], stamped_plans: [3500, 6000], accessibility_inspection: [1500, 2500], shared_parking: [1500, 3000], grant_application: [500, 800], internal_backup: "Principal 10 h, Planner 28 h, CAD 12 h, about $8,500 MSRP (v4 comment)"}
+  grant: {program: "City of Elk Grove Permit Assistance Program", up_to: 10000, condition: "apply within 90 days of the permit application; business license required; discretionary"}
+
+challenges:
+  - id: C1
+    what: "Permit type ambiguity: staff said CUP but also cited the MUP row of Table 23.27-1; the two paths differ in fee, process and time"
+    signal: "The City email of 2026-09-23 named both; the client asked how to know which to apply for"
+    when: "2026-09-23"
+    noticed_by: "client, then Chris at the 25 Sept consult"
+    source: "Gmail, Kyra Killingsworth to Philip Manganti, 2026-09-23"
+  - id: C2
+    what: "The client had already committed: lease since August, simulators ordered and bases due the following week, business license on hold"
+    signal: "Said at the walk-in consult; the City thread shows the license counter sent him to Planning"
+    when: "2026-09-25"
+    noticed_by: "Chris"
+    source: "Granola, The Swing Lab, 2026-09-25; inbound email 2026-09-24"
+  - id: C3
+    what: "Use classification risk: Indoor Amusement/Entertainment needs 2 stalls, Fitness and Sports needs 7; either is a CUP in HI but parking changes, and lessons or leagues push toward Fitness and Sports"
+    signal: "Found while drafting v7 against EGMC Table 23.58-2 and section 23.26.050(F)"
+    when: "2026-10-02"
+    noticed_by: "the drafting pass (Claude), confirmed by Chris"
+    source: "Productive task 20521751 comment, v7, 2026-10-02 20:27"
+  - id: C4
+    what: "The 10 percent change-of-use parking test could be triggered, and the suite's last approved use was unknown"
+    signal: "EGMC 23.58.020(B) read during v8; the landlord's site plan and the prior use were not in hand"
+    when: "2026-10-02"
+    noticed_by: "Chris"
+    source: "Productive task 20521751 comment, v8, 2026-10-02 21:29"
+  - id: C5
+    what: "Staff's $10,370 fee quote could not be reconciled to the fee booklet ($9,850 to $10,400)"
+    signal: "Line-by-line check of booklet pages 37 to 41 against the quote"
+    when: "2026-10-01"
+    noticed_by: "the drafting pass"
+    source: "Productive task 20521751 comment, 2026-10-01 'Code review and draft letter complete'"
+  - id: C6
+    what: "Price below the floor: $500 against the $1,000 minimum for a Step 1 engagement, agreed verbally at the consult"
+    signal: "Flagged in the handoff memo's open items"
+    when: "2026-09-25"
+    noticed_by: "the handoff memo"
+    source: "TheSwingLab_HandoffMemo_GrantLinePPA, Open items"
+  - id: C7
+    what: "Delivery clock: the letter was promised for Monday or Tuesday after a Thursday consult; the proposal went out the following Tuesday after travel and the letter the Thursday after that"
+    signal: "Client follow-up email on 29 Sept asking to start"
+    when: "2026-09-29"
+    noticed_by: "client"
+    source: "Gmail thread '10463 Grant Line Rd'; Deal Registry log"
+  - id: C8
+    what: "A two-hour, $500 letter grew to nine pages over nine drafts in two days, and the drafting hours were not logged"
+    signal: "Nine version comments on the task; one 2.0-hour time entry"
+    when: "2026-10-01 to 2026-10-02"
+    noticed_by: "the record"
+    source: "Productive task 20521751 comments; time entries project 1056743"
+  - id: C9
+    what: "Pipeline hygiene: the Automator opportunity stayed at Proposal Sent with $500 after delivery and invoicing"
+    signal: "Automator read on 2026-10-03"
+    when: "2026-10-03"
+    noticed_by: "the casebook draft"
+    source: "Automator opportunity rFnC4YkL7EgBWbzjcbbq, read 2026-10-03"
+
+decisions:
+  - {date: "2026-09-25", by: "Chris Cox", call: "Sell a $500 preliminary permit analysis rather than a $1,000 Step 1 screening or a free consult", alternatives: ["$1,000 Step 1 floor", "free advice and a proposal for the application", "decline"], why: "Small, simple, a walk-in operator with a decision to make this week; the letter answers the one question that gates everything else and sets up the application engagement", cost_or_saving: "$500 at break-even on MSRP; the follow-on is $7,500 to $10,000", source: "Granola 2026-09-25; handoff memo"}
+  - {date: "2026-09-25", by: "Chris Cox", call: "Advise the client not to operate or charge before the CUP and business license, and to hold permanent installation", alternatives: ["say nothing", "soft-open"], why: "Operating before approval risks code enforcement and could cost grant eligibility; personal use of installed equipment is different from running a business", cost_or_saving: "protects the application and the grant", source: "Granola 2026-09-25; Roadmap section 8"}
+  - {date: "2026-10-01", by: "Chris Cox", call: "Request up to three bays and about 25 occupants in every document, counting staff and guests, not players only", alternatives: ["two bays and 8 to 10 people as the client first described"], why: "Adding a bay later would need a CUP amendment; occupancy drives restroom and occupancy-class findings", cost_or_saving: "avoids an amendment cycle", source: "Productive task comment v4, 2026-10-01"}
+  - {date: "2026-10-01", by: "Chris Cox", call: "Split the plans into a conceptual architectural plan for the CUP and stamped improvement-level plans for the building permit, the latter through Barbara", alternatives: ["one stamped set up front"], why: "The CUP exhibits need no license; the stamp is needed at the building permit; the concept becomes the basis for the permit set so nothing is redrawn", cost_or_saving: "keeps the CUP-stage cost at $1,500 to $2,500", source: "Productive task comments v4 and v6"}
+  - {date: "2026-10-02", by: "Chris Cox", call: "Size the parking analysis to 7 spaces so the application works under either classification, and remove the earlier advice to describe the use as entertainment", alternatives: ["argue for the 2-stall classification"], why: "Leaving lessons and leagues out of the description to keep the lower ratio would put the CUP at risk if they came up later; the firm does not game classifications", cost_or_saving: "a 7-stall showing is easy on a lot with 75 to 90 stalls", source: "Productive task comment v7, 2026-10-02"}
+  - {date: "2026-10-02", by: "Chris Cox", call: "Add the shared-parking fallback under EGMC 23.58.060(D) and an optional study-and-agreement service if the 10 percent test is triggered", alternatives: ["leave the risk unaddressed"], why: "Simulator demand peaks evenings and weekends against weekday industrial tenants; the code encourages shared parking and the fallback keeps the path open", cost_or_saving: "$1,500 to $3,000 only if triggered", source: "Productive task comment v8, 2026-10-02"}
+  - {date: "2026-10-02", by: "Chris Cox", call: "Style: no bold lead-in labels, no inline bolding, no confidence tags in the client letter; bold only on the Re: line and table headers", alternatives: ["keep the tagged, labeled format"], why: "The letter reads as advice, not as a template", cost_or_saving: "none", source: "Productive task comment v9, 2026-10-02"}
+
+resolutions:
+  - {challenge: C1, fix: "Read the use table directly: every fitting classification is a CUP in HI; the MUP exists only in LI and MP, which is how the neighbors at 10461 to 10481 (MP) got minor permits; told the client in the cover line 'a CUP, not a MUP'", duration: "one evening", cost: "inside the $500", repeat: "yes; this is the Screen's job"}
+  - {challenge: C2, fix: "Advice not to operate before approval; occupancy and bays set to the maximum the client might want so the permit does not need amending", duration: "same meeting", cost: "none", repeat: "yes; lead with it for every operator"}
+  - {challenge: C3, fix: "Parking analysis sized to the stricter classification; lessons, coaching and leagues written into the project description; a question to staff on which classification applies and how the Elk Grove Golf Studio was classified", duration: "one draft cycle", cost: "none now; 7 stalls on a 75 to 90 stall lot", repeat: "yes; a playbook rule for use-permit screens"}
+  - {challenge: C4, fix: "The 10 percent test explained with its inputs; landlord asked for the site plan with stall counts, tenant uses and the suite's last approved use; shared-parking fallback drafted", duration: "one draft cycle", cost: "optional $1,500 to $3,000 if triggered", repeat: "yes"}
+  - {challenge: C5, fix: "Carried the range, named the $520 gap, and asked staff for an itemization rather than guessing", duration: "one evening", cost: "none", repeat: "yes; never reconcile a quote by inventing a line"}
+  - {challenge: C6, fix: "Used as directed, recorded as below floor; the Screen price has since been set at $500 with one staff hour, which makes this the right price for the product", duration: "n/a", cost: "break-even", repeat: "the floor question is answered by the ladder"}
+  - {challenge: C7, fix: "Proposal and invoice sent within an hour of the client's follow-up; letter delivered three business days after signature", duration: "n/a", cost: "a client nudge", repeat: "the Screen clock now runs from order confirmation and the hooks send the proposal and invoice at order"}
+  - {challenge: C8, fix: "A Tier 1 Roadmap template was filed to Proposal Templates so the structure does not have to be rebuilt; the model's report generator now carries it", duration: "done during v6", cost: "unlogged hours", repeat: "log the drafting hours; let the generator hold the structure"}
+  - {challenge: C9, fix: "Open: the opportunity should move to Roadmap Delivered (or Closed Won for the $500) and a new opportunity should carry the follow-on; the part 1 delivered hook does this on sign-off", duration: "open", cost: "attribution noise", repeat: "the hook removes it"}
+
+people:
+  - {role: "Client, co-owner", org: "The Swing Lab Inc", asked_for: "which permit, whether they could be denied, whether it could be expedited, help with the application", how_managed: "a same-day consult, a plain-language letter, the operate-before-approval warning, questions back to him before he pays City fees", consent: false}
+  - {role: "Client's co-owner (50/50 partner)", org: "The Swing Lab Inc", asked_for: "unknown; not met", how_managed: "the signer question stayed open in the handoff memo", consent: false}
+  - {role: "Senior Planner", org: "City of Elk Grove, Community Development", asked_for: "a detailed project description: hours, employees, the use; submittal through the Planning Filedrop", how_managed: "cited by name in the roadmap's next steps for the classification question and an itemized fee", consent: false, note: "public agency staff acting in an official capacity; named in the deliverable"}
+  - {role: "Economic Development Analyst", org: "City of Elk Grove, Office of Economic Development", asked_for: "pointed the client to the Permit Assistance Program", how_managed: "named in the roadmap for the grant timing and business-license question", consent: false}
+  - {role: "Landlord", org: "Jackson Grantline LLC", asked_for: "nothing yet; must sign the application and supply the site plan, last approved use and any CASp report", how_managed: "three asks listed before City fees are paid", consent: false}
+  - {role: "Engineer / architect of record for stamped plans", org: "Cox bench", asked_for: "improvement-level plans at the building permit stage", how_managed: "named in the two-step plan decision", consent: false}
+
+lessons:
+  - {kind: rule, rule: "proposed R21", lesson: "When agency correspondence names two permit types, the Screen reads the use table itself and cites the row; the client never pays fees on a staff sentence.", applies_to: ["use permits", "operator cases", "all types"]}
+  - {kind: playbook, lesson: "Size the parking analysis to the stricter plausible classification and write every activity the client might offer (lessons, leagues, a third bay) into the project description; an amendment costs more than the stalls.", applies_to: ["CUP", "infill", "redevelopment"]}
+  - {kind: judgment, lesson: "Do not advise a client to describe a use so it lands in a lighter classification; the firm's credibility with staff is worth more than five stalls.", why_judgment: "an ethics line, not a computable check; it belongs in the reviewer checklist as a question"}
+  - {kind: playbook, lesson: "For an operator who has already signed a lease and bought equipment, the first advice is about what not to do before approval; the permit path comes second.", applies_to: ["operator persona"]}
+  - {kind: benchmark, lesson: "Elk Grove CUP (major) $8,800 plus CEQA Tier 2 deposit $1,000 plus NOE $50 in 2026; staff quote about six months; Cox estimate four to seven months to a decision.", applies_to: ["City of Elk Grove", "CUP"]}
+  - {kind: process, lesson: "Reconcile a staff fee quote to the adopted booklet line by line; carry the range and ask for the itemization rather than closing the gap by guessing.", applies_to: ["all fee estimates"]}
+  - {kind: process, lesson: "A $500 letter that takes nine drafts is a template problem, not a scope problem; the generator holds the structure and the planner spends the hour on judgment.", applies_to: ["Screen production"]}
+  - {kind: process, lesson: "Log the drafting hours even when a fee is fixed; the error rate and the cost per Screen are only as good as the time record.", applies_to: ["Screen production", "correction register"]}
+  - {kind: playbook, lesson: "Put the client's follow-up questions in the deliverable itself (legal name, hours, programming, lessons share, prior use, landlord contact); the next proposal writes itself from the answers.", applies_to: ["Screen", "Map"]}
+  - {kind: process, lesson: "Move the opportunity on delivery and open a new one for the follow-on; otherwise the funnel counts a delivered Roadmap as an unsigned proposal.", applies_to: ["Automator", "part 1 hooks"]}
+
+benchmarks:
+  - {metric: "CUP major application fee", value: 8800, unit: "USD", year: 2026, source: "City of Elk Grove 2026 Development Related Fees booklet p. 37"}
+  - {metric: "CEQA review deposit, Tier 2", value: 1000, unit: "USD", year: 2026, source: "fee booklet p. 39"}
+  - {metric: "Notice of Exemption filing", value: 50, unit: "USD", year: 2026, source: "fee booklet p. 41 (County Clerk-Recorder)"}
+  - {metric: "Staff-quoted CUP processing time", value: 6, unit: "months", source: "Kyra Killingsworth email 2026-09-23"}
+  - {metric: "Cox estimate, application to CUP decision", value: [4, 7], unit: "months", source: "CUP Permit Roadmap, Table 3"}
+  - {metric: "Completeness review", value: 30, unit: "days per submittal", source: "Permit Streamlining Act, Gov. Code 65943"}
+  - {metric: "Parking, Indoor Amusement/Entertainment", value: 1.6, unit: "spaces per 1,000 sf (max 3)", source: "EGMC Table 23.58-2"}
+  - {metric: "Parking, Fitness and Sports", value: 5, unit: "spaces per 1,000 sf (max 6)", source: "EGMC Table 23.58-2"}
+  - {metric: "Permit Assistance Program grant", value: 10000, unit: "USD, up to", source: "PASS Guidelines, January 2026"}
+  - {metric: "Inquiry to consult", value: 1, unit: "day", source: "Gmail 2026-09-24; Granola 2026-09-25"}
+  - {metric: "Signature to delivery", value: 3, unit: "business days", source: "Gmail 2026-09-29 and 2026-10-02"}
+  - {metric: "Cox fee, CUP application and processing (estimate)", value: [6000, 7500], unit: "USD", source: "CUP Permit Roadmap, Table 4"}
+
+quotables:
+  - {text: "A CUP, not a MUP.", context: "the cover line of the delivery email; the whole engagement in five words", cleared: false}
+  - {text: "Staff's MUP reference likely reflects the neighboring buildings.", context: "why the client had heard two answers", cleared: false}
+  - {text: "Leaving them out to keep the lower ratio would put the CUP at risk if they come up later.", context: "on writing lessons and leagues into the description", cleared: false}
+  - {text: "It's a pretty hefty fee to pay, just to find out ultimately that we're not eligible.", context: "the client to the City, 2026-09-23; the fear the Screen answers", cleared: false, speaker: "client"}
+
+outcome:
+  delivered: "2026-10-02"
+  result: "CUP confirmed as the entitlement; path, fees, timeline, risks and a priced follow-on delivered; client questions outstanding"
+  fee_vs_first_estimate: "$500 fixed, as sold"
+  next: "Client answers; City classification confirmation; follow-on proposal for the CUP application and conceptual plan"
+  open_items: ["payment status of invoice 3439 not confirmed in the record", "Automator stage not advanced after delivery", "co-owner and legal entity name unconfirmed"]
+
+interview_questions:
+  - "Why $500 instead of the $1,000 floor: the walk-in, the size, or a deliberate test of the Screen price? Would you do it again at $500 with the one staff hour?"
+  - "Was the operate-before-approval warning the most important thing you said that day? How did the client take it, and did he hold the installation?"
+  - "The classification risk (2 stalls versus 7) only surfaced in draft seven. What would have surfaced it in draft one?"
+  - "You struck the 'describe it as entertainment' advice. Is that a firm rule for the reviewer checklist, and how would you word it?"
+  - "Nine drafts in two days for a two-hour fee: what was the drafting time really, and what should the template carry so the next one is two drafts?"
+  - "How do you read Kyra and Mel as counterparts: what do they want to see first, and does the Elk Grove Golf Studio precedent matter to them?"
+  - "The follow-on is $7,500 to $10,000 against a client who balked at $10,370 in City fees. How do you expect him to decide, and what would you change in the offer?"
+  - "Should the opportunity have been Closed Won at $500 with a new one for the application, or stay as one deal? What do you want the funnel to count?"

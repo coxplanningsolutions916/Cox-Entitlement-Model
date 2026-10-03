@@ -6,7 +6,7 @@ import argparse
 import datetime
 import sys
 
-from . import fee as fee_mod, fees as fees_mod, hooks as hooks_mod, intake as intake_mod, mapdraft, program as program_mod, scenarios as scenarios_mod, publish as publish_mod, report as report_mod, review as review_mod, rules, schedule
+from . import casebook as casebook_mod, fee as fee_mod, fees as fees_mod, hooks as hooks_mod, intake as intake_mod, mapdraft, program as program_mod, scenarios as scenarios_mod, publish as publish_mod, report as report_mod, review as review_mod, rules, schedule
 from .model import Project
 
 
@@ -54,6 +54,7 @@ def main(argv=None):
     s = sub.add_parser("map", help="the Map-level drafts: constraints manifest (exported), candidate paths, HBU, verification plan"); s.add_argument("project"); s.add_argument("--out", default="out"); s.add_argument("--ntp", default="")
     s = sub.add_parser("scenarios", help="the Scenarios-level estimates on the constraints map"); s.add_argument("project"); s.add_argument("--ntp", default="")
     s = sub.add_parser("hooks", help="run an order's hooks: order | review-task | qbo | delivered | email"); s.add_argument("project"); s.add_argument("what", choices=["order", "review-task", "qbo", "delivered", "email", "all"]); s.add_argument("--live", action="store_true")
+    s = sub.add_parser("case", help="validate and print a casebook record"); s.add_argument("case_key")
     s = sub.add_parser("publish-all", help="republish every project and the metrics to the dashboard"); s.add_argument("--dash", default="")
     a = ap.parse_args(argv)
     if a.cmd == "intake":
@@ -74,6 +75,9 @@ def main(argv=None):
         if a.hooks:
             for what in ("order", "review-task", "qbo"):
                 print(f"  hook {what}: {_run_hook(r['key'], what, a.live)}")
+        return 0
+    if a.cmd == "case":
+        print(casebook_mod.render_text(casebook_mod.load(a.case_key)))
         return 0
     if a.cmd == "publish-all":
         for x in publish_mod.publish_all(a.dash or None): print(x)

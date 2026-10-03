@@ -121,7 +121,19 @@ def publish_all(dash: Optional[str] = None, today: Optional[datetime.date] = Non
         except Exception as e:  # one bad project must not stop the others
             out.append(f"{key}: FAILED {e}")
     out.append(write_metrics(dash, today))
+    out.append(write_casebook(dash))
     return out
+
+
+def write_casebook(dash: Optional[str] = None) -> str:
+    """Team-only: casebook/index.json in the dashboard repo (served behind the team login, never on a client page)."""
+    from . import casebook as casebook_mod
+    dash = dash or DEFAULT_DASH
+    out_dir = os.path.join(dash, "casebook"); os.makedirs(out_dir, exist_ok=True)
+    path = os.path.join(out_dir, "index.json")
+    with open(path, "w") as f:
+        json.dump(casebook_mod.export(casebook_mod.load_all()), f, indent=1, default=str)
+    return path
 
 
 def write(p: Project, rung: str = "screening", dash: Optional[str] = None, today: Optional[datetime.date] = None, ntp: Optional[datetime.date] = None) -> str:
