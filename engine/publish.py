@@ -10,7 +10,7 @@ import json
 import os
 from typing import Optional
 
-from . import charts, fee as fee_mod, program as program_mod, report as report_mod, review as review_mod, schedule as schedule_mod, types as types_mod
+from . import charts, fee as fee_mod, mapdraft, program as program_mod, report as report_mod, review as review_mod, schedule as schedule_mod, types as types_mod
 from .model import Project
 
 DEFAULT_DASH = os.path.expanduser(os.environ.get("COX_DASHBOARD", "~/code/cox-dashboard"))
@@ -50,7 +50,8 @@ def export(p: Project, rung: str = "screening", today: Optional[datetime.date] =
             w = p.canon.windows.get(x.window, {})
             windows.append({"task": x.name, "window": w.get("name", x.window), "opens": str(x.opens), "closes": str(x.closes), "note": x.flag or ""})
     register = []
-    for r in sections[9]["blocks"][0]["rows"]:
+    reg_block = next(b for b in sections[9]["blocks"] if b["type"] == "register")
+    for r in reg_block["rows"]:
         status = "pending" if r["assumption"].startswith(("Fact needed", "Fee amount needed")) else ("open" if r["current"] in ("open", "no figure carried") else "carried")
         register.append({**r, "status": status})
     change_log = []
@@ -61,7 +62,7 @@ def export(p: Project, rung: str = "screening", today: Optional[datetime.date] =
         if c.status == "closed":
             change_log.append({"date": str(c.closed_on), "what": f"Conflict {c.number} closed: {c.title}. {c.resolution.strip()}", "kind": "conflict", "confidence": "", "supersedes": [], "superseded": False})
     change_log.sort(key=lambda x: x["date"], reverse=True)
-    questions = sections[10]["blocks"][1]["items"]
+    questions = next(b for b in sections[10]["blocks"] if b["type"] == "questions")["items"]
     ntp_d = ntp or today
     fb = fee_mod.build(p)
     spans = charts.line_spans(prog)
@@ -80,6 +81,7 @@ def export(p: Project, rung: str = "screening", today: Optional[datetime.date] =
         "statement_key": p.meta.get("dashboard_key"), "status": p.meta.get("status", ""),
         "development_type": types_mod.profile(p), "type_coverage": {"missing": [i["label"] for i in types_mod.coverage(p, sc)["missing"]]},
         "scale": review_mod.scale_test(p, sc), "review": review_mod.review_state(sc),
+        "map": (lambda m: {"layers": m["layers"], "paths": m["paths"], "hbu": m["hbu"], "plan": m["plan"], "step1b": m["step1b"], "legend": m["legend"]})(mapdraft.build(p, sc, fb, ntp or today)) if rung in ("roadmap", "plus") else None,
         "decision": decision, "go_no_go": _text(sections[10]["blocks"][0]["items"][0]["cell"]), "questions": questions,
         "approvals": approvals, "windows": windows, "budget": budget, "register": register, "change_log": change_log,
         "next_steps": rep["next_steps"], "facts_needed": rep["facts_needed"], "fees_needed": rep["fees_needed"], "chart": chart,

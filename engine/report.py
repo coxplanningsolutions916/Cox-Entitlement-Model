@@ -19,7 +19,7 @@ from typing import List, Optional
 
 import jinja2
 
-from . import fee as fee_mod, program as program_mod, review as review_mod, rules, schedule as schedule_mod, types as types_mod
+from . import fee as fee_mod, mapdraft, program as program_mod, review as review_mod, rules, schedule as schedule_mod, types as types_mod
 from .model import Project, _yaml, CONFIDENCE
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -199,6 +199,7 @@ def build(p: Project, rung: str = "screening", today: Optional[datetime.date] = 
     violations = rules.check(p, fb)
     report_src = sc.get("report_source")
     sections = []
+    md = mapdraft.build(p, sc, fb, ntp) if rung in ("roadmap", "plus") else None
 
     # 1. The decision in three lines
     dec = sc.get("decision", {})
@@ -255,6 +256,11 @@ def build(p: Project, rung: str = "screening", today: Optional[datetime.date] = 
     blocks = [{"type": "table", "columns": ["Test", "Finding"], "rows": fit_rows}]
     if fit.get("gap"):
         blocks.append({"type": "para", "text": fit["gap"]})
+    if md:
+        hb = md["hbu"]
+        blocks.append({"type": "table", "columns": ["Use", "Permissible", "Market read", "Rank"], "caption": "Highest and best use: permissible uses ranked against the market" + (" (model draft for the planner)" if hb["draft"] else ""),
+                       "rows": [[_cell(r.get("use", "")), _cell(r.get("permissible", "")), _cell(r.get("market", ""), S.ref(r.get("source")) if r.get("source") else None, r.get("confidence")), _cell(str(r.get("rank", "")))] for r in hb["rows"]]})
+        blocks.append({"type": "note", "text": hb["note"]})
     blocks.append({"type": "note", "text": "This is a desktop read, not an appraisal or a market study."})
     sections.append({"n": 4, "title": "Fit: the program against the rules and the market", "blocks": blocks})
 
@@ -268,9 +274,13 @@ def build(p: Project, rung: str = "screening", today: Optional[datetime.date] = 
         crows.append([_cell(issue["label"]), _needed(issue["verify"]), _cell("Not yet pulled"), _cell(f"a primary issue for every {tp['name'].lower()} site")])
     if not crows:
         crows = [[_cell("Constraints"), _needed("the constraint layers"), _cell("Not yet pulled"), _cell("")]]
-    sections.append({"n": 5, "title": "Constraints screen", "blocks": [
-        {"type": "table", "columns": ["Layer", "Finding", "Status", "What it implies"], "rows": crows},
-        {"type": "note", "text": DISCLAIMER_MAPPED}]})
+    blocks5 = [{"type": "table", "columns": ["Layer", "Finding", "Status", "What it implies"], "rows": crows}, {"type": "note", "text": DISCLAIMER_MAPPED}]
+    if md:
+        lg = md["legend"]
+        blocks5.append({"type": "table", "columns": ["Constraint", "GIS layers behind it", "Tag", "Confidence"], "caption": f"Desktop constraints map, layer manifest: {lg['mapped']} mapped, {lg['field']} field-verified, {lg['pending']} not yet pulled (exported for the ArcGIS template)",
+                        "rows": [[_cell(l["layer"]), _cell("; ".join(l["gis_layers"]) or "—"), _cell(l["status"]), _cell(l["confidence"])] for l in md["layers"]]})
+        blocks5.append({"type": "note", "text": "The map figure is produced from this manifest in ArcGIS and attached by the planner; every constraint on it carries the tag above. A field-verified tag only ever comes from Step 1b."})
+    sections.append({"n": 5, "title": "Constraints screen" + (" and the desktop constraints map" if md else ""), "blocks": blocks5})
 
     # 6. Historic aerial read
     aer = sc.get("aerial", {})
@@ -289,7 +299,16 @@ def build(p: Project, rung: str = "screening", today: Optional[datetime.date] = 
     blocks = [{"type": "table", "columns": ["Approval", "Who decides", "Typical duration"], "rows": arows}]
     if federal:
         blocks.append({"type": "para", "text": "A federal permit is in the set, so Endangered Species Act Section 7 consultation and Section 106 review ride with it. That nexus, not the County calendar, is the structural dependency that sets the schedule."})
-    sections.append({"n": 7, "title": "The approval set", "blocks": blocks})
+    if md:
+        prow = []
+        for x in md["paths"]:
+            status = x["status"] + (f": {x['why_ruled_out']}" if x.get("why_ruled_out") else "")
+            prow.append([_cell(f"{x['id']}. {x['name']}"), _cell("; ".join(x["approvals"])), _cell(x["ceqa"] + (f"; resource permits: {', '.join(x['resource_permits'])}" if x.get("resource_permits") else "")),
+                         _cell(f"{x['duration_months'][0]} to {x['duration_months'][1]} months"), _cell(status), _cell("confirms: " + "; ".join(x["confirms"]) + ". Rules out: " + "; ".join(x["rules_out"]))])
+        blocks.append({"type": "table", "columns": ["Candidate path", "Approvals, in order", "CEQA and resource permits", "Duration", "Status", "What confirms or rules it out"], "rows": prow,
+                       "caption": "Candidate entitlement paths still open on the desktop map" + (" (model draft for the planner; never a chosen path)" if any(x.get("draft") for x in md["paths"]) else " (planner's table)")})
+        blocks.append({"type": "note", "text": "The Map names the paths and what would confirm or rule each one out. Step 1b field surveys confirm the map; Step 2 conceptual design, with engineering front and center, settles the path."})
+    sections.append({"n": 7, "title": "The approval set" + (" and the candidate paths" if md else ""), "blocks": blocks})
 
     # 8. Schedule and cost ranges
     blocks = []
@@ -363,7 +382,15 @@ def build(p: Project, rung: str = "screening", today: Optional[datetime.date] = 
     for l in [x for sec in prog["sections"].values() for x in sec["lines"] if x.confidence == "pending" and x.id.startswith("fee.")]:
         fee_needed.append({"assumption": f"Fee amount needed: {l.label}", "current": "pending", "why": "",
                            "verified_by": l.basis.split("verify: ")[-1] if "verify: " in l.basis else l.basis.split(". ")[-1], "cost": "", "moves": "section 8"})
-    sections.append({"n": 9, "title": "The assumption register", "blocks": [
+    blocks9 = []
+    if md:
+        vrows = [[_cell(str(e["step"])), _cell(f"{e['code']} {e['name']}" + (" (field)" if e.get("field_work") else "")), _cell(f"month {e['month']}" + (f", {e['window']}" if e.get("window") else "") if e.get("month") is not None else "unscheduled"),
+                  _cell(_money(e["fee"]) if e["fee"] else "—", S.ref({"document": "Cox fee build at the rate card, before coordination"}, "model") if e["fee"] else None, "derived" if e["fee"] else None),
+                  _cell("; ".join(e["settles"])[:300]), _cell("; ".join(e["moves"]))] for e in md["plan"]]
+        blocks9.append({"type": "table", "columns": ["Step", "Deliverable", "When", "Cox fee", "What it settles", "What it moves"], "rows": vrows, "caption": "Verification plan: what would confirm the map, in order"})
+        s1 = md["step1b"]
+        blocks9.append({"type": "para", "text": f"Step 1b scope and price: {s1['name']}" + (f", {_money(s1['fee'])} ({s1['confidence']})" if s1.get("fee") else ", not yet priced") + f". {s1['basis']}."})
+    sections.append({"n": 9, "title": "The assumption register" + (" and the verification plan" if md else ""), "blocks": blocks9 + [
         {"type": "register", "rows": reg + needed + fee_needed, "columns": ["Assumption", "Carried as", "Why", "Verified by", "Cox fee to verify", "What it moves"]},
         {"type": "note", "text": "The fee to verify is the Cox fee for the named deliverable at the rate card, before coordination. It is the diligence list and the next proposal in one table."}]})
 

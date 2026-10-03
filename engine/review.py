@@ -33,6 +33,29 @@ def load_screen(p: Project) -> dict:
     return (_yaml(path) or {}) if os.path.exists(path) else {}
 
 
+WATERS_SPECIES_ISSUES = {"aquatic", "species", "hcp", "nexus", "mitigation"}
+WATERS_SPECIES_WORDS = ("wetland", "vernal", "aquatic", "waters", "species", "habitat", "stream", "cnddb")
+NEGATIVE_WORDS = ("no features", "none visible", "no aquatic", "show no ", "outside the", "outside ", "does not affect", "no streams", "no ponding")
+
+
+def resource_row(p: Project, r: dict) -> dict:
+    """Is this constraint row a positive, mapped resource finding? And is it the kind (waters, wetlands, species, habitat)
+    that brings resource permits, as opposed to a flood zone, which sizes the Roadmap but not the permit stack?"""
+    issue = r.get("issue")
+    extra = ""
+    if r.get("fact") and r["fact"] in p.facts:
+        extra = p.facts[r["fact"]].statement
+    elif r.get("assumption") and r["assumption"] in p.assumptions:
+        extra = p.assumptions[r["assumption"]].statement
+    txt = " ".join([str(r.get(k, "")) for k in ("layer", "finding")] + [extra]).lower()
+    is_resource = issue in RESOURCE_ISSUES or any(w in txt for w in RESOURCE_WORDS)
+    has_finding = bool(r.get("finding") or r.get("fact") or r.get("assumption"))
+    negative = any(w in txt for w in NEGATIVE_WORDS)
+    positive = bool(is_resource and has_finding and r.get("status") in ("mapped", "field") and not negative)
+    permits = positive and (issue in WATERS_SPECIES_ISSUES or any(w in txt for w in WATERS_SPECIES_WORDS))
+    return {"positive": positive, "permits": permits, "issue": issue}
+
+
 def scale_test(p: Project, screen: Optional[dict] = None) -> dict:
     screen = screen if screen is not None else load_screen(p)
     triggers: List[str] = []
@@ -42,19 +65,10 @@ def scale_test(p: Project, screen: Optional[dict] = None) -> dict:
     sites = p.meta.get("sites") or 1
     if sites > 1:
         triggers.append(f"{sites} separate sites")
-    # mapped resources: a constraint row on a resource issue with a mapped/field status and a finding (not a fact needed)
+    # mapped resources: a constraint row on a resource issue with a mapped/field status and a positive finding
     for r in (screen.get("constraints") or {}).get("rows", []):
-        issue = r.get("issue")
-        extra = ""
-        if r.get("fact") and r["fact"] in p.facts:
-            extra = p.facts[r["fact"]].statement
-        elif r.get("assumption") and r["assumption"] in p.assumptions:
-            extra = p.assumptions[r["assumption"]].statement
-        txt = " ".join([str(r.get(k, "")) for k in ("layer", "finding")] + [extra]).lower()
-        is_resource = issue in RESOURCE_ISSUES or any(w in txt for w in RESOURCE_WORDS)
-        has_finding = bool(r.get("finding") or r.get("fact") or r.get("assumption"))
-        negative = any(w in txt for w in ("no features", "none visible", "no aquatic", "show no ", "outside the", "outside ", "does not affect", "no streams", "no ponding"))
-        if is_resource and has_finding and r.get("status") in ("mapped", "field") and not negative:
+        hit = resource_row(p, r)
+        if hit["positive"]:
             triggers.append(f"mapped resource: {r.get('layer')}")
     for a in screen.get("approvals") or []:
         name = (a.get("approval") or "").lower()
