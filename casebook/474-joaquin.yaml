@@ -14,7 +14,9 @@ summary: >
   in the fall of 2025. The CDFW and Water Board site inspection of 5 May 2026 reset the baseline: the state measures to top of
   bank and riparian canopy, not the federal ordinary high water mark, so state waters grew from 0.042 to about 0.187 acres,
   riparian impact of 0.488 acres appeared that the IS/MND never analyzed, and the agencies pointed at the off-site reach
-  between the Meridian culvert and the property that the project would dewater. Cox re-ran the delineation to the state
+  between the Meridian culvert and the property that the project would dewater. The single biggest cost and schedule driver was the change in the assessment area itself:
+  once the upstream off-site drainage and the public storm sewer down Meridian Road and Joaquin Road were pulled into the
+  project, every study, plan and permit application built on the on-site boundary had to be redone. Cox re-ran the delineation to the state
   standard, ran the protocol rare plant survey in season, argued in June for an IS/MND clarification with a phased off-site
   action, and lost that argument in July when the Town directed an EIR. Cox then held the three agency clocks open by mutual
   extension four times, wrote a 149-parameter Project Record so the EIR, the three permits and the tract map would carry one
@@ -96,11 +98,11 @@ challenges:
     noticed_by: "agency comment letters, then the Project Record"
     source: "Project Record SCR-22, REG-11, ENV-04, ENV-05"
   - id: C3
-    what: "The off-site Meridian reach: the project would dewater the channel between the Meridian culvert and the property, and the agencies may want that reach restored or enhanced as mitigation; it sits on land the client does not control"
+    what: "The assessment area changed: the upstream off-site drainage and the public storm sewer down Meridian Road and Joaquin Road were pulled into the project. The reach between the Meridian culvert and the property would be dewatered and the agencies may want it restored or enhanced as mitigation; it sits on public right-of-way and land the client does not control. Because every study, plan and application had been built on the on-site boundary, the delineation, BRA, impacts map, project descriptions, alternatives analysis, mitigation plan and all three permit applications had to be redone. This, not the EIR alone, is what blew out the cost and the schedule (Chris, 2026-10-03)"
     signal: "Raised at the inspection; the client's 'urgent call' email to the Town on off-site drainage"
     when: "2026-06-04"
-    noticed_by: "the agencies; opened as a Cox item 2026-08-26"
-    source: "Gmail thread '474 Joaquin - Offsite drainage CEQA Impact'; Project Record ENV-24"
+    noticed_by: "the agencies; opened as a Cox item 2026-08-26; weighted by Chris 2026-10-03"
+    source: "Gmail thread '474 Joaquin - Offsite drainage CEQA Impact'; Project Record ENV-24, SCR-22; Chris, casebook review 2026-10-03"
   - id: C4
     what: "IS/MND to EIR: Cox argued for clarification and a separately phased off-site action under 15073.5; the Town directed a full EIR through its consultant, adding about nine months best case and a 100 percent deposit regime"
     signal: "The Town's July direction; the 2026-08-18 Letter Agreement"
@@ -169,7 +171,7 @@ decisions:
 resolutions:
   - {challenge: C1, fix: "State-standard delineation re-run in June 2026 with the wetland under the bridge incorporated; final figures 0.079 ac federal (provisional), 0.187 ac state, 0.488 ac riparian; regional supplement corrected", duration: "June to August 2026; publication waits on the boundary", cost: "inside CO1 caps plus overage", repeat: "yes; delineate to the stricter standard first on any site with state waters"}
   - {challenge: C2, fix: "Project Record as the single source; CO2 line 4.5 for Cox-owned EIR chapters so the biology and hydrology in the EIR come from the permit team", duration: "built in one day; adoption pending", cost: "inside PM", repeat: "yes; one project description, one owner"}
-  - {challenge: C3, fix: "Opened as a Cox item: scope a restoration or enhancement concept for the reach now; cross-sections rather than a full model for the quantity; Obsidian association consent flagged for access", duration: "open", cost: "unpriced; in CO2 phase B", repeat: "yes; any culverted upstream reach is a question at the Screen"}
+  - {challenge: C3, fix: "Scope expanded to the off-site reach and the Meridian/Joaquin storm sewer; delineation, BRA, impacts map, project descriptions, AA, mitigation plan and all three applications queued for redo on the new boundary; restoration or enhancement concept opened as a Cox item; cross-sections rather than a full model for the quantity; adjacent-owner consent flagged; the redo priced as the core of CO2", duration: "May 2026 to open", cost: "the bulk of the $110,327.50 CO2 and the four-month slip", repeat: "yes; fix the assessment area before any study starts; any culverted upstream reach or public storm drain connection is a Screen question"}
   - {challenge: C4, fix: "Lost; EIR accepted; CO2 scoped around the NOP and Draft EIR triggers; AB 52 restart flagged for the NOP", duration: "June to August 2026", cost: "about nine months and the Town deposit regime", repeat: "the argument was right to make; make it in writing before the agency letters land, not after"}
   - {challenge: C5, fix: "Pause accepted; re-scope offered; $70,000 reduction under discussion; project on hold with a four-month slip", duration: "open", cost: "CO2 unsigned", repeat: "price the whole path at the start, phase it, and tell the client what the CEQA document choice costs before the Town makes it"}
   - {challenge: C6, fix: "Boundary derivation task assigned internally as a stopgap (top-of-bank offset plus pipe alignment, residence excluded); client takes the chase with the engineer; CDFW told the applicant is revising plans", duration: "open since August", cost: "every downstream deliverable on hold", repeat: "put the engineer's deliverable and date in the roadmap and the client's contract, not only in Cox's task list"}
@@ -195,6 +197,7 @@ people:
 
 lessons:
   - {kind: rule, rule: "proposed R22", lesson: "On any site with a channel, the Screen states both jurisdictional datums (federal OHWM; state top of bank and riparian canopy) and the model carries the state figure as the planning case until a state-standard delineation says otherwise.", applies_to: ["all types with waters", "Screen", "Map"]}
+  - {kind: rule, rule: "proposed R24", lesson: "The assessment area is fixed and signed off by the client, the civil engineer and the lead agency before any study, plan or permit application starts; the model treats any later change to the assessment or permit area as a full redo of every deliverable built on it, and prices and schedules it that way.", applies_to: ["Step 1b", "Step 2", "Step 4", "all types with waters or off-site drainage"]}
   - {kind: rule, rule: "proposed R23", lesson: "One project description, one owner: the CEQA document, every resource permit and the map cite the same acreage, unit count, impact figures and entity name from a single record; a Roadmap that shows a Town-run CEQA document and a Cox-run permit set flags the split as a risk with a cost.", applies_to: ["Step 3", "Step 4", "all types"]}
   - {kind: playbook, lesson: "Delineate to the stricter standard and run the protocol plant survey in the first available window, before the CEQA path is chosen; a missed June-July window is a year.", applies_to: ["Step 1b", "mountain and desert jurisdictions", "CDFW Region 6"]}
   - {kind: playbook, lesson: "Any culverted or piped reach upstream of the site is a Screen question: who owns it, what happens to it if the on-site channel is dewatered, and will the agencies ask for it as mitigation.", applies_to: ["Screen", "infill with channels"]}
@@ -242,6 +245,7 @@ outcome:
   open_items: ["civil boundary, drainage plan, fill volume (since Aug 2026)", "applicant and owner legal names", "biologist-of-record conflict with CAJA", "AB 52 owner", "records request on meeting captures (counsel before any deletion)", "CO2 rate ($200 vs $250) and PM percent", "Automator CO2 opportunity still at Proposal Sent"]
 
 interview_questions:
+  - "The assessment area grew to the off-site drainage and the Meridian/Joaquin storm sewer, and that redo is what cost the most. Who set the original on-site boundary, and what question in 2024 or 2025 would have caught the storm sewer connection before the studies started?"
   - "In September 2025 you filed all three applications on the 2022 federal-standard delineation. Knowing CDFW Region 6 measures to top of bank, would you re-delineate first next time, or was parallel filing still right because the Town's CEQA was the long pole?"
   - "The Town ran its own IS/MND through its consultant while Cox ran the permits. What would you have asked for in the 2024 proposal to own the project description, and would the client have paid for it?"
   - "The June memo argued for clarification under 15073.5 and lost. Was there a week in May when that argument would have landed, and what did the Town actually weigh?"
