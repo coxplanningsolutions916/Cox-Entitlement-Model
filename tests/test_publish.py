@@ -16,7 +16,7 @@ def test_export_is_client_safe_and_complete():
     assert any(a["federal_nexus"] for a in d["approvals"]) and d["windows"]
     assert {r["status"] for r in d["register"]} >= {"open", "pending"}
     assert d["change_log"][0]["date"] >= d["change_log"][-1]["date"]
-    assert d["next_steps"][1].startswith("Step 2 is conceptual design")
+    assert any(n.startswith("Step 2 is conceptual design") for n in d["next_steps"]) and "Scenarios" in d["next_steps"][1]
     assert d["fees_needed"] == 6 and d["facts_needed"] == 12
 
 
