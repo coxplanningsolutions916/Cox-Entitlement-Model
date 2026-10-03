@@ -49,6 +49,14 @@ def _opp_name(it: dict) -> str:
 
 # ---------------------------------------------------------------- Automator
 
+def _pipeline(gc, s, loc, cfg):
+    pls = gc.get_json(s, "/opportunities/pipelines", params={"locationId": loc}).get("pipelines", [])
+    pl = next((p for p in pls if p.get("id") == cfg.get("pipeline_id")), None) or \
+         next((p for p in pls if p.get("name", "").lower() == cfg.get("pipeline", "").lower()), None)
+    if not pl:
+        raise RuntimeError(f"Sales pipeline not found by id {cfg.get('pipeline_id')} or name {cfg.get('pipeline')}")
+    return pl
+
 def automator_order(key: str, live: bool = False, root: str = PROJECTS) -> dict:
     it = intake_mod.load_intake(key, root)
     c = it.get("contact") or {}
@@ -80,10 +88,7 @@ def automator_order(key: str, live: bool = False, root: str = PROJECTS) -> dict:
         cid = meta.get("contactId")
         if not cid:
             raise
-    pls = gc.get_json(s, "/opportunities/pipelines", params={"locationId": loc}).get("pipelines", [])
-    pl = next((p for p in pls if p.get("name", "").lower() == cfg["pipeline"].lower()), None)
-    if not pl:
-        raise RuntimeError(f"pipeline {cfg['pipeline']} not found")
+    pl = _pipeline(gc, s, loc, cfg)
     st = next((x for x in pl.get("stages", []) if x.get("name", "").lower() == cfg["requested_stage"].lower()), None)
     if not st:
         raise RuntimeError(f"stage {cfg['requested_stage']} not found in {cfg['pipeline']}")
@@ -115,9 +120,10 @@ def automator_delivered(key: str, live: bool = False, root: str = PROJECTS) -> d
         raise RuntimeError("no Automator opportunity recorded for this order; run automator_order first")
     gc, _ = _clients()
     s = gc.make_session(); loc = gc.location_id()
-    pls = gc.get_json(s, "/opportunities/pipelines", params={"locationId": loc}).get("pipelines", [])
-    pl = next(p for p in pls if p.get("name", "").lower() == cfg["pipeline"].lower())
-    st = next(x for x in pl.get("stages", []) if x.get("name", "").lower() == cfg["delivered_stage"].lower())
+    pl = _pipeline(gc, s, loc, cfg)
+    st = next((x for x in pl.get("stages", []) if x.get("name", "").lower() == cfg["delivered_stage"].lower()), None)
+    if not st:
+        raise RuntimeError(f"stage {cfg['delivered_stage']} not found in the Sales pipeline")
     gc.put_json(s, f"/opportunities/{payload['opportunity_id']}", {"pipelineStageId": st["id"]})
     cid = it["hooks"]["automator"].get("contact_id")
     if cid:

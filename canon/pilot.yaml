@@ -25,7 +25,7 @@ turnaround_business_days: {screening: 2, roadmap: 5, plus: 10}
 prices: {screening: 500, roadmap: 2500, plus: 5000}
 credits: {roadmap: 500, plus: 2500}                   # Screen credited toward Map; Map toward Scenarios (Screen-to-Scenarios jump open)
 reviewers: ["1218809", "1339861"]                     # Chris, Kristin: the rota alternates by order count
-automator: {pipeline: "Sales", requested_stage: "Roadmap Requested", delivered_stage: "Roadmap Delivered"}
+automator: {pipeline_id: "Szy5UkrLa8hJeDZpIMEv", pipeline: "Sales", requested_stage: "Roadmap Requested", delivered_stage: "Roadmap Delivered"}   # the Sales pipeline by id (sync_sales.py); name is the fallback
 productive: {review_project: "983286", review_list_name: "Roadmap reviews"}
 qbo: {product_id: 85, item: "01 Assessment"}
 dashboard_url: "https://cox-dashboard.onrender.com"
