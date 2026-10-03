@@ -25,12 +25,15 @@ from .model import Project, _yaml, CONFIDENCE
 HERE = os.path.dirname(os.path.abspath(__file__))
 FACT_NEEDED = "[FACT NEEDED]"
 RUNGS = {
-    "screening": {"title": "Step 1a Screening", "price": 500, "staff_hours": "one hour of planning staff review",
-                  "stamp": "Model output, reviewed by Cox planning staff before release."},
-    "roadmap": {"title": "Entitlement Roadmap", "price": 2500, "staff_hours": "four hours of senior planner review and direction",
-                "stamp": "Cox Planning Solutions recommendation, planner-reviewed."},
-    "plus": {"title": "Entitlement Roadmap Plus", "price": 5000, "staff_hours": "seven staff hours including a specialist desk read",
-             "stamp": "Cox Planning Solutions recommendation, planner-reviewed, with a specialist read."},
+    "screening": {"title": "Entitlement Roadmap: Screen", "level": "Screen", "price": 500, "turnaround": "48 hours (two business days)",
+                  "staff_hours": "one hour of planning staff review", "credit": "credited toward the Map",
+                  "stamp": "Entitlement Roadmap, Screen level: model output reviewed and signed by Cox planning staff."},
+    "roadmap": {"title": "Entitlement Roadmap: Map", "level": "Map", "price": 2500, "turnaround": "one week",
+                "staff_hours": "four hours of senior planner review and direction", "credit": "credited toward Scenarios",
+                "stamp": "Entitlement Roadmap, Map level: Cox Planning Solutions' judgment on the record, planner-reviewed."},
+    "plus": {"title": "Entitlement Roadmap: Scenarios", "level": "Scenarios", "price": 5000, "turnaround": "two weeks",
+             "staff_hours": "seven staff hours including a specialist desk read", "credit": "",
+             "stamp": "Entitlement Roadmap, Scenarios level: Cox Planning Solutions' recommendation with a specialist read, planner-reviewed."},
 }
 CHROME_CANDIDATES = [
     os.environ.get("CHROME", ""),
@@ -373,7 +376,7 @@ def build(p: Project, rung: str = "screening", today: Optional[datetime.date] = 
     if not qs:
         qs = [{"q": r["assumption"], "by": r["verified_by"]} for r in reg[:3]]
     st = review_mod.scale_test(p, sc)
-    rung_name = {"screening": "Step 1a Screening", "roadmap": "Entitlement Roadmap ($2,500)", "plus": "Roadmap Plus ($5,000)"}
+    rung_name = {"screening": "Screen ($500)", "roadmap": "Map ($2,500)", "plus": "Scenarios ($5,000)"}
     scale_txt = f"Scale test: {rung_name[st['recommended']]}" + (f" because of {'; '.join(st['triggers'])}" if st["triggers"] else " (no trigger fired)") + "."
     if st["override"]:
         scale_txt += f" Planner's call: {rung_name[st['override']]}. {st['override_reason']}"
@@ -386,10 +389,16 @@ def build(p: Project, rung: str = "screening", today: Optional[datetime.date] = 
     # next steps (FEATURES 4.7): 1b then 2, permits at 4
     to1 = p.meta.get("task_order_1", {})
     if rung == "screening":
-        nxt = [f"The Entitlement Roadmap at {_money(RUNGS['roadmap']['price'])}: {RUNGS['roadmap']['staff_hours']}, the highest-and-best-use read, the strategy and verification plan, the working session, and a priced Step 1b proposal."]
+        nxt = [f"The Map at {_money(RUNGS['roadmap']['price'])}, with this Screen's {_money(RUNGS['screening']['price'])} credited: {RUNGS['roadmap']['staff_hours']}, the highest-and-best-use read, the desktop constraints map with the candidate entitlement paths on it, the verification plan, the working session, and a scoped and priced Step 1b proposal, in one week."]
+        if st["recommended"] == "plus":
+            nxt.append(f"The scale test points to Scenarios at {_money(RUNGS['plus']['price'])}: a specialist desk read, a cultural records search where flagged, scenario estimates on the constraints map, a board package and a second session, in two weeks.")
+    elif rung == "roadmap":
+        nxt = [f"Step 1b, the surveys and data collection that confirm the constraints map in the field. The proposal that follows this Map: {to1.get('name', 'Task Order 1')} at {_money(fb.total)}, firm." if to1 else
+               "Step 1b, the surveys and data collection that confirm the constraints map in the field, priced from the register above."]
+        nxt.append(f"Scenarios at {_money(RUNGS['plus']['price'])} with this Map's {_money(RUNGS['roadmap']['price'])} credited, where the decision needs two or three programs estimated on the map and a board package.")
     else:
-        nxt = [f"Step 1b, the Initial Site Review: site surveys and data collection. The proposal that follows this Roadmap: {to1.get('name', 'Task Order 1')} at {_money(fb.total)}, firm." if to1 else
-               "Step 1b, the Initial Site Review: site surveys and data collection, priced from the register above."]
+        nxt = [f"Step 1b, the surveys and data collection that confirm the constraints map in the field. The proposal that follows: {to1.get('name', 'Task Order 1')} at {_money(fb.total)}, firm." if to1 else
+               "Step 1b, the surveys and data collection that confirm the constraints map in the field, priced from the register above."]
     nxt.append("Step 2 is conceptual design and alternatives, with engineering front and center: the scenarios above become designed alternatives, compared on the approvals, cost and schedule each one triggers, before anyone talks about permits.")
     nxt.append("Permit preparation and processing is Step 4, after planning and environmental review in Step 3. Compliance and monitoring is Step 5.")
 
@@ -402,7 +411,8 @@ def build(p: Project, rung: str = "screening", today: Optional[datetime.date] = 
     stamp = RUNGS[rung]["stamp"] if reviewed else ("REVIEW IN PROGRESS: not yet complete. Not for release." if rstate["reviewed"] else "MODEL OUTPUT, NOT YET STAFF-REVIEWED. Not for release.")
 
     meta = {
-        "rung": rung, "rung_title": RUNGS[rung]["title"], "price": RUNGS[rung]["price"], "staff_hours": RUNGS[rung]["staff_hours"],
+        "rung": rung, "rung_title": RUNGS[rung]["title"], "level": RUNGS[rung]["level"], "price": RUNGS[rung]["price"], "staff_hours": RUNGS[rung]["staff_hours"],
+        "turnaround": RUNGS[rung]["turnaround"], "credit": RUNGS[rung]["credit"],
         "name": p.meta.get("name"), "client": p.meta.get("client"), "contact": p.meta.get("contact"),
         "address": sc.get("address", p.meta.get("name")), "apns": ", ".join(p.meta.get("parcels", [])), "acres": p.meta.get("acres"),
         "jurisdiction": ", ".join(p.meta.get("jurisdiction", [])), "date": today.isoformat(), "ntp": ntp.isoformat(),

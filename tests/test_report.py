@@ -74,7 +74,7 @@ def test_screening_omits_line_items_and_offers_the_roadmap():
     rep = _rep("screening")
     html = report.render_html(rep)
     assert "Program budget" not in html
-    assert "Entitlement Roadmap at $2,500" in html
+    assert "The Map at $2,500" in html
     assert "Staff review and sign-off" in html and html.count('class="box') == 10
 
 

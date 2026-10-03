@@ -24,4 +24,4 @@ def test_screening_export_has_no_line_items_or_windows():
     p = Project.load("riego-rd")
     d = publish.export(p, "screening", today=datetime.date(2026, 10, 1))
     assert all(b["lines"] == [] for b in d["budget"]["blocks"]) and d["windows"] == []
-    assert d["price"] == 500 and "Roadmap at $2,500" in d["next_steps"][0]
+    assert d["price"] == 500 and "Map at $2,500" in d["next_steps"][0]

@@ -49,5 +49,5 @@ def test_report_carries_the_rung_line_and_the_incomplete_stamp():
     p = Project.load("lemon-hill")
     rep = report.build(p, "roadmap", today=datetime.date(2026, 10, 3), ntp=datetime.date(2026, 10, 15))
     rung = rep["sections"][9]["blocks"][0]["items"][1]["cell"]["text"]
-    assert rung.startswith("Scale test: Roadmap Plus") and "Rezone" in rung
+    assert rung.startswith("Scale test: Scenarios") and "Rezone" in rung
     assert rep["meta"]["stamp"].startswith("MODEL OUTPUT")
