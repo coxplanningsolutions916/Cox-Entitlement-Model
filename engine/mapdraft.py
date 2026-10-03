@@ -50,7 +50,13 @@ def constraint_layers(p: Project, screen: dict) -> List[dict]:
         elif r.get("assumption") and r["assumption"] in p.assumptions:
             a = p.assumptions[r["assumption"]]; finding = finding or a.statement; src = {"document": f"Cox assumption {a.id}"}; conf = "derived"
         status = {"mapped": "mapped", "field": "field-verified"}.get(r.get("status"), "not yet pulled")
-        out.append({"issue": issue, "layer": r.get("layer"), "gis_layers": ISSUE_LAYERS.get(issue, []), "finding": finding or "", "status": status,
+        gis = list(ISSUE_LAYERS.get(issue, []))
+        low = (str(r.get("layer", "")) + " " + str(finding or "")).lower()
+        for words, extra in ((("wetland", "aquatic", "waters", "stream"), ["NWI wetlands", "NHD streams", "CARI"]), (("flood", "zone ae"), ["FEMA NFHL", "200-year floodplain and ULOP"]),
+                             (("cnddb", "species", "habitat"), ["CNDDB occurrences (1 and 5 mi)", "USFWS critical habitat"]), (("tree", "nesting"), ["tree canopy", "heritage tree inventory"])):
+            if any(w in low for w in words):
+                gis += [x for x in extra if x not in gis]
+        out.append({"issue": issue, "layer": r.get("layer"), "gis_layers": gis, "finding": finding or "", "status": status,
                     "verify": r.get("verify", ""), "implication": r.get("implication", ""), "confidence": conf or ("pending" if status == "not yet pulled" else "derived"),
                     "source": src.get("document") if isinstance(src, dict) else (src or "")})
     for i in t.primary_issues:
