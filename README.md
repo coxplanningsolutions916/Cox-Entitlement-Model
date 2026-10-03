@@ -52,3 +52,14 @@ R1 membership needs a map citation (hard) · R5 unquantifiable lines carry no nu
 ## Development types
 
 Every project names a `development_type` (greenfield, infill, redevelopment, rural_resource, public_infrastructure) from `canon/development_types.yaml`; the type sets what the screen must cover (rule R19), the default levers, the fee families and what the report leads with. See `docs/DEVELOPMENT-TYPES.md`. Fixtures: `riego-rd` (greenfield) and `lemon-hill` (infill).
+
+
+## The funnel commands (part 1)
+
+```
+python -m engine intake --from order.json            # or --address ... --jurisdiction ... --level screen --free ...
+python -m engine hooks <key> all [--live]            # Automator order, Productive review task, QBO request, delivery email (dry run by default)
+python -m engine review <key> --reviewer "..." --ok 1,2,... --fix "section|field|from|to|reason"
+python -m engine hooks <key> delivered --live        # Roadmap Delivered + note with the dashboard link
+python -m engine publish-all [--dash ~/code/cox-dashboard]   # every project + roadmaps/_metrics.json (free counter, error rate)
+```

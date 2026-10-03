@@ -1,0 +1,38 @@
+# Publish on push: every project and the metrics republished into cox-dashboard, which Render redeploys.
+# Needs the secret DASHBOARD_PUSH_TOKEN (a GitHub token with push to coxplanningsolutions916/cox-dashboard).
+# Without it the job records that it skipped, so a missing secret is visible rather than a silent failure.
+name: publish-to-dashboard
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      TOKEN: ${{ secrets.DASHBOARD_PUSH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: pip install pyyaml jinja2
+      - name: Check for the push token
+        run: |
+          if [ -z "$TOKEN" ]; then echo "::warning::DASHBOARD_PUSH_TOKEN is not set on this repo; publish skipped"; echo "skip=1" >> $GITHUB_ENV; fi
+      - name: Check out the dashboard
+        if: env.skip != '1'
+        uses: actions/checkout@v4
+        with:
+          repository: coxplanningsolutions916/cox-dashboard
+          token: ${{ secrets.DASHBOARD_PUSH_TOKEN }}
+          path: dash
+      - name: Publish every project and the metrics
+        if: env.skip != '1'
+        run: python -m engine publish-all --dash dash
+      - name: Commit and push
+        if: env.skip != '1'
+        working-directory: dash
+        run: |
+          git config user.name "cox-entitlement-model"; git config user.email "automation@coxplanningsolutions.com"
+          git add roadmaps/
+          git diff --cached --quiet && echo "nothing to publish" || (git commit -m "roadmaps: published from the model ($GITHUB_SHA)" && git push)

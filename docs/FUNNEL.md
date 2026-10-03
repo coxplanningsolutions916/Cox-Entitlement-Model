@@ -38,13 +38,13 @@ proposal → Productive project, the same model as its backbone.
 | Development types and the coverage rule | Built | `canon/development_types.yaml`, R19 |
 | Fee schedules by district, jurisdiction and agency | Built; Sutter and state seeded; Sacramento and Placer pending the fee tables | `engine/fees.py` |
 | Level names, prices, turnaround and credits per 2 Oct | Updated today | `engine/report.py`, `docs/PRICING-LADDER.md` |
-| **Scaffold from the form** (address, intent, uploads, scale answers → project folder) | To build, Oct 23 with the intake page | new `engine/intake.py` |
-| **Pilot-boundary check and type inference from the parcel** | Needs Suzanne's parcel and city-limits layers (Oct 16) | data layer |
+| **Scaffold from the form** (address, intent, uploads, scale answers → project folder) | Built 3 Oct: `python -m engine intake --from order.json` (or flags); pilot check by jurisdiction; type defaulted by jurisdiction class and flagged for the planner; register seeded; every primary issue a fact needed; documents filed as sources; delivery date by level | `engine/intake.py`, `canon/pilot.yaml` |
+| **Pilot-boundary check and type inference from the parcel** | Jurisdiction-based check built; the parcel-point check and type inference from the layers wait on Suzanne (Oct 16) | `canon/pilot.yaml`, data layer |
 | **Automated layer pulls** (zoning, overlays, constraints, CNDDB, fees, Business Analyst) into the screen rows | Needs the layers; the screen format is fixed | data layer |
-| **Automator and QBO hooks** (opportunity at Roadmap Requested with level, value, source, UTM, tag; Delivered on sign-off; $0 record) | To build, Oct 23 | `engine/hooks.py`, ghl_client |
-| **Correction register** (planner corrections logged per draft; error rate per Screen on the dashboard) | To build, Oct 16 | `engine/review.py`, dashboard |
-| **Free-screen counter**, paced (25 a month or a daily cap, delivery date shown) | To build, Oct 23 | dashboard, Automator |
-| **Publish on push** (every project republished to the dashboard by a GitHub Action) | To build; needs the push token on the model repo | `.github/workflows` |
+| **Automator and QBO hooks** (opportunity at Roadmap Requested with level, value, source, UTM, tag; Delivered on sign-off; $0 record) | Built 3 Oct, dry-run by default: `python -m engine hooks <key> order|review-task|qbo|delivered|email [--live]`; the QBO step emits the invoice request for the connector; the Productive review task lands on the reviewer rota | `engine/hooks.py` |
+| **Correction register** (planner corrections logged per draft; error rate per Screen on the dashboard) | Built 3 Oct: `review ... --fix "section|field|from|to|reason"` → corrections.yaml; 30-day error rate in `roadmaps/_metrics.json` and on the Client links page | `engine/review.py`, dashboard |
+| **Free-screen counter**, paced (25 a month or a daily cap, delivery date shown) | Built 3 Oct: cap 100, 25 a month, from 30 Oct; a free order past the month's pace is dated into the next month; past the cap it becomes a paid Screen; counter in `_metrics.json` and on the Client links page | `engine/intake.py`, dashboard |
+| **Publish on push** (every project republished to the dashboard by a GitHub Action) | Built 3 Oct: `publish-to-dashboard` workflow; skips with a warning until DASHBOARD_PUSH_TOKEN is added to the model repo (Chris) | `.github/workflows/publish.yml` |
 | **Map drafts**: constraints-map layers and the candidate-path table | After the layers, Oct 30 | `engine/map.py` |
 | **Scenario calculator** with land-use share tables by product type | Nov 13 | `engine/scenarios.py`, `canon/land_use_shares.yaml` |
 | Casebook (project history into rules, benchmarks, playbooks) | Designed; starts after the funnel items | `docs/CASEBOOK.md` |

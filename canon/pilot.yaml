@@ -1,0 +1,31 @@
+# Launch pilot: the jurisdictions the Roadmap is sold in first (Chris, 1 Oct 2026), the free-screen offer and its
+# pacing (strategy doc v2, 2 Oct 2026), and the type the scaffold assumes until the planner confirms it.
+pilot:
+  - {jurisdiction: "Sacramento County", kind: county, regions: ["Sacramento County", "USACE Sacramento District", "Sacramento Valley"]}
+  - {jurisdiction: "City of Sacramento", kind: city, county: "Sacramento County"}
+  - {jurisdiction: "City of Elk Grove", kind: city, county: "Sacramento County"}
+  - {jurisdiction: "City of Citrus Heights", kind: city, county: "Sacramento County"}
+  - {jurisdiction: "City of Folsom", kind: city, county: "Sacramento County"}
+  - {jurisdiction: "City of Rancho Cordova", kind: city, county: "Sacramento County"}
+  - {jurisdiction: "City of Galt", kind: city, county: "Sacramento County"}
+  - {jurisdiction: "City of Isleton", kind: city, county: "Sacramento County"}
+  - {jurisdiction: "Placer County", kind: county, regions: ["Placer County", "USACE Sacramento District", "Sacramento Valley", "Sierra Nevada foothills"]}
+  - {jurisdiction: "City of Roseville", kind: city, county: "Placer County"}
+  - {jurisdiction: "City of Rocklin", kind: city, county: "Placer County"}
+  - {jurisdiction: "City of Lincoln", kind: city, county: "Placer County"}
+  - {jurisdiction: "City of Auburn", kind: city, county: "Placer County"}
+  - {jurisdiction: "Town of Loomis", kind: city, county: "Placer County"}
+  - {jurisdiction: "City of Colfax", kind: city, county: "Placer County"}
+type_default: {city: infill, county: greenfield}     # the scaffold's guess; the planner confirms it in review item 1
+free_screens:
+  cap: 100
+  pace_per_month: 25
+  starts: "2026-10-30"
+turnaround_business_days: {screening: 2, roadmap: 5, plus: 10}
+prices: {screening: 500, roadmap: 2500, plus: 5000}
+credits: {roadmap: 500, plus: 2500}                   # Screen credited toward Map; Map toward Scenarios (Screen-to-Scenarios jump open)
+reviewers: ["1218809", "1339861"]                     # Chris, Kristin: the rota alternates by order count
+automator: {pipeline: "Sales", requested_stage: "Roadmap Requested", delivered_stage: "Roadmap Delivered"}
+productive: {review_project: "983286", review_list_name: "Roadmap reviews"}
+qbo: {product_id: 85, item: "01 Assessment"}
+dashboard_url: "https://cox-dashboard.onrender.com"

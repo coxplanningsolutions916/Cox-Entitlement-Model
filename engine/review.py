@@ -97,6 +97,47 @@ def record_review(p: Project, reviewer: str, items: Dict[int, str], date: Option
     return block
 
 
+def record_corrections(p: Project, corrections: List[dict], reviewer: str, date: Optional[str] = None) -> str:
+    """Append the planner's corrections to the draft (section, field, from, to, reason) to corrections.yaml. The
+    register is what the model learns from and what the dashboard counts as the error rate per Screen."""
+    date = date or datetime.date.today().isoformat()
+    path = os.path.join(PROJECTS, p.key, "corrections.yaml")
+    existing = (_yaml(path) or {}).get("corrections", []) if os.path.exists(path) else []
+    for c in corrections:
+        existing.append({"date": date, "reviewer": reviewer, **c})
+    with open(path, "w") as f:
+        yaml.safe_dump({"corrections": existing}, f, sort_keys=False, allow_unicode=True, width=120)
+    return path
+
+
+def parse_fix(text: str) -> dict:
+    """'section|field|from|to|reason' -> dict (pipes inside values are not supported; keep reasons short)."""
+    parts = [x.strip() for x in text.split("|")]
+    while len(parts) < 5:
+        parts.append("")
+    return {"section": parts[0], "field": parts[1], "from": parts[2], "to": parts[3], "reason": parts[4]}
+
+
+def correction_metrics(root: str = PROJECTS, today: Optional[datetime.date] = None, days: int = 30) -> dict:
+    import glob
+    today = today or datetime.date.today()
+    since = (today - datetime.timedelta(days=days)).isoformat()
+    reviewed, corrections, by_section = 0, 0, {}
+    for sp in glob.glob(os.path.join(root, "*", "screen.yaml")):
+        sc = _yaml(sp) or {}
+        rv = sc.get("review") or {}
+        if rv.get("reviewer") and str(rv.get("date", "")) >= since:
+            reviewed += 1
+        cp = os.path.join(os.path.dirname(sp), "corrections.yaml")
+        if os.path.exists(cp):
+            for c in (_yaml(cp) or {}).get("corrections", []):
+                if str(c.get("date", "")) >= since:
+                    corrections += 1
+                    by_section[str(c.get("section"))] = by_section.get(str(c.get("section")), 0) + 1
+    return {"days": days, "screens_reviewed": reviewed, "corrections": corrections,
+            "per_screen": round(corrections / reviewed, 2) if reviewed else None, "by_section": by_section}
+
+
 def review_state(screen: dict) -> dict:
     rv = screen.get("review") or {}
     items = rv.get("items") or {}

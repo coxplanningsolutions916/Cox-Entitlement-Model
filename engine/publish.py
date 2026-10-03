@@ -88,6 +88,39 @@ def export(p: Project, rung: str = "screening", today: Optional[datetime.date] =
     }
 
 
+def write_metrics(dash: Optional[str] = None, today: Optional[datetime.date] = None) -> str:
+    """roadmaps/_metrics.json: the free-screen counter and pace, the correction register's error rate, and the order list."""
+    from . import intake as intake_mod, review as review_mod
+    dash = dash or DEFAULT_DASH
+    today = today or datetime.date.today()
+    out_dir = os.path.join(dash, "roadmaps"); os.makedirs(out_dir, exist_ok=True)
+    m = intake_mod.metrics(today)
+    m["corrections"] = review_mod.correction_metrics(today=today)
+    m["generated"] = today.isoformat()
+    path = os.path.join(out_dir, "_metrics.json")
+    with open(path, "w") as f:
+        json.dump(m, f, indent=1, default=str)
+    return path
+
+
+def publish_all(dash: Optional[str] = None, today: Optional[datetime.date] = None) -> list:
+    """Every project under projects/ at the rung its order names (intake.yaml), else the roadmap rung; plus the metrics."""
+    from . import intake as intake_mod
+    from .model import PROJECTS
+    out = []
+    for key in sorted(os.listdir(PROJECTS)):
+        if not os.path.isdir(os.path.join(PROJECTS, key)) or key.startswith((".", "_")):
+            continue
+        it = intake_mod.load_intake(key)
+        rung = it.get("level") or "roadmap"
+        try:
+            out.append(write(Project.load(key), rung, dash, today))
+        except Exception as e:  # one bad project must not stop the others
+            out.append(f"{key}: FAILED {e}")
+    out.append(write_metrics(dash, today))
+    return out
+
+
 def write(p: Project, rung: str = "screening", dash: Optional[str] = None, today: Optional[datetime.date] = None, ntp: Optional[datetime.date] = None) -> str:
     dash = dash or DEFAULT_DASH
     out_dir = os.path.join(dash, "roadmaps")
