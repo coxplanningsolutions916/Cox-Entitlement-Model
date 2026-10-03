@@ -127,6 +127,16 @@ def r19_type_coverage(p: Project) -> List[Violation]:
     return out
 
 
+def r20_rung_matches_scale_test(p: Project) -> List[Violation]:
+    """A Roadmap sold below the rung the scale test recommends needs the planner's written reason."""
+    from . import review as review_mod
+    st = review_mod.scale_test(p)
+    out = []
+    if st["override"] and review_mod.RUNG_ORDER.index(st["override"]) < review_mod.RUNG_ORDER.index(st["recommended"]) and not st["override_reason"]:
+        out.append(Violation("R20", p.key, f"rung override to {st['override']} below the scale test's {st['recommended']} without a reason", True))
+    return out
+
+
 def check(p: Project, fee_build=None, draft_text: str = "") -> List[Violation]:
     v = []
     v += r1_membership_needs_map(p)
@@ -140,4 +150,5 @@ def check(p: Project, fee_build=None, draft_text: str = "") -> List[Violation]:
         v += r13_quarantine(p, draft_text)
     v += r18_local_rule_confirmed(p)
     v += r19_type_coverage(p)
+    v += r20_rung_matches_scale_test(p)
     return v

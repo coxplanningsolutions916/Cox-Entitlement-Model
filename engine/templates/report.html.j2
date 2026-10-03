@@ -120,6 +120,7 @@
     <li><span class="box{% if c.state == 'ok' %} ok{% endif %}"></span><span>{{ c.n }}. {{ c.text }}</span><span class="verify">{% if c.state and c.state != 'ok' %}{{ c.state }}{% endif %}</span></li>
   {% endfor %}
   </ul>
+  {% if r.meta.review_summary %}<p><b>Reviewer's summary.</b> {{ r.meta.review_summary }}</p>{% endif %}
   <div class="sign"><div>Reviewed by{% if r.meta.reviewer %}: {{ r.meta.reviewer }}{% endif %}</div><div>Date{% if r.meta.review_date %}: {{ r.meta.review_date }}{% endif %}</div></div>
 </section>
 

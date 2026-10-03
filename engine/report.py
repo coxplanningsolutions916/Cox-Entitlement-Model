@@ -19,7 +19,7 @@ from typing import List, Optional
 
 import jinja2
 
-from . import fee as fee_mod, program as program_mod, rules, schedule as schedule_mod, types as types_mod
+from . import fee as fee_mod, program as program_mod, review as review_mod, rules, schedule as schedule_mod, types as types_mod
 from .model import Project, _yaml, CONFIDENCE
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -372,7 +372,14 @@ def build(p: Project, rung: str = "screening", today: Optional[datetime.date] = 
         qs.append({"q": q["q"], "by": "; ".join(f"{d.code} {d.name}" for d in ds)})
     if not qs:
         qs = [{"q": r["assumption"], "by": r["verified_by"]} for r in reg[:3]]
-    blocks = [{"type": "lines", "items": [{"label": "READ", "cell": _row_cell(p, S, {**g, "text": g.get("read")}) if g.get("read") else _needed("the planner's go or no-go read")}]},
+    st = review_mod.scale_test(p, sc)
+    rung_name = {"screening": "Step 1a Screening", "roadmap": "Entitlement Roadmap ($2,500)", "plus": "Roadmap Plus ($5,000)"}
+    scale_txt = f"Scale test: {rung_name[st['recommended']]}" + (f" because of {'; '.join(st['triggers'])}" if st["triggers"] else " (no trigger fired)") + "."
+    if st["override"]:
+        scale_txt += f" Planner's call: {rung_name[st['override']]}. {st['override_reason']}"
+    scale_txt += f" {st['note']}"
+    blocks = [{"type": "lines", "items": [{"label": "READ", "cell": _row_cell(p, S, {**g, "text": g.get("read")}) if g.get("read") else _needed("the planner's go or no-go read")},
+                                          {"label": "RUNG", "cell": _cell(scale_txt, S.ref({"document": "Cox scale test, docs/PRICING-LADDER.md; plugin reference scale-test-and-pricing.md"}, "method"), "derived")}]},
               {"type": "questions", "items": qs}]
     sections.append({"n": 10, "title": "Go or no-go, and the three questions to answer next", "blocks": blocks})
 
@@ -390,8 +397,9 @@ def build(p: Project, rung: str = "screening", today: Optional[datetime.date] = 
     rv = sc.get("review", {}) or {}
     items = rv.get("items", {}) or {}
     checklist = [{"n": i + 1, "text": txt, "state": items.get(i + 1, items.get(str(i + 1), ""))} for i, txt in enumerate(CHECKLIST)]
-    reviewed = bool(rv.get("reviewer"))
-    stamp = RUNGS[rung]["stamp"] if reviewed else "MODEL OUTPUT, NOT YET STAFF-REVIEWED. Not for release."
+    rstate = review_mod.review_state(sc)
+    reviewed = rstate["complete"]
+    stamp = RUNGS[rung]["stamp"] if reviewed else ("REVIEW IN PROGRESS: not yet complete. Not for release." if rstate["reviewed"] else "MODEL OUTPUT, NOT YET STAFF-REVIEWED. Not for release.")
 
     meta = {
         "rung": rung, "rung_title": RUNGS[rung]["title"], "price": RUNGS[rung]["price"], "staff_hours": RUNGS[rung]["staff_hours"],
@@ -399,6 +407,7 @@ def build(p: Project, rung: str = "screening", today: Optional[datetime.date] = 
         "address": sc.get("address", p.meta.get("name")), "apns": ", ".join(p.meta.get("parcels", [])), "acres": p.meta.get("acres"),
         "jurisdiction": ", ".join(p.meta.get("jurisdiction", [])), "date": today.isoformat(), "ntp": ntp.isoformat(),
         "development_type": tp["name"], "development_type_id": tp["id"], "uses": ", ".join(tp["uses"]),
+        "scale": st, "review_summary": rstate["summary"], "review_notes": rstate["notes"],
         "stamp": stamp, "reviewed": reviewed, "reviewer": rv.get("reviewer", ""), "review_date": rv.get("date", ""),
         "standing_header": STANDING_HEADER, "terms": TERMS,
         "model_version": "cox-entitlement-model 0.1.0",
