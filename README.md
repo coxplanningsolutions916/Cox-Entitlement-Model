@@ -63,3 +63,5 @@ python -m engine review <key> --reviewer "..." --ok 1,2,... --fix "section|field
 python -m engine hooks <key> delivered --live        # Roadmap Delivered + note with the dashboard link
 python -m engine publish-all [--dash ~/code/cox-dashboard]   # every project + roadmaps/_metrics.json (free counter, error rate)
 ```
+
+`python -m engine map <key>` prints and exports the Map drafts; `python -m engine scenarios <key>` prints the Scenarios estimates; `report --rung plus --pdf` also writes the board summary and deck.

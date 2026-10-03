@@ -6,7 +6,7 @@ import argparse
 import datetime
 import sys
 
-from . import fee as fee_mod, fees as fees_mod, hooks as hooks_mod, intake as intake_mod, mapdraft, program as program_mod, publish as publish_mod, report as report_mod, review as review_mod, rules, schedule
+from . import fee as fee_mod, fees as fees_mod, hooks as hooks_mod, intake as intake_mod, mapdraft, program as program_mod, scenarios as scenarios_mod, publish as publish_mod, report as report_mod, review as review_mod, rules, schedule
 from .model import Project
 
 
@@ -52,6 +52,7 @@ def main(argv=None):
     s.add_argument("--scale", default="", help="parcels=1,resources=unknown,discretionary=no,board=no")
     s.add_argument("--hooks", action="store_true", help="also run the order hooks (dry run unless --live)"); s.add_argument("--live", action="store_true")
     s = sub.add_parser("map", help="the Map-level drafts: constraints manifest (exported), candidate paths, HBU, verification plan"); s.add_argument("project"); s.add_argument("--out", default="out"); s.add_argument("--ntp", default="")
+    s = sub.add_parser("scenarios", help="the Scenarios-level estimates on the constraints map"); s.add_argument("project"); s.add_argument("--ntp", default="")
     s = sub.add_parser("hooks", help="run an order's hooks: order | review-task | qbo | delivered | email"); s.add_argument("project"); s.add_argument("what", choices=["order", "review-task", "qbo", "delivered", "email", "all"]); s.add_argument("--live", action="store_true")
     s = sub.add_parser("publish-all", help="republish every project and the metrics to the dashboard"); s.add_argument("--dash", default="")
     a = ap.parse_args(argv)
@@ -78,6 +79,11 @@ def main(argv=None):
         for x in publish_mod.publish_all(a.dash or None): print(x)
         return 0
     p = Project.load(a.project)
+    if a.cmd == "scenarios":
+        from .report import load_screen
+        ntp = datetime.date.fromisoformat(a.ntp) if a.ntp else datetime.date.today()
+        print(scenarios_mod.render_text(p, scenarios_mod.build(p, load_screen(p), fee_mod.build(p), program_mod.build(p), ntp)))
+        return 0
     if a.cmd == "map":
         from .report import load_screen
         ntp = datetime.date.fromisoformat(a.ntp) if a.ntp else datetime.date.today()
@@ -116,6 +122,7 @@ def main(argv=None):
         ntp = datetime.date.fromisoformat(a.ntp) if a.ntp else None
         res = report_mod.write(p, a.rung, a.out, a.pdf, a.internal, ntp)
         print(f"{res['html']}  ({res['sources']} sources cited, {res['facts_needed']} facts needed)")
+        if res.get("board"): print(f"board package: {res['board']['summary']}  {res['board']['deck']}" + (f"  (PDFs: {res['board']['summary_pdf']}, {res['board']['deck_pdf']})" if res['board'].get('summary_pdf') else ""))
         if a.pdf: print(res["pdf"] or "PDF not produced: Chrome not found (set CHROME=/path/to/chrome)")
     elif a.cmd == "publish":
         ntp = datetime.date.fromisoformat(a.ntp) if a.ntp else None

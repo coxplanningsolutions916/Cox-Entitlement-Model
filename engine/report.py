@@ -19,7 +19,7 @@ from typing import List, Optional
 
 import jinja2
 
-from . import fee as fee_mod, mapdraft, program as program_mod, review as review_mod, rules, schedule as schedule_mod, types as types_mod
+from . import fee as fee_mod, mapdraft, program as program_mod, review as review_mod, rules, scenarios as scenarios_mod, schedule as schedule_mod, types as types_mod
 from .model import Project, _yaml, CONFIDENCE
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -200,6 +200,7 @@ def build(p: Project, rung: str = "screening", today: Optional[datetime.date] = 
     report_src = sc.get("report_source")
     sections = []
     md = mapdraft.build(p, sc, fb, ntp) if rung in ("roadmap", "plus") else None
+    scn = scenarios_mod.build(p, sc, fb, prog, ntp) if rung == "plus" else None
 
     # 1. The decision in three lines
     dec = sc.get("decision", {})
@@ -261,8 +262,24 @@ def build(p: Project, rung: str = "screening", today: Optional[datetime.date] = 
         blocks.append({"type": "table", "columns": ["Use", "Permissible", "Market read", "Rank"], "caption": "Highest and best use: permissible uses ranked against the market" + (" (model draft for the planner)" if hb["draft"] else ""),
                        "rows": [[_cell(r.get("use", "")), _cell(r.get("permissible", "")), _cell(r.get("market", ""), S.ref(r.get("source")) if r.get("source") else None, r.get("confidence")), _cell(str(r.get("rank", "")))] for r in hb["rows"]]})
         blocks.append({"type": "note", "text": hb["note"]})
+    if scn:
+        srows = []
+        for x in scn["programs"]:
+            y = f"{x['yield'][0]:,} to {x['yield'][1]:,} {x['unit']}" if x["yield"] else None
+            srows.append([_cell(x["name"]), _cell(y, S.ref({"document": "Cox land-use share tables (canon/land_use_shares.yaml), planning ranges"}, "parameters"), "derived") if y else _needed(x.get("fact_needed") or "the by-right standard"),
+                          _cell("; ".join(x["approvals"])), _cell(f"{x['duration_months'][0]} to {x['duration_months'][1]} months"),
+                          _cell(f"{_money(x['cost']['low'])} to {_money(x['cost']['high'])}" if x["cost"]["low"] else x["cost"]["basis"], None, "derived" if x["cost"]["low"] else None),
+                          _cell("; ".join(x["assumptions"]))])
+        blocks.append({"type": "table", "columns": ["Scenario", "Yield", "Approvals it triggers", "Duration", "Cost to entitlement", "Rests on"], "rows": srows,
+                       "caption": "Scenarios estimated on the constraints map" + (" (model draft for the planner)" if any(x.get("draft") for x in scn["programs"]) else "")})
+        for x in scn["programs"]:
+            if x["steps"]:
+                blocks.append({"type": "table", "columns": [x["name"], "Low", "High", "Basis"], "caption": f"How {x['id']} is worked",
+                               "rows": [[_cell(st["step"]), _cell(f"{st['low']:.0%}" if st["unit"] == "share" else (f"{st['low']:,.1f} {st['unit']}" if st["unit"] == "acres" else f"{st['low']:,.0f} {st['unit']}")),
+                                         _cell(f"{st['high']:.0%}" if st["unit"] == "share" else (f"{st['high']:,.1f} {st['unit']}" if st["unit"] == "acres" else f"{st['high']:,.0f} {st['unit']}")), _cell(st["basis"])] for st in x["steps"]]})
+        blocks.append({"type": "note", "text": scn["note"] + " Exclusions: " + ("; ".join(f"{x['name']} ({x['acres']} ac)" if x.get("acres") is not None else f"{x['name']} (acreage not yet measured)" for x in scn["exclusions"]) or "none on the record") + "."})
     blocks.append({"type": "note", "text": "This is a desktop read, not an appraisal or a market study."})
-    sections.append({"n": 4, "title": "Fit: the program against the rules and the market", "blocks": blocks})
+    sections.append({"n": 4, "title": "Fit: the program against the rules and the market" + (", and the scenarios" if scn else ""), "blocks": blocks})
 
     # 5. Constraints screen
     crows = []
@@ -280,6 +297,9 @@ def build(p: Project, rung: str = "screening", today: Optional[datetime.date] = 
         blocks5.append({"type": "table", "columns": ["Constraint", "GIS layers behind it", "Tag", "Confidence"], "caption": f"Desktop constraints map, layer manifest: {lg['mapped']} mapped, {lg['field']} field-verified, {lg['pending']} not yet pulled (exported for the ArcGIS template)",
                         "rows": [[_cell(l["layer"]), _cell("; ".join(l["gis_layers"]) or "—"), _cell(l["status"]), _cell(l["confidence"])] for l in md["layers"]]})
         blocks5.append({"type": "note", "text": "The map figure is produced from this manifest in ArcGIS and attached by the planner; every constraint on it carries the tag above. A field-verified tag only ever comes from Step 1b."})
+    if scn:
+        rs = scn["records_search"]
+        blocks5.append({"type": "lines", "items": [{"label": "RECORDS SEARCH", "cell": _cell(f"{rs['state']}: {rs['reason']}." + (f" Returned {rs['returned']}: {rs['finding']}" if rs.get("returned") else "") + f" {rs['note']}", None, None)}]})
     sections.append({"n": 5, "title": "Constraints screen" + (" and the desktop constraints map" if md else ""), "blocks": blocks5})
 
     # 6. Historic aerial read
@@ -498,4 +518,8 @@ def write(p: Project, rung: str = "screening", out_dir: str = "out", pdf: bool =
     result = {"html": base + ".html", "pdf": None, "facts_needed": rep["facts_needed"], "sources": len(rep["sources"])}
     if pdf:
         result["pdf"] = base + ".pdf" if render_pdf(base + ".html", base + ".pdf") else None
+    if rung == "plus":
+        from . import board, fee as _fee, program as _prog, scenarios as _scn
+        sc = load_screen(p); fb = _fee.build(p); prog = _prog.build(p)
+        result["board"] = board.write(p, rep, _scn.build(p, sc, fb, prog, ntp or datetime.date.today()), mapdraft.build(p, sc, fb, ntp or datetime.date.today()), out_dir, pdf)
     return result

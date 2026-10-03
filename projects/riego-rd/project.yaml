@@ -9,7 +9,8 @@ regions: ["Central Valley", "USACE Sacramento District", "Sacramento Valley"]   
 parcels: ["35-260-018", "35-260-019"]
 acres: 160.16
 program: "Residential, 58 to 62 lots (client concept, external_unverified)"
-status: "pre-approval"          # no Productive project, budget, registry entry, Slack channel or Harvest code (brief §11)
+status: "pre-approval"
+rung: plus                    # the dashboard page shows this project at the Scenarios level (the record supports it)          # no Productive project, budget, registry entry, Slack channel or Harvest code (brief §11)
 task_order_1:
   name: "Task Order 1 — assessment, design and pre-application"
   prepared: "2026-09-21"

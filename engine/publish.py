@@ -10,7 +10,7 @@ import json
 import os
 from typing import Optional
 
-from . import charts, fee as fee_mod, mapdraft, program as program_mod, report as report_mod, review as review_mod, schedule as schedule_mod, types as types_mod
+from . import charts, fee as fee_mod, mapdraft, program as program_mod, report as report_mod, review as review_mod, scenarios as scenarios_mod, schedule as schedule_mod, types as types_mod
 from .model import Project
 
 DEFAULT_DASH = os.path.expanduser(os.environ.get("COX_DASHBOARD", "~/code/cox-dashboard"))
@@ -82,6 +82,7 @@ def export(p: Project, rung: str = "screening", today: Optional[datetime.date] =
         "development_type": types_mod.profile(p), "type_coverage": {"missing": [i["label"] for i in types_mod.coverage(p, sc)["missing"]]},
         "scale": review_mod.scale_test(p, sc), "review": review_mod.review_state(sc),
         "map": (lambda m: {"layers": m["layers"], "paths": m["paths"], "hbu": m["hbu"], "plan": m["plan"], "step1b": m["step1b"], "legend": m["legend"]})(mapdraft.build(p, sc, fb, ntp or today)) if rung in ("roadmap", "plus") else None,
+        "scenarios": scenarios_mod.build(p, sc, fb, prog, ntp or today) if rung == "plus" else None,
         "decision": decision, "go_no_go": _text(sections[10]["blocks"][0]["items"][0]["cell"]), "questions": questions,
         "approvals": approvals, "windows": windows, "budget": budget, "register": register, "change_log": change_log,
         "next_steps": rep["next_steps"], "facts_needed": rep["facts_needed"], "fees_needed": rep["fees_needed"], "chart": chart,
@@ -114,7 +115,7 @@ def publish_all(dash: Optional[str] = None, today: Optional[datetime.date] = Non
         if not os.path.isdir(os.path.join(PROJECTS, key)) or key.startswith((".", "_")):
             continue
         it = intake_mod.load_intake(key)
-        rung = it.get("level") or "roadmap"
+        rung = it.get("level") or (Project.load(key).meta.get("rung")) or "roadmap"
         try:
             out.append(write(Project.load(key), rung, dash, today))
         except Exception as e:  # one bad project must not stop the others
