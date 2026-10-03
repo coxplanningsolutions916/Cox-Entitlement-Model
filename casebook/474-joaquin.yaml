@@ -1,0 +1,254 @@
+key: 474-joaquin
+name: "474 Joaquin Road, Mammoth Lakes: Environmental Permitting for a 38-unit RMF-2 subdivision"
+client: "Mammoth Springs Resorts"
+jurisdiction: ["Town of Mammoth Lakes", "CDFW Region 6", "Lahontan RWQCB", "USACE"]
+development_type: infill        # three platted parcels inside the Town, RMF-2, an intermittent tributary to Mammoth Creek through the middle
+uses: [residential]
+status: "active; on hold by the client since 2026-10-01; CO2 unsigned"
+drafted: "2026-10-03"
+drafted_by: "model, from the record; interview with Chris and Kristin pending"
+summary: >
+  A permits-first case that became a CEQA case. The client bought three parcels in Mammoth Lakes with a 2022 delineation in
+  hand, hired Cox in 2025 to get the Section 404, 401 and 1602 authorizations for a 38-unit duplex and triplex subdivision,
+  and let the Town run a separate IS/MND through its own consultant. Cox filed all three applications on the 2022 delineation
+  in the fall of 2025. The CDFW and Water Board site inspection of 5 May 2026 reset the baseline: the state measures to top of
+  bank and riparian canopy, not the federal ordinary high water mark, so state waters grew from 0.042 to about 0.187 acres,
+  riparian impact of 0.488 acres appeared that the IS/MND never analyzed, and the agencies pointed at the off-site reach
+  between the Meridian culvert and the property that the project would dewater. Cox re-ran the delineation to the state
+  standard, ran the protocol rare plant survey in season, argued in June for an IS/MND clarification with a phased off-site
+  action, and lost that argument in July when the Town directed an EIR. Cox then held the three agency clocks open by mutual
+  extension four times, wrote a 149-parameter Project Record so the EIR, the three permits and the tract map would carry one
+  set of numbers, and priced a $110,327.50 change order for the EIR path. The client said they could not afford it, asked
+  Cox to finish the signed scope and pause, and put the project on hold on 1 October 2026 with a four-month slip. No permit
+  has issued. The case is the firm's clearest record of what it costs when the CEQA document and the permit applications are
+  run by different teams on different delineations.
+links:
+  productive_project: "973310"
+  productive_deals: ["4021614 (TO1)", "4104838 (CO1, vegetation survey, $24,451)", "4272987 (CO2, $110,327.50, pending)"]
+  automator_opportunities: ["vYtuc34VwaSyobUHrTha (CO1, won)", "VaJbC7dda2XRbCaC1jVU (CO2, Proposal Sent)"]
+  drive_folder: "#474-joaquin (1ufhNhon8-mSLt9ZG6J2phMSbyeHVNGtD)"
+  key_documents: ["474_Joaquin_Project_Record_DRAFT_08-26-2026.xlsx", "CO2 handoff memo Rev 6 (2026-09-10)", "Inspection Response memo (2026-06-04)", "Mitigation Strategy Briefing (2026-05-05)", "Town IS-MND clarification memo (2026-06-05, sent 06-08)"]
+  dashboard_snapshot: "cox-dashboard/budgets/474-joaquin.json"
+
+identity:
+  parcel: {apns: ["033-170-003-000", "033-170-004-000", "033-170-005-000"], acres: 3.22, zoning: "RMF-2 (Residential Multi-Family 2)", general_plan: "HDR-2", max_density_du_ac: 12, elevation_ft: [7925, 7960]}
+  program: "38 units in 18 buildings (16 duplexes, 2 triplexes); 38-lot Tentative Tract Map; Design Review; one existing residence and a bike path on site; an unnamed intermittent tributary to Mammoth Creek crosses the parcels"
+  persona: "investor-developer with a design team already engaged (architect, civil); Cox retained for environmental permitting only"
+  level_sold: "Step 4 Permits direct (no Step 1a or 1b with Cox); TO1 fixed fee by deliverable, invoiced T&M monthly; CO1 vegetation survey; CO2 (EIR path) proposed"
+  margins_at_zero: ["height 35 ft of 35 ft", "outdoor recreation area 5,700 sf of 5,700 sf", "private outdoor space 60 sf of 60 sf", "density 38 of 38.59 permitted (about 2,144 sf of site headroom) on an unverified boundary"]
+
+path:
+  planned: ["Scope and update the 2022 delineation and biological assessment", "Cultural resources assessment", "Impacts analysis and alternatives analysis (LEDPA)", "Federal and state project descriptions; mitigation plan", "File 404 PCN, 401 WQC/WDR, 1602 notification in parallel with the Town's IS/MND", "Mitigation implementation through in-lieu fee credits"]
+  actual: ["All three applications filed fall 2025 on the 2022 federal-standard delineation", "1602 notification incomplete (Nov 2025), deemed complete 2026-04-08; IS/MND circulated April 2026 (SCH 2026041111)", "Joint CDFW and Lahontan site inspection 2026-05-05 reset the state waters baseline (top of bank, riparian canopy) and raised the off-site Meridian reach", "Agency comment letters 2026-06-04; Cox proposed IS/MND clarifications and a phased off-site action; Town directed an EIR in July 2026 (CAJA)", "State-standard delineation and protocol rare plant surveys re-run June to July 2026", "Four mutual extensions of the CDFW draft-agreement deadline (to 2026-07-06, 09-03, 10-01, then 2027-01-01)", "Project Record (149 parameters) built 2026-08-26 to hold one value per parameter across EIR, 1602, 401, 404 and TTM", "CO2 for the EIR path sent 2026-09-15; declined on cost 2026-09-16; project on hold 2026-10-01"]
+  next: ["Civil engineer delivers the construction-limits boundary, drainage plan and fill volume (overdue since early August)", "Final delineation and BRA publish; impacts map and all three applications amended to one set of figures", "Town CEQA deposit lands; CAJA NOP; AB 52 restarts; EIR about nine months best case", "Mitigation credits sized once state waters and riparian figures are confirmed (3:1, Region 6 general bank credits)", "CO2 re-scoped or phased to what the client can fund; or the engagement closes at the signed scope"]
+
+timeline:
+  - {date: "2022-08-20", event: "Resource Concepts Inc. aquatic resources delineation, federal standard; becomes IS/MND Appendix C-2 and the basis of all three 2025 applications", source: "Project Record ENV-02; IS/MND Appendix C-2"}
+  - {date: "2024-09", event: "Cox proposal for environmental permitting (TO1); fixed fee by deliverable with a 10 percent contingency", source: "Drive folder #474-joaquin; budgets/474-joaquin.json note (fixed fee $149,686 + $11,400 contingency)"}
+  - {date: "2025-04", event: "Work starts: scoping, cultural, rare plant, delineation update, BRA; first time entries 2025-04-25", source: "Productive time entries, project 973310"}
+  - {date: "2025-07-08", event: "Town's CEQA consultant proposes an MND; Cox asks the client for the CEQA timeline because the Water Board needs the CEQA document before it can act on the 401", source: "Gmail thread 'Re: MND Proposal - 474 Joaquin Mammoth Lakes - 7_8_25' (Kristin, 2025-09-15)"}
+  - {date: "2025-08", event: "Tree and shrub survey (2 to 6 inch DBH) by the Cox biologist; arborist covers over 6 inch separately (Oct 2025)", source: "Gmail 'RE: Tree and Vegetation Survey' 2025-08-22; Project Record ENV-17, ENV-18"}
+  - {date: "2025-08-20", event: "EPIMS designated-representative setup; CDFW requires the applicant to be a person, not an organization title", source: "Gmail 'RE: Request for Designated Representative Access' 2025-08-20"}
+  - {date: "2025-09-12", event: "Section 404 preconstruction notification submitted through the USACE regulatory request system", source: "Gmail, rrs@usace.army.mil, 2025-09-12 (file number assigned)"}
+  - {date: "2025-09-16", event: "401 WQC/WDR application ready; client signature requested", source: "Gmail '401 Permit Signature for 474 Joaquin Road Project' 2025-09-16"}
+  - {date: "2025-10-20", event: "1602 notification submitted (EPIMS-MOO-61580)", source: "Gmail 'CDFW - EPIMS - 61580 - Notification Submitted' 2025-10-20"}
+  - {date: "2025-11-15", event: "CDFW: notification incomplete; Cox drafts the client response in December and answers CDFW 2026-02-27", source: "Gmail 'Notification Incomplete' 2025-11-15; 'Draft Email to Poorva Regarding CDFW Response' 2025-12-09; thread 19a84d9eb0751c31"}
+  - {date: "2025-12-16", event: "USACE: will wait for the Regional Board to deem the 401 application complete", source: "Gmail 'RE: [Non-DoD Source] 474 Joaquin Road project' 2025-12-16"}
+  - {date: "2026-04-08", event: "CDFW deems the 1602 notification complete; 60-day clock to a draft agreement starts. IS/MND circulates the same month (SCH 2026041111)", source: "Gmail, CDFW, 2026-06-04; Project Record REG-04"}
+  - {date: "2026-05-05", event: "Joint CDFW and Lahontan site inspection: state jurisdiction to top of bank and riparian canopy, not OHWM; wetland under the existing bridge; fill-volume quantification requested; the off-site reach to the Meridian culvert raised", source: "Granola, post-inspection debrief 2026-05-05; Inspection Response memo 2026-06-04"}
+  - {date: "2026-05-05", event: "Internal mitigation strategy briefing: 0.54 ac CDFW area, Waterford parcel option, functions-and-values framework, questions for the agencies", source: "Mitigation Strategy Briefing, Drive"}
+  - {date: "2026-06-04", event: "CDFW and Lahontan comment letters on the IS/MND; client asks the Town for an urgent call on off-site drainage and CEQA; CDFW and Cox agree to extend the draft agreement to 2026-07-06", source: "Gmail thread '474 Joaquin - Offsite drainage CEQA Impact'; Gmail, CDFW extension thread 2026-06-04"}
+  - {date: "2026-06-08", event: "Cox memo to the Town: clarify the IS/MND rather than restart, treat the off-site reach as a separate later action, recirculation argument under 15073.5", source: "Gmail, Chris to Town, 2026-06-08; Town IS-MND memo 2026-06-05"}
+  - {date: "2026-06-10", event: "Client principal tells the Town he will meet Town Council without his legal team", source: "Gmail '474 Joaquin' 2026-06-10"}
+  - {date: "2026-06", event: "Site revisited; state-standard delineation data collected; first protocol rare plant survey", source: "Gmail, Chris to CDFW, 2026-06-22"}
+  - {date: "2026-07-01", event: "Second mutual extension of the CDFW deadline to 2026-09-03", source: "Gmail, CDFW, 2026-07-01; Chris agrees 07-02"}
+  - {date: "2026-07", event: "Town directs an EIR; CAJA scopes it (focused EIR discussed, full scope recorded); off-site Meridian reach folded in; client's counsel engaged; client burn about $100,000 a month", source: "Granola, EIR pivot meeting, July 2026; Project Record REG-02"}
+  - {date: "2026-07-17", event: "CAJA asks whether the biology updates answer CDFW; Cox confirms rare plant survey done and delineation updated to state requirements; CAJA's revised proposal to the Town 2026-07-20", source: "Gmail thread 'Re: 474 Joaquin' 2026-07-17 to 07-21"}
+  - {date: "2026-07-23", event: "Boundary and drainage meeting: 0.043 ac federal, 0.187 ac state; five to ten cross-sections proposed instead of a full drainage model; civil engineer owns the boundary", source: "Granola, boundary and drainage meeting, 2026-07-23; Productive task 19141637"}
+  - {date: "2026-07-29", event: "Last rare plant survey date (surveys June through 07-28/29)", source: "Gmail, Chris to CDFW, 2026-08-11"}
+  - {date: "2026-08-12", event: "Third mutual extension of the CDFW deadline to 2026-10-01", source: "Gmail, CDFW, 2026-08-12; Chris agrees 08-13"}
+  - {date: "2026-08-18", event: "Town CEQA Letter Agreement executed by the client principal as 'Manager' with no entity named; non-terminable, full deposits before each phase", source: "Project Record LGL-11, SCR-01, SCR-03"}
+  - {date: "2026-08-26", event: "Project Record v0.1 to v0.4 built in one day: 149 parameters, 91 confirmed, 55 conflicts; finds the IS/MND's 38.591 du/ac error, the 3.22 vs 3.24 acre discrepancy, the HDR-2 vs RMF-2 mislabel in Cox's own AA", source: "474_Joaquin_Project_Record_DRAFT_08-26-2026.xlsx, Read Me and Project Record sheets"}
+  - {date: "2026-09-10", event: "CO2 handoff memo Rev 6: four changes, EIR-path scope, phasing A/B, open items ($200 vs $250 rate, six entity names, 10 percent PM), internal margin 68.8 percent; mitigation credit about $300,000 per acre vs about $1,000,000 in-lieu on about 0.561 credits", source: "CO handoff memo Rev 6, Drive"}
+  - {date: "2026-09-15", event: "CO2 sent ($110,327.50) with the note that the delineation and BRA cannot finish without a construction-limits boundary from the civil engineer", source: "Gmail, Chris to client, 2026-09-15"}
+  - {date: "2026-09-16", event: "Client: 'We cannot afford this change order for this project'; finish the signed scope and pause; client will chase the engineer for the boundary", source: "Gmail, client to Chris, 2026-09-16"}
+  - {date: "2026-09-21", event: "CDFW checks in; Cox asks for an extension to January because the applicant is revising plans to meet the Town's drainage requirements; fourth extension to 2027-01-01 agreed in writing", source: "Gmail, CDFW thread, 2026-09-21; Productive task 20257835"}
+  - {date: "2026-10-01", event: "Project on hold; about a four-month date shift; CO2 discussed at about $100,000 with a possible $70,000 reduction; no permits issued", source: "Granola synthesis, 2026-10-01"}
+
+money:
+  fee: {to1_plus_co1: 156499.46, basis: "fixed fee by deliverable ($149,686 TO1 incl. $11,400 contingency) + CO1 vegetation survey $24,451; invoiced T&M monthly against deliverable caps", invoiced: 157801.01, paid: 156430.62, open_ar: 1370.39, co2_proposed: 110327.50, co2_status: "declined on cost 2026-09-16; $70,000 reduction floated 2026-10-01"}
+  hours: {logged: 509.0, period: "2025-04-25 to 2026-09-15", by: {"Chris Cox": 204.0, "Kristin Steinert": 110.0, "field biologist (contract)": 71.0, "GIS": 49.8, "planner": 43.0, "admin": 17.2, "other": 14.0}, note: "Productive time, project 973310; the 2025 Harvest era was migrated"}
+  over_contract_lines: ["0.1 Project Management invoiced $19,206 (contingency applied)", "1.4 Delineation $7,252 against $6,270 cap", "1.5 BRA $16,931 against $16,542", "4.4 CEQA Coordination and 5.1 billed with $0 budget"]
+  mitigation: {ratio: "3:1 (CDFW Region 6, provisional)", source: "out-of-service-area general bank credits, Region 6 / Inland Deserts", credits_est: 0.561, bank_price_per_acre_est: 300000, ilf_alternative_est: 1000000, note: "cannot be sized until ENV-05 and ENV-06 confirm"}
+  town_ceqa: {consultant: "CAJA (Town's)", funding: "100 percent deposits before each phase under the 2026-08-18 Letter Agreement", eir_duration_months_best_case: 9}
+
+challenges:
+  - id: C1
+    what: "Two jurisdictional standards, one delineation: the 2022 report measured to the federal OHWM; CDFW and Lahontan measure to top of bank and riparian canopy. State waters went from 0.042 to about 0.187 acres and riparian impact of 0.488 acres appeared that no document had analyzed"
+    signal: "The 5 May 2026 joint inspection; the Lahontan comment letter section 4.4.b"
+    when: "2026-05-05"
+    noticed_by: "the agencies, in the field"
+    source: "Granola debrief 2026-05-05; Project Record ENV-04 to ENV-06"
+  - id: C2
+    what: "The CEQA document and the permit applications were prepared by different teams on different facts: the Town's consultant wrote the IS/MND on the 2022 delineation and a project description that included off-site drainage capture the civil set never designed"
+    signal: "IS/MND 4.4(b) states 0.01 ac wetland and 760 lf; applications state 0.042 ac; the civil 100 percent DD omits the off-site capture; Lahontan calls the Basin Plan interpretation incorrect"
+    when: "2026-06-04"
+    noticed_by: "agency comment letters, then the Project Record"
+    source: "Project Record SCR-22, REG-11, ENV-04, ENV-05"
+  - id: C3
+    what: "The off-site Meridian reach: the project would dewater the channel between the Meridian culvert and the property, and the agencies may want that reach restored or enhanced as mitigation; it sits on land the client does not control"
+    signal: "Raised at the inspection; the client's 'urgent call' email to the Town on off-site drainage"
+    when: "2026-06-04"
+    noticed_by: "the agencies; opened as a Cox item 2026-08-26"
+    source: "Gmail thread '474 Joaquin - Offsite drainage CEQA Impact'; Project Record ENV-24"
+  - id: C4
+    what: "IS/MND to EIR: Cox argued for clarification and a separately phased off-site action under 15073.5; the Town directed a full EIR through its consultant, adding about nine months best case and a 100 percent deposit regime"
+    signal: "The Town's July direction; the 2026-08-18 Letter Agreement"
+    when: "2026-07"
+    noticed_by: "Chris"
+    source: "Town IS-MND memo 2026-06-05; Granola EIR pivot; Project Record REG-02, SCR-06"
+  - id: C5
+    what: "Client cash: an investor burning about $100,000 a month on a project with no permits, asked to fund a Town EIR deposit and a $110,327.50 Cox change order in the same quarter"
+    signal: "'We cannot afford this change order'; project on hold 2026-10-01"
+    when: "2026-09-16"
+    noticed_by: "client"
+    source: "Gmail 2026-09-16; Granola 2026-10-01"
+  - id: C6
+    what: "The civil engineer never delivered the construction-limits boundary, drainage plan or fill volume; the delineation, BRA, impacts map and all three amended applications wait on it"
+    signal: "Overdue since early August; Cox's CO2 cover email names it; the client takes the chase"
+    when: "2026-08"
+    noticed_by: "Cox"
+    source: "Project Record SCR-17; Gmail 2026-09-15 and 09-16; Productive tasks 19037405, 20015160"
+  - id: C7
+    what: "Entity confusion: six names across the record (Mammoth Springs LLC on the applications, Mammoth Springs Resorts LLC on the survey, 474 Joaquin LLC on the plans, two investor entities in the plan directory, an unnamed entity on the Town agreement)"
+    signal: "The surveyor's own sheet carries two owners; the Letter Agreement signature block names none"
+    when: "2026-08-26"
+    noticed_by: "the Project Record"
+    source: "Project Record PLN-24, PLN-25, LGL-01 to LGL-04, LGL-11"
+  - id: C8
+    what: "Zero-margin design: height, outdoor recreation area and private outdoor space all met exactly; density has 0.59 units of headroom on a boundary the surveyor labels 'record data, to be verified'"
+    signal: "Architect's A0.0 project data read against the code"
+    when: "2026-08-26"
+    noticed_by: "the Project Record"
+    source: "Project Record PLN-12, PLN-17, PLN-18, SCR-21"
+  - id: C9
+    what: "Three agency clocks held open by goodwill: the CDFW 60-day draft-agreement deadline extended four times under FGC 1607 while the project could not supply final figures"
+    signal: "CDFW check-ins 06-22, 08-10, 09-21 asking for the updated delineation"
+    when: "2026-06-04 to 2026-09-21"
+    noticed_by: "CDFW"
+    source: "Gmail, CDFW extension thread (17 messages)"
+  - id: C10
+    what: "Cox's own documents carried errors the record pass caught: the alternatives analysis called HDR-2 the zoning, counted 39 units, described a superseded unit mix, cited the Arid West supplement against its own data forms, and answered a LEDPA screening criterion 'No' for the preferred alternative"
+    signal: "Conflicts column of the Project Record"
+    when: "2026-08-26"
+    noticed_by: "Chris's review pass"
+    source: "Project Record PLN-08, PLN-13, PLN-16, ENV-03, REG-16"
+  - id: C11
+    what: "Scope and fee drift: project management invoiced $19,206 with contingency applied; delineation and BRA over their caps; CEQA coordination billed against a $0 budget; the CO asked whether to hold the 2024 $200 rate or move to $250, and 10 percent vs 8 percent PM"
+    signal: "Budget snapshot; CO handoff memo open items"
+    when: "2026-08 to 2026-09"
+    noticed_by: "the billing reconcile"
+    source: "budgets/474-joaquin.json; CO handoff memo Rev 6"
+  - id: C12
+    what: "AB 52 tribal consultation restarts for the EIR; nobody on the team owns watching it, and the cultural subconsultant agreement was unsigned"
+    signal: "Project Record ENV-19, ENV-20"
+    when: "2026-08-26"
+    noticed_by: "the Project Record"
+    source: "Project Record ENV-19, ENV-20; Productive task 18864716"
+
+decisions:
+  - {date: "2025-09", by: "Chris Cox", call: "File 404, 401 and 1602 in parallel on the 2022 delineation while the Town ran its IS/MND, rather than wait for CEQA", alternatives: ["re-delineate to the state standard first", "wait for the MND to adopt"], why: "The 2022 report was the record; the Water Board would need CEQA anyway; parallel filing starts the clocks", cost_or_saving: "all three applications now need amending; months of agency review spent on superseded figures", source: "Gmail 2025-09 filings; Kristin 2025-09-15"}
+  - {date: "2026-06-04", by: "Chris Cox", call: "Accept every CDFW extension offer immediately and in writing", alternatives: ["let the 60-day clock run and receive a draft agreement on the wrong figures", "withdraw and renotify"], why: "A draft agreement on the 2022 figures would have to be amended; mutual extension keeps the notification complete and the relationship intact", cost_or_saving: "no refiling fee; a draft agreement due 2027-01-01", source: "CDFW thread, four agreements"}
+  - {date: "2026-06-08", by: "Chris Cox", call: "Argue for IS/MND clarification with the off-site reach as a separate, later action, citing 15073.5", alternatives: ["concede an EIR in June", "ignore the off-site reach"], why: "Recirculation of a clarified MND is months; an EIR is a year and a deposit regime; the off-site work is on land the client does not control", cost_or_saving: "lost in July; about one month spent on the argument", source: "Town IS-MND memo 2026-06-05; Gmail 2026-06-08"}
+  - {date: "2026-06", by: "Chris Cox", call: "Re-run the delineation to the state standard and the rare plant survey in season at once, before the EIR decision", alternatives: ["wait for the Town's direction", "defer the plant survey a year"], why: "CDFW rejected the 2022 reconnaissance as non-floristic and out of season; missing the June to July window would cost a full year", cost_or_saving: "$7,252 and $16,931 invoiced against the CO1 caps; a year saved", source: "Gmail, Chris to CDFW 2026-06-22 and 2026-08-11; CAJA thread 07-17"}
+  - {date: "2026-07-23", by: "Chris Cox", call: "Propose five to ten channel cross-sections for the fill-volume question instead of a full drainage model; the civil engineer owns the boundary", alternatives: ["commission a full hydraulic model", "let Cox draw the boundary"], why: "The agencies asked for a quantity, not a model; the boundary is an engineer-of-record deliverable", cost_or_saving: "a model avoided; a dependency on an engineer who then did not deliver", source: "Granola 2026-07-23; Productive task 19141637"}
+  - {date: "2026-08-26", by: "Chris Cox", call: "Build a single Project Record with one value per parameter, a citation, a status, and live Open Items and Conflicts views, and circulate it without any fee figures so the whole team can use it", alternatives: ["keep reconciling document by document", "let CAJA own the project description"], why: "Five documents disagreed on acreage, density, unit count, zoning label and impact figures; the EIR project description will be copied into three permits and a map", cost_or_saving: "one day to build; found the 38.591 du/ac error before the EIR repeated it", source: "Project Record Read Me, revision log"}
+  - {date: "2026-09-10", by: "Chris Cox", call: "Scope CO2 for the full EIR path with phasing A and B and triggers (NOP, Draft EIR), carrying recovery of incurred CEQA coordination", alternatives: ["a small CO to finish the signed deliverables only", "T&M without a ceiling"], why: "The client should see the whole cost of the path the Town chose; triggers let the client fund in steps", cost_or_saving: "$110,327.50 proposed; declined", source: "CO handoff memo Rev 6; Gmail 2026-09-15"}
+  - {date: "2026-09-16", by: "Chris Cox", call: "Accept the pause, finish the signed scope, offer to re-scope for affordability, and keep the agency clocks open", alternatives: ["stop work pending CO2", "insist on the full CO"], why: "The firm's exposure is the unfunded expanded area; the client's is the EIR; the relationship and the notification are worth more than the argument", cost_or_saving: "unbilled effort on the expanded area; a January 2027 deadline held", source: "Gmail 2026-09-16; CDFW thread 09-21"}
+
+resolutions:
+  - {challenge: C1, fix: "State-standard delineation re-run in June 2026 with the wetland under the bridge incorporated; final figures 0.079 ac federal (provisional), 0.187 ac state, 0.488 ac riparian; regional supplement corrected", duration: "June to August 2026; publication waits on the boundary", cost: "inside CO1 caps plus overage", repeat: "yes; delineate to the stricter standard first on any site with state waters"}
+  - {challenge: C2, fix: "Project Record as the single source; CO2 line 4.5 for Cox-owned EIR chapters so the biology and hydrology in the EIR come from the permit team", duration: "built in one day; adoption pending", cost: "inside PM", repeat: "yes; one project description, one owner"}
+  - {challenge: C3, fix: "Opened as a Cox item: scope a restoration or enhancement concept for the reach now; cross-sections rather than a full model for the quantity; Obsidian association consent flagged for access", duration: "open", cost: "unpriced; in CO2 phase B", repeat: "yes; any culverted upstream reach is a question at the Screen"}
+  - {challenge: C4, fix: "Lost; EIR accepted; CO2 scoped around the NOP and Draft EIR triggers; AB 52 restart flagged for the NOP", duration: "June to August 2026", cost: "about nine months and the Town deposit regime", repeat: "the argument was right to make; make it in writing before the agency letters land, not after"}
+  - {challenge: C5, fix: "Pause accepted; re-scope offered; $70,000 reduction under discussion; project on hold with a four-month slip", duration: "open", cost: "CO2 unsigned", repeat: "price the whole path at the start, phase it, and tell the client what the CEQA document choice costs before the Town makes it"}
+  - {challenge: C6, fix: "Boundary derivation task assigned internally as a stopgap (top-of-bank offset plus pipe alignment, residence excluded); client takes the chase with the engineer; CDFW told the applicant is revising plans", duration: "open since August", cost: "every downstream deliverable on hold", repeat: "put the engineer's deliverable and date in the roadmap and the client's contract, not only in Cox's task list"}
+  - {challenge: C7, fix: "Applicant of record carried as Mammoth Springs LLC pending client confirmation; title report requested; the client, not a search, answers which entity holds title", duration: "open", cost: "none yet; a wrong name on an EIR or a permit is a re-notice", repeat: "entity name is a Screen intake field"}
+  - {challenge: C8, fix: "Flagged as a risk register item; re-check the day the revised boundary lands", duration: "open", cost: "a unit or a variance if the boundary moves", repeat: "yes; the Map flags any standard met at zero margin"}
+  - {challenge: C9, fix: "Four written mutual extensions, each agreed within a day; CDFW told the reason each time", duration: "2026-06 to 2027-01", cost: "none", repeat: "yes; answer the agency the same day and give the reason"}
+  - {challenge: C10, fix: "Corrections logged against the AA and the report body; AA to be re-based before it supports the EIR alternatives chapter", duration: "open", cost: "inside CO2 3.2", repeat: "the Project Record pass should run before any Cox document leaves"}
+  - {challenge: C11, fix: "Contingency applied to 0.1 and 1.4; VEG and EXP budgets set to invoiced; CO2 carries 10 percent flat PM and recovers CEQA coordination; rate question left for Chris", duration: "August 2026", cost: "about $1,400 over caps absorbed", repeat: "yes; the monthly overage review"}
+  - {challenge: C12, fix: "Tracked in the Project Record as a lead-agency obligation with no Cox deliverable; raise at the NOP; cultural scope and subconsultant estimate obtained", duration: "open", cost: "cultural update in CO2 1.2", repeat: "yes; AB 52 goes in every CEQA schedule as the Town's row"}
+
+people:
+  - {role: "Client principal, Vice President", org: "investment company (client)", asked_for: "permits, then an EIR timeline, then affordability; met the Town without counsel", how_managed: "memos ahead of every Town call; CO with phasing; same-day agreement to pause", consent: false}
+  - {role: "Client project manager", org: "client's development entity", asked_for: "urgent calls with the Town; timelines from CAJA; the pause", how_managed: "copied on every agency exchange; given the boundary chase", consent: false}
+  - {role: "Lead biologist", org: "contract biologist, Cox bench", asked_for: "field access, survey windows, invoices monthly", how_managed: "ran the delineation, tree and shrub, rare plant surveys; named as Environmental reviewer of the Project Record", consent: false}
+  - {role: "Town planning staff (two) and engineering manager", org: "Town of Mammoth Lakes", asked_for: "the agency letters, a CEQA path, a signed Letter Agreement and deposits", how_managed: "memo of 2026-06-08; calls arranged by the client; Cox kept to the technical record", consent: false, note: "public agency staff in an official capacity"}
+  - {role: "CDFW environmental scientists (two) and supervisor", org: "CDFW Region 6", asked_for: "updated delineation, status every six weeks, written extensions", how_managed: "answered the same day each time; four mutual extensions", consent: false, note: "public agency staff in an official capacity"}
+  - {role: "Lahontan water quality engineers (two)", org: "Lahontan RWQCB", asked_for: "Basin Plan prohibition exemption evidence, riparian impact analysis, MS4 clarification, drainage quantification", how_managed: "Inspection Response memo; cross-section proposal; 401 amendment carried in CO2", consent: false, note: "public agency staff in an official capacity"}
+  - {role: "USACE project manager", org: "USACE", asked_for: "wait for the 401 completeness", how_managed: "404 held; revised PCN and impacts map queued", consent: false, note: "public agency staff in an official capacity"}
+  - {role: "Town's CEQA consultant, Vice President", org: "CEQA consulting firm", asked_for: "whether the biology updates answer CDFW; schedule inputs", how_managed: "answered within hours; preparers conflict (biologist of record) to be settled in writing", consent: false}
+  - {role: "Civil engineer of record", org: "civil firm (client's)", asked_for: "nothing from Cox; owes the boundary, drainage plan and fill volume", how_managed: "requests through the client; internal stopgap derivation", consent: false}
+  - {role: "Architect of record", org: "architecture firm (client's)", asked_for: "nothing from Cox", how_managed: "plan set read sheet by sheet into the Project Record; set-completeness flag (architecture a year older than civil)", consent: false}
+  - {role: "Client's land use counsel", org: "law firm", asked_for: "engaged at the EIR pivot", how_managed: "Letter Agreement indemnity flagged to the client as counsel's question, not Cox's", consent: false}
+
+lessons:
+  - {kind: rule, rule: "proposed R22", lesson: "On any site with a channel, the Screen states both jurisdictional datums (federal OHWM; state top of bank and riparian canopy) and the model carries the state figure as the planning case until a state-standard delineation says otherwise.", applies_to: ["all types with waters", "Screen", "Map"]}
+  - {kind: rule, rule: "proposed R23", lesson: "One project description, one owner: the CEQA document, every resource permit and the map cite the same acreage, unit count, impact figures and entity name from a single record; a Roadmap that shows a Town-run CEQA document and a Cox-run permit set flags the split as a risk with a cost.", applies_to: ["Step 3", "Step 4", "all types"]}
+  - {kind: playbook, lesson: "Delineate to the stricter standard and run the protocol plant survey in the first available window, before the CEQA path is chosen; a missed June-July window is a year.", applies_to: ["Step 1b", "mountain and desert jurisdictions", "CDFW Region 6"]}
+  - {kind: playbook, lesson: "Any culverted or piped reach upstream of the site is a Screen question: who owns it, what happens to it if the on-site channel is dewatered, and will the agencies ask for it as mitigation.", applies_to: ["Screen", "infill with channels"]}
+  - {kind: playbook, lesson: "Answer an agency's extension or status request the same day, in writing, with the reason; four extensions cost nothing and a lapsed clock costs a renotification.", applies_to: ["1602", "401", "all agency clocks"]}
+  - {kind: judgment, lesson: "When the lead agency is deciding between a clarified MND and an EIR, put the clarification argument and the phased alternative in writing before the resource-agency letters land, and tell the client what each path costs them in months and deposits before the Town decides.", why_judgment: "timing and tone with a lead agency are a principal's call; the model can only flag that the decision is pending and price both paths"}
+  - {kind: judgment, lesson: "When a client says they cannot afford the change order, accept the pause, finish the signed scope, keep the clocks open, and offer to re-scope; the firm's exposure is smaller than the relationship.", why_judgment: "a cash and relationship read, not a computable check"}
+  - {kind: playbook, lesson: "A third-party deliverable the whole schedule waits on (the engineer's boundary) goes in the roadmap as a named milestone with an owner and a date the client can see, not only in Cox's task list.", applies_to: ["Map", "dashboard Gantt", "Step 2 onward"]}
+  - {kind: playbook, lesson: "Flag every standard met at zero margin (height, open space, density headroom) and re-check it the day a boundary or grade moves.", applies_to: ["Map", "infill", "design review"]}
+  - {kind: process, lesson: "Legal entity of the applicant and the owner is an intake field, confirmed by the client, before anything is filed; six names on one project is a re-notice waiting to happen.", applies_to: ["Screen intake", "part 1 hooks"]}
+  - {kind: process, lesson: "Run the Project Record conflict pass over Cox's own documents before they leave; the AA's HDR-2 label, the 39 units and the Arid West citation were ours.", applies_to: ["review sign-off", "R20 corrections register"]}
+  - {kind: process, lesson: "Price the whole path with phases and triggers at the first change order, and recover CEQA coordination as a line, not as unbudgeted PM.", applies_to: ["change orders", "program.py"]}
+  - {kind: benchmark, lesson: "Mammoth Lakes: 1602 notification to deemed complete about 5.5 months (incomplete once); CDFW draft agreement held by mutual extension for seven-plus months; Town EIR about nine months best case with about 75 statutory days; Region 6 mitigation 3:1 on general bank credits at about $300,000 per acre vs about $1,000,000 in-lieu.", applies_to: ["Town of Mammoth Lakes", "CDFW Region 6", "Lahontan"]}
+  - {kind: process, lesson: "AB 52 consultation is the lead agency's row on every CEQA schedule, restarts at the NOP, and someone on the team is named to watch it.", applies_to: ["Step 3", "schedule cascade"]}
+
+benchmarks:
+  - {metric: "TO1 + CO1 contract (environmental permitting, 38-unit infill with waters)", value: 156499.46, unit: "USD", year: 2025, source: "budgets/474-joaquin.json"}
+  - {metric: "CO2 proposed, EIR path", value: 110327.50, unit: "USD", year: 2026, source: "CO handoff memo Rev 6; Gmail 2026-09-15"}
+  - {metric: "Hours through the pause", value: 509, unit: "hours", year: 2026, source: "Productive time, project 973310, 2025-04-25 to 2026-09-15"}
+  - {metric: "Principal share of hours", value: 40, unit: "percent", source: "Productive time (204 of 509)"}
+  - {metric: "1602 notification submitted to deemed complete", value: 5.6, unit: "months", source: "EPIMS 2025-10-20; CDFW 2026-04-08"}
+  - {metric: "CDFW draft agreement deadline, extensions", value: 4, unit: "mutual extensions (to 2027-01-01)", source: "CDFW thread 2026-06-04 to 09-21"}
+  - {metric: "State waters, 2022 federal basis vs 2026 state basis", value: [0.042, 0.187], unit: "acres", source: "Project Record ENV-05"}
+  - {metric: "Riparian impact not in the IS/MND", value: 0.488, unit: "acres", source: "Project Record ENV-06"}
+  - {metric: "Mitigation ratio, CDFW Region 6", value: "3:1", unit: "ratio (provisional)", source: "Project Record ENV-21"}
+  - {metric: "Mitigation credit price, general bank", value: 300000, unit: "USD per acre (estimate)", source: "CO handoff memo Rev 6"}
+  - {metric: "In-lieu fee alternative", value: 1000000, unit: "USD (estimate, about 0.561 credits)", source: "CO handoff memo Rev 6"}
+  - {metric: "Town EIR duration, best case", value: 9, unit: "months (about 75 statutory days)", source: "Project Record SCR-06"}
+  - {metric: "NOP and Draft EIR public review", value: [30, 45], unit: "days", source: "Project Record SCR-08, SCR-09"}
+  - {metric: "Client burn while unpermitted", value: 100000, unit: "USD per month (client statement)", source: "Granola, EIR pivot, July 2026"}
+  - {metric: "Project Record build", value: 149, unit: "parameters in one day (91 confirmed, 55 conflicts)", source: "Project Record Read Me"}
+  - {metric: "Internal margin on CO2 as scoped", value: 68.8, unit: "percent", source: "CO handoff memo Rev 6"}
+
+quotables:
+  - {text: "We cannot afford this change order for this project.", context: "the client, 2026-09-16; the sentence the whole ladder is designed to prevent", cleared: false, speaker: "client"}
+  - {text: "Finishing up the studies requires us to include the expanded area.", context: "Chris's reply the same day; the scope grew in the field, not in the office", cleared: false}
+  - {text: "One value of record per parameter, carried identically into the EIR, the 1602, the 401, the 404 and the Tentative Tract Map.", context: "the Project Record's first rule", cleared: false}
+  - {text: "The IS/MND read the architect's column across and turned a permitted unit yield into a proposed density.", context: "how 38.591 du/ac got into a public CEQA document", cleared: false}
+  - {text: "Please extend the timeline to January, as the applicant needs some time to revise their plans.", context: "Chris to CDFW, 2026-09-21; the fourth extension asked for in one sentence", cleared: false}
+
+outcome:
+  delivered: null
+  result: "No permit issued. 404, 401 and 1602 all pending amendment to the state-standard figures; IS/MND superseded by an EIR not yet started; CDFW draft agreement due 2027-01-01; project on hold by the client since 2026-10-01"
+  fee_vs_first_estimate: "$156,499 contracted and essentially paid; $110,328 CO2 declined; about $1,400 absorbed over caps"
+  next: "Engineer's boundary; final delineation and BRA publish; CO2 re-scope or close at signed scope; Town deposit and NOP"
+  open_items: ["civil boundary, drainage plan, fill volume (since Aug 2026)", "applicant and owner legal names", "biologist-of-record conflict with CAJA", "AB 52 owner", "records request on meeting captures (counsel before any deletion)", "CO2 rate ($200 vs $250) and PM percent", "Automator CO2 opportunity still at Proposal Sent"]
+
+interview_questions:
+  - "In September 2025 you filed all three applications on the 2022 federal-standard delineation. Knowing CDFW Region 6 measures to top of bank, would you re-delineate first next time, or was parallel filing still right because the Town's CEQA was the long pole?"
+  - "The Town ran its own IS/MND through its consultant while Cox ran the permits. What would you have asked for in the 2024 proposal to own the project description, and would the client have paid for it?"
+  - "The June memo argued for clarification under 15073.5 and lost. Was there a week in May when that argument would have landed, and what did the Town actually weigh?"
+  - "The client told the Town he would meet Council without his legal team. Did that help or hurt, and should Cox have been in that room?"
+  - "You held the CDFW clock open four times. Is there a point where you would let it lapse and renotify instead, and what is the signal?"
+  - "The Project Record took one day and found errors in Cox's own AA. Should that pass run before every deliverable leaves, and who runs it when you are not available?"
+  - "CO2 was $110,000 against a client burning $100,000 a month. Was there a $40,000 phase A you would have led with, and what would it have covered?"
+  - "The engineer's boundary has been overdue since August and the client is chasing it. What does Cox do when the client's own consultant is the critical path?"
+  - "Mitigation at $300,000 per acre on bank credits versus about $1,000,000 in-lieu: how firm are those numbers and which agency conversation moves them?"
+  - "For the model: which of these would you want the Screen to say to the next buyer of a Mammoth parcel with a channel, in one paragraph?"
